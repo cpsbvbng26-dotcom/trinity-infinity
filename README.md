@@ -103,10 +103,25 @@ A Generalization and Retrospective. Zenodo. https://doi.org/10.5281/zenodo.22058
 [10.5281/zenodo.17173703](https://doi.org/10.5281/zenodo.17173703)。
 どちらを参照したのかが読者に分かる形で引用してください。
 
-## 執筆における AI の利用
+## AI の利用
 
-三本とも、起草・数学的定式化・計算による検証にあたって Claude（Anthropic）の助力を得ています。
-各論文の末尾に、どの作業に用いたかの開示文があります。すべての主張の責任は著者にあります。
+[![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-D97757?style=for-the-badge&logo=claude&logoColor=white)](https://claude.com/claude-code)
+
+**論文について。** 三本とも、起草・数学的定式化・計算による検証にあたって Claude（Anthropic）の
+助力を得ています。各論文の末尾に、どの作業に用いたかの開示文があります。
+
+**このリポジトリについて。** README の構成と本文、`CITATION.cff`、および
+[`verification/independent_check.py`](verification/independent_check.py) は、
+Claude Code（Anthropic）を用いて作成し、実行しました。**論文の PDF には手を入れていません** ——
+`pdf/` にあるのは配布されたファイルそのものです。README に書いた「確立されたこと」「撤回されたこと」は、
+各論文自身の改訂註と回顧の章にもとづく要約であり、こちらで新たに評価を加えたものではありません。
+
+検証スクリプトが報告する数値は、すべて実行して得たものです。いずれの主張についても、
+責任は著者（根本卓哉）にあります。AI は著作者ではありません。
+
+**記録から確認できること。** このリポジトリのコミットは `Claude` 名義で、
+末尾に作業セッションを示す `Claude-Session:` トレーラが付いています。
+`git log --author=Claude` で辿れます。
 
 ## 著者
 
