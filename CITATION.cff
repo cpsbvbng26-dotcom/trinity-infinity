@@ -1,6 +1,9 @@
 cff-version: 1.2.0
 title: Trinity-Infinity — 三本の系列と、その検証の記録
-message: 個々の論文を引用する場合は、各 PDF の書誌情報を用いてください。
+message: >-
+  個々の論文を引用する場合は、各 PDF の書誌情報を用いてください。
+  なお Series II・III の参考文献欄は改訂版 Series I を初版の DOI で引用しています（ERRATA.md の E1）。
+  改訂版 Series I は 10.5281/zenodo.22058624 です。
 type: dataset
 authors:
   - family-names: Nemoto
@@ -8,6 +11,7 @@ authors:
     orcid: "https://orcid.org/0009-0000-1406-0547"
     affiliation: Independent Researcher
 repository-code: "https://github.com/cpsbvbng26-dotcom/trinity-infinity"
+url: "https://github.com/cpsbvbng26-dotcom/trinity-infinity"
 abstract: >-
   三元の再帰作用素をめぐる三本のプレプリントと、その独立検証。
   改訂にあたって「定理は書かれたとおりに証明できること」「数値は同梱するコードが出したものであること」
@@ -48,7 +52,9 @@ references:
     year: 2026
     month: 8
     doi: 10.5281/zenodo.22058777
-    notes: Preprint. Not peer-reviewed.
+    notes: >-
+      Preprint. Not peer-reviewed. 参考文献欄が改訂版 Series I を初版の DOI
+      10.5281/zenodo.17173703 で引用している（ERRATA.md の E1）。
   - type: article
     title: >-
       The Trinity-Infinity Framework, Series III: Beyond Three — A Generalization
@@ -60,4 +66,7 @@ references:
     year: 2026
     month: 8
     doi: 10.5281/zenodo.22058964
-    notes: Preprint. Not peer-reviewed.
+    notes: >-
+      Preprint. Not peer-reviewed. 参考文献欄が改訂版 Series I を初版の DOI
+      10.5281/zenodo.17173703 で引用し、Series II には DOI を付していない
+      （ERRATA.md の E1・E2）。

@@ -65,15 +65,27 @@ Series II は最後の項目について、**主張を成立させるために�
 
 ## 検証
 
-[`verification/independent_check.py`](verification/independent_check.py) は、この系列の主張を**独立に**確認するスクリプトです
-（各論文に同梱されている検証スクリプトとは別に書かれたものです）。NumPy のみを必要とし、乱数種を固定しています。
+二本のスクリプトが入っています。**問いが違います。**
+
+| | 問い | 項目 |
+| --- | --- | --- |
+| [`verification/independent_check.py`](verification/independent_check.py) | **定理は正しいか。** 証明の記述から独立に実装して、同じ結論に達するか | 13 |
+| [`verification/claims_audit.py`](verification/claims_audit.py) | **紙面に印字されている数字は、その通りに出るか。** 論文から数値を書き写し、隣に計算し直した値を並べる | 31 |
 
 ```
 python3 verification/independent_check.py
+python3 verification/claims_audit.py
 ```
 
-13 項目すべてが通ります。詳細は [verification/README.md](verification/README.md) を参照してください。
-特に、Series I が報告した「自己言及的な統合では極限が一意にならない」という結果を、別実装で再現しています。
+どちらも NumPy のみを必要とし、乱数種を固定しています。44 項目すべてが通ります。
+詳細は [verification/README.md](verification/README.md) を参照してください。
+
+`claims_audit.py` が確かめるのは、たとえば次のようなものです —— Series I の不動点
+`(0.510204, 0.306122, 0.183673)`、Series II の異方的な不動点と 8つの利得の**凸包の体積 4.00**、
+ばね系の `K∞`、Series III の表1の `P² = I` の列。**論文の数値を一つも信用しないで読み直せます。**
+
+なお、各論文は検証スクリプトを同梱していると謳っていますが、**配布物に含まれていません**。
+経緯は [ERRATA.md](ERRATA.md) の E3 にあります。上の二本は、その代用ではなく別に書いたものです。
 
 ## ライセンス
 
@@ -103,16 +115,17 @@ A Generalization and Retrospective. Zenodo. https://doi.org/10.5281/zenodo.22058
 [10.5281/zenodo.17173703](https://doi.org/10.5281/zenodo.17173703)。
 どちらを参照したのかが読者に分かる形で引用してください。
 
-### 参考文献欄の誤り
+### 正誤
 
-**Series II と Series III の参考文献欄は、改訂版 Series I を `10.5281/zenodo.17173703` で引用しています。**
-これは訂正の対象である 2025 年の初版の DOI で、改訂版は `10.5281/zenodo.22058624` です。
+見つかった不備は [**ERRATA.md**](ERRATA.md) にまとめています。PDF に手を入れない方針のため、
+本文を書き換える代わりにここに記録しています。
 
-Series I 自身の冒頭は「原型（Nemoto, 2025; DOI: 10.5281/zenodo.17173703）を改訂する」と書いており、
-こちらは正しい用法です。誤っているのは、II と III が**改訂版を指すつもりで初版の番号を書いている**点です。
+**いちばん影響が大きいのは E1 です。Series II と Series III の参考文献欄は、
+改訂版 Series I を `10.5281/zenodo.17173703` で引用しています。** これは訂正の対象である
+2025年の初版の DOI で、改訂版は `10.5281/zenodo.22058624` です。そのまま辿った読者は、
+II と III が「これを一般化する」と述べている定理の、**撤回された方の版**を読むことになります。
 
-PDF には手を入れない方針のため、ここに記録します。**改訂版 Series I を参照する場合は
-`10.5281/zenodo.22058624` を用いてください。**
+**改訂版 Series I を参照する場合は `10.5281/zenodo.22058624` を用いてください。**
 
 ## AI の利用
 
@@ -121,9 +134,8 @@ PDF には手を入れない方針のため、ここに記録します。**改�
 **論文について。** 三本とも、起草・数学的定式化・計算による検証にあたって Claude（Anthropic）の
 助力を得ています。各論文の末尾に、どの作業に用いたかの開示文があります。
 
-**このリポジトリについて。** README の構成と本文、`CITATION.cff`、および
-[`verification/independent_check.py`](verification/independent_check.py) は、
-Claude Code（Anthropic）を用いて作成し、実行しました。**論文の PDF には手を入れていません** ——
+**このリポジトリについて。** README の構成と本文、`ERRATA.md`、`CITATION.cff`、および
+`verification/` の二本のスクリプトは、Claude Code（Anthropic）を用いて作成し、実行しました。**論文の PDF には手を入れていません** ——
 `pdf/` にあるのは配布されたファイルそのものです。README に書いた「確立されたこと」「撤回されたこと」は、
 各論文自身の改訂註と回顧の章にもとづく要約であり、こちらで新たに評価を加えたものではありません。
 
