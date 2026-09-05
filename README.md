@@ -1,5 +1,12 @@
 # Trinity-Infinity
 
+> [!IMPORTANT]
+> **改訂版 Series I を引用するときの DOI は `10.5281/zenodo.22058624` です。**
+> Series II と Series III の参考文献欄は、改訂版を指すつもりで
+> `10.5281/zenodo.17173703` と書いています。これは**この系列が訂正の対象としている
+> 2025年の初版**の DOI です。そのまま辿ると、II と III が「これを一般化する」と
+> 述べている定理の、撤回された方の版に着きます。詳細は [ERRATA.md](ERRATA.md) の E1。
+
 三本の系列です。**枠組みを提示した系列ではなく、枠組みが自分を検証にかけて縮んでいく系列**として読むのが正確です。
 
 2025年に発表した最初のプレプリントは、三つの要素が再帰的に統合されて収束するという着想を軸に、
@@ -16,7 +23,7 @@
 
 | | 内容 | 版 | DOI |
 | --- | --- | --- | --- |
-| [Series I](pdf/trinity-infinity-series-i-revised.pdf) | 三元の再帰作用素と、その収束定理。ゲーム理論・論理学・工学への例示 | 改訂版 — 2026年8月 | [10.5281/zenodo.22058624](https://doi.org/10.5281/zenodo.22058624) |
+| [Series I](pdf/trinity-infinity-series-i-revised.pdf) | 三元の再帰作用素と、その収束定理。ゲーム理論・論理学・工学への例示 | 改訂版 — 2026年8月 | [**10.5281/zenodo.22058624**](https://doi.org/10.5281/zenodo.22058624)<br>← II・III の参考文献欄はここを誤っています |
 | [Series II](pdf/trinity-infinity-series-ii-revised.pdf) | 座標ごとに異なる混合率への一般化。均衡利得集合と、ばね系の完全な計算例 | 改訂版 — 2026年8月 | [10.5281/zenodo.22058777](https://doi.org/10.5281/zenodo.22058777) |
 | [Series III](pdf/trinity-infinity-series-iii.pdf) | 「三である必要はあるのか」への回答と、系列全体の回顧 | 2026年8月 | [10.5281/zenodo.22058964](https://doi.org/10.5281/zenodo.22058964) |
 
