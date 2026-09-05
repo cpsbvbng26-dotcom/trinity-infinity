@@ -1,0 +1,63 @@
+cff-version: 1.2.0
+title: Trinity-Infinity — 三本の系列と、その検証の記録
+message: 個々の論文を引用する場合は、各 PDF の書誌情報を用いてください。
+type: dataset
+authors:
+  - family-names: Nemoto
+    given-names: Takuya
+    orcid: "https://orcid.org/0009-0000-1406-0547"
+    affiliation: Independent Researcher
+repository-code: "https://github.com/cpsbvbng26-dotcom/trinity-infinity"
+abstract: >-
+  三元の再帰作用素をめぐる三本のプレプリントと、その独立検証。
+  改訂にあたって「定理は書かれたとおりに証明できること」「数値は同梱するコードが出したものであること」
+  の二条件を課した結果、残ったのは単一の縮小写像論法であり、系列の名が指す「三」は
+  その論証に寄与していないことが示された。撤回された主張も項目ごとに記録している。
+keywords:
+  - contraction mapping
+  - Banach fixed-point theorem
+  - research integrity
+  - self-correction
+  - preprint revision
+  - reproducibility
+license: CC-BY-4.0
+date-released: 2026-09-05
+references:
+  - type: article
+    title: >-
+      The Trinity-Infinity Framework: A Conceptual Model with Illustrative Applications
+      in Game Theory, Mathematical Logic, and Mechanical Engineering (Revised Edition)
+    authors:
+      - family-names: Nemoto
+        given-names: Takuya
+        orcid: "https://orcid.org/0009-0000-1406-0547"
+    year: 2026
+    month: 8
+    doi: 10.5281/zenodo.22058624
+    notes: >-
+      Preprint. Not peer-reviewed. 訂正の対象である 2025 年の初版は
+      10.5281/zenodo.17173703。
+  - type: article
+    title: >-
+      The Trinity-Infinity Framework, Series II: Extended Formalization and Further
+      Illustrative Applications (Revised Edition)
+    authors:
+      - family-names: Nemoto
+        given-names: Takuya
+        orcid: "https://orcid.org/0009-0000-1406-0547"
+    year: 2026
+    month: 8
+    doi: 10.5281/zenodo.22058777
+    notes: Preprint. Not peer-reviewed.
+  - type: article
+    title: >-
+      The Trinity-Infinity Framework, Series III: Beyond Three — A Generalization
+      and Retrospective
+    authors:
+      - family-names: Nemoto
+        given-names: Takuya
+        orcid: "https://orcid.org/0009-0000-1406-0547"
+    year: 2026
+    month: 8
+    doi: 10.5281/zenodo.22058964
+    notes: Preprint. Not peer-reviewed.
