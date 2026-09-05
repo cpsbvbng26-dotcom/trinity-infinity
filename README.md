@@ -1,5 +1,7 @@
 # Trinity-Infinity
 
+[![検証](https://github.com/cpsbvbng26-dotcom/trinity-infinity/actions/workflows/verify.yml/badge.svg)](https://github.com/cpsbvbng26-dotcom/trinity-infinity/actions/workflows/verify.yml)
+
 > [!IMPORTANT]
 > **改訂版 Series I を引用するときの DOI は `10.5281/zenodo.22058624` です。**
 > Series II と Series III の参考文献欄は、改訂版を指すつもりで
@@ -85,6 +87,7 @@ python3 verification/claims_audit.py
 ```
 
 どちらも NumPy のみを必要とし、乱数種を固定しています。44 項目すべてが通ります。
+**GitHub Actions が push ごとに両方を実行しています** —— 上のバッジが、いま通っているかどうかです。
 詳細は [verification/README.md](verification/README.md) を参照してください。
 
 `claims_audit.py` が確かめるのは、たとえば次のようなものです —— Series I の不動点

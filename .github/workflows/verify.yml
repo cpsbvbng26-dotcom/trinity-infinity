@@ -1,0 +1,22 @@
+name: 検証
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    name: 定理 13 項目 / 印字された数値 31 項目
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install numpy
+      - name: 定理は正しいか
+        run: python3 verification/independent_check.py
+      - name: 印字された数値はその通りに出るか
+        run: python3 verification/claims_audit.py
