@@ -103,6 +103,17 @@ A Generalization and Retrospective. Zenodo. https://doi.org/10.5281/zenodo.22058
 [10.5281/zenodo.17173703](https://doi.org/10.5281/zenodo.17173703)。
 どちらを参照したのかが読者に分かる形で引用してください。
 
+### 参考文献欄の誤り
+
+**Series II と Series III の参考文献欄は、改訂版 Series I を `10.5281/zenodo.17173703` で引用しています。**
+これは訂正の対象である 2025 年の初版の DOI で、改訂版は `10.5281/zenodo.22058624` です。
+
+Series I 自身の冒頭は「原型（Nemoto, 2025; DOI: 10.5281/zenodo.17173703）を改訂する」と書いており、
+こちらは正しい用法です。誤っているのは、II と III が**改訂版を指すつもりで初版の番号を書いている**点です。
+
+PDF には手を入れない方針のため、ここに記録します。**改訂版 Series I を参照する場合は
+`10.5281/zenodo.22058624` を用いてください。**
+
 ## AI の利用
 
 [![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-D97757?style=for-the-badge&logo=claude&logoColor=white)](https://claude.com/claude-code)
