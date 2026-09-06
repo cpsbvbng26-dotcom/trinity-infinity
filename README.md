@@ -140,7 +140,7 @@ II と III が「これを一般化する」と述べている定理の、**撤�
 
 ## AI の利用
 
-[![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-D97757?style=for-the-badge&logo=claude&logoColor=white)](https://claude.com/claude-code)
+[![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-D97757?style=for-the-badge)](https://claude.com/claude-code)
 
 **論文について。** 三本とも、起草・数学的定式化・計算による検証にあたって Claude（Anthropic）の
 助力を得ています。各論文の末尾に、どの作業に用いたかの開示文があります。
