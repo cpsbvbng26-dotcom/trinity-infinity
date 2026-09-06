@@ -16,6 +16,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install numpy
+      - name: 誤変換とバッジ記法
+        run: python3 verification/check_text.py
       - name: 定理は正しいか
         run: python3 verification/independent_check.py
       - name: 印字された数値はその通りに出るか
