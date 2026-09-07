@@ -15,7 +15,7 @@
 ```
 python3 independent_check.py    # 13 項目
 python3 claims_audit.py         # 31 項目
-python3 check_errata.py         # 28 項目（pypdf が要ります）
+python3 check_errata.py         # 51 項目（pypdf が要ります）
 ```
 
 どちらも NumPy のみを必要とします。乱数種は固定してあるので、何度実行しても同じ数値が出ます。
@@ -27,7 +27,16 @@ python3 check_errata.py         # 28 項目（pypdf が要ります）
 別に書いたものです。
 
 `check_errata.py` は、その 6 箇所が本当に紙面に印字されているかを PDF から取り出して
-突き合わせます（28 項目）。正誤表の引用が紙面と食い違ったら、そこで落ちます。
+突き合わせます（51 項目）。正誤表の引用が紙面と食い違ったら、そこで落ちます。
+
+見る内容は [`audit.toml`](audit.toml) に宣言してあります。引用が一字一句あるか、
+「印字されていない」と述べたものが本当に無いか、宣言した件数だけ挙がっているか、
+名乗る数値が実際に走らせた結果と一致するか、未解決の項目がそのまま残っているか、
+PDF が差し替わっていないか（SHA-256）、最終更新が本文のどの日付よりも古くないか。
+
+当たる側は [`errata_check.py`](errata_check.py) で、これは
+[errata-check](https://github.com/cpsbvbng26-dotcom/errata-check)（MIT）を写したものです。
+単一ファイルなので、ここに置いて使っています。
 
 ---
 

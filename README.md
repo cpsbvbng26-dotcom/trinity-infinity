@@ -100,7 +100,13 @@ python3 verification/claims_audit.py
 **元のスクリプトが何を計算していたかは、もう分かりません。**
 
 その 6 箇所が本当に紙面に印字されているかは、`check_errata.py` が PDF から文字を取り出して
-突き合わせます（28 項目）。E1・E2 の引用も同じように当たります。
+突き合わせます（51 項目）。E1・E2 の引用も、名乗る件数も、未解決の項目が
+「解決済み」に書き換わっていないかも、同じように当たります。
+
+条件は [`verification/audit.toml`](verification/audit.toml) に宣言してあり、当たるのは
+[errata-check](https://github.com/cpsbvbng26-dotcom/errata-check)（MIT、単一ファイル）が
+やります。**判定に推論を使いません。**あるか、無いか、一致するか、しないか。
+PDF そのものの SHA-256 も宣言してあるので、**一次資料が差し替わればそこで落ちます。**
 
 ## ライセンス
 
