@@ -8,17 +8,19 @@ on:
 
 jobs:
   verify:
-    name: 定理 13 項目 / 印字された数値 31 項目
+    name: 定理 13 項目 / 印字された数値 31 項目 / 正誤表の引用 28 項目
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install numpy
+      - run: pip install numpy pypdf
       - name: 誤変換とバッジ記法
         run: python3 verification/check_text.py
       - name: 定理は正しいか
         run: python3 verification/independent_check.py
       - name: 印字された数値はその通りに出るか
         run: python3 verification/claims_audit.py
+      - name: 正誤表の引用が紙面と一致するか
+        run: python3 verification/check_errata.py
