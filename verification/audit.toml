@@ -6,7 +6,7 @@
 # ここに書いてあるのは「ERRATA.md が三篇からずれていないこと」の条件である。
 #
 # 道具は errata_check.py（MIT）。同じものが
-# https://github.com/cpsbvbng26-dotcom/errata-check にある（DOI: 10.5281/zenodo.22649054）。
+# https://github.com/cpsbvbng26-dotcom/errata-check にある（v0.1.0、DOI: 10.5281/zenodo.22649054）。
 # 単一ファイルなので
 # ここに写して使っている。
 
