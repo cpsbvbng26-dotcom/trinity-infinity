@@ -1,0 +1,198 @@
+# 三篇の PDF に対する、正誤表の監査の宣言。
+#
+#     python3 verification/check_errata.py
+#
+# PDF は Zenodo で公開済みで、もう直せない。直せるのは ERRATA.md のほうである。
+# ここに書いてあるのは「ERRATA.md が三篇からずれていないこと」の条件である。
+#
+# 道具は errata_check.py（MIT）。同じものが
+# https://github.com/cpsbvbng26-dotcom/errata-check にある。単一ファイルなので
+# ここに写して使っている。
+
+root = ".."
+
+[document]
+path = "ERRATA.md"
+
+# ------------------------------------------------------------------ 一次資料
+
+[[source]]
+id = "I"
+path = "pdf/trinity-infinity-series-i-revised.pdf"
+sha256 = "72b49447fa0ded60b7877a64af20a42d37537245038950b4cdf2824b4f83c101"
+
+[[source]]
+id = "II"
+path = "pdf/trinity-infinity-series-ii-revised.pdf"
+sha256 = "1d470dea2ddb3f162a521c8acff597f42fa52cf71ef72b10cdfe298dbf4221ea"
+
+[[source]]
+id = "III"
+path = "pdf/trinity-infinity-series-iii.pdf"
+sha256 = "a1c588ccb98f0c581d055d724341f9305f02e919c9f0ad55031ebe16670dd6c6"
+
+# ----------------------------------------------------- E3 —— 同梱を謳う記述
+#
+# 謝辞だけではない。数え直したら六箇所あった。数え落としを二度としないために、
+# 件数そのものを宣言する。
+
+[[count]]
+source = "I"
+group = "promise"
+expect = 2
+
+[[count]]
+source = "II"
+group = "promise"
+expect = 3
+
+[[count]]
+source = "III"
+group = "promise"
+expect = 1
+
+[[quote]]
+source = "I"
+group = "promise"
+where = "第2節"
+text = "We verified both cases computationally (script series1_verification.py, included with this submission)"
+
+[[quote]]
+source = "I"
+group = "promise"
+where = "謝辞"
+text = "the verification script (series1_verification.py) is distributed together with this PDF so the two results can be reproduced independently"
+
+[[quote]]
+source = "II"
+group = "promise"
+where = "要旨"
+text = "All numerical claims are computed and included as a companion script"
+
+[[quote]]
+source = "II"
+group = "promise"
+where = "第7節"
+text = "the companion script series2_verification.py, distributed with this PDF, reproduces every number reported"
+
+[[quote]]
+source = "II"
+group = "promise"
+where = "謝辞"
+text = "the verification script (series2_verification.py) is distributed together with this PDF"
+
+[[quote]]
+source = "III"
+group = "promise"
+where = "謝辞"
+text = "the verification script (series3_verification.py) is distributed together with this PDF"
+
+# 謳われているファイルは、どこにも無い
+
+[[absent]]
+glob = "**/series1_verification.py"
+reason = "Series I が同梱を謳っているが存在しない"
+
+[[absent]]
+glob = "**/series2_verification.py"
+reason = "Series II が同梱を謳っているが存在しない"
+
+[[absent]]
+glob = "**/series3_verification.py"
+reason = "Series III が同梱を謳っているが存在しない"
+
+# ------------------------------------- E1 —— 改訂版を指すつもりで初版の DOI
+
+[[quote]]
+source = "II"
+group = "doi"
+where = "参考文献"
+text = "(Revised Edition). Zenodo. DOI: 10.5281/zenodo.17173703"
+in_document = false
+
+[[quote]]
+source = "III"
+group = "doi"
+where = "参考文献"
+text = "(Revised Edition). Zenodo. DOI: 10.5281/zenodo.17173703"
+in_document = false
+
+[[quote]]
+source = "II"
+where = "正しい Series I の DOI"
+text = "10.5281/zenodo.22058624"
+present = false
+
+[[quote]]
+source = "III"
+where = "正しい Series I の DOI"
+text = "10.5281/zenodo.22058624"
+present = false
+
+# Series I 自身は初版を指して初版の DOI を引いている。これは正しい用法である。
+
+[[quote]]
+source = "I"
+group = "doi"
+where = "改訂の注記"
+text = "This edition revises the original preprint (Nemoto, 2025; DOI: 10.5281/zenodo.17173703)"
+in_document = false
+
+# ------------------------------- E2 —— Series III の参考文献 [2] に DOI が無い
+
+[[quote]]
+source = "III"
+group = "doi"
+where = "参考文献 [2]"
+text = "Series II: Extended Formalization and Further Illustrative Applications (Revised Edition). Zenodo."
+in_document = false
+
+[[quote]]
+source = "III"
+where = "参考文献 [2] の直後の DOI"
+text = "Further Illustrative Applications (Revised Edition). Zenodo. DOI"
+present = false
+
+# ------------------------------------------------------------------ 名乗る数値
+
+[[number]]
+label = "independent_check.py の件数"
+command = "python3 verification/independent_check.py"
+extract = "(\\d+) checks"
+pattern = "同じ結論に達するか \\| (\\d+) \\|"
+in = ["README.md"]
+
+[[number]]
+label = "claims_audit.py の件数"
+command = "python3 verification/claims_audit.py"
+extract = "(\\d+) 項目 —— MATCH"
+pattern = "隣に計算し直した値を並べる \\| (\\d+) \\|"
+in = ["README.md"]
+
+# ------------------------------------------------------------ 未解決のまま残す
+
+[[open_item]]
+id = "E3"
+heading_pattern = "^## E3 —"
+must_say = [
+  "この項目は解決しません",
+  "果たされなかった約束として残します",
+  "六箇所",
+]
+must_not_say = ["解決済み", "E3 は解消"]
+
+[[open_item]]
+id = "E1"
+heading_pattern = "^## E1 —"
+must_say = ["10.5281/zenodo.17173703", "10.5281/zenodo.22058624"]
+
+[[open_item]]
+id = "E2"
+heading_pattern = "^## E2 —"
+must_say = ["10.5281/zenodo.22058777"]
+
+# ------------------------------------------------------------------ 日付
+
+[dates]
+stamp_pattern = "最終更新: (\\d{4})年(\\d{1,2})月(\\d{1,2})日"
+any_pattern = "(\\d{4})年(\\d{1,2})月(\\d{1,2})日"
