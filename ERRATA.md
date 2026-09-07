@@ -3,7 +3,7 @@
 三本の PDF には手を入れない方針です。**本文を書き換える代わりに、見つかった不備をここに記録します。**
 どれも定理・証明・数値には影響しません。影響するのは、読者が正しい版に辿り着けるかどうかです。
 
-最終更新: 2026年9月5日
+最終更新: 2026年9月7日
 
 ---
 
@@ -47,15 +47,25 @@ Series I 自身の冒頭は「原型（Nemoto, 2025; DOI: 10.5281/zenodo.1717370
 
 **重大度: 中（再現性の主張が、そのままでは果たされていない）**
 
-三本とも謝辞で、検証スクリプトが PDF と一緒に配布されていると述べています。
+三本とも、検証スクリプトが PDF と一緒に配布されていると述べています。**謝辞だけではありません。
+紙面を数え直したところ、合計 6 箇所ありました。**
 
-| 論文 | 印字されている記述 |
-| --- | --- |
-| Series I | 「the verification script (`series1_verification.py`) is distributed together with this PDF」 |
-| Series II | 「the companion script `series2_verification.py`, distributed with this PDF, reproduces every number reported」 |
-| Series III | 「the verification script (`series3_verification.py`) is distributed together with this PDF」 |
+| 論文 | 箇所 | 印字されている記述（原文のまま） |
+| --- | --- | --- |
+| Series I | 第2節 | We verified both cases computationally (script series1_verification.py, included with this submission) |
+| Series I | 謝辞 | the verification script (series1_verification.py) is distributed together with this PDF so the two results can be reproduced independently |
+| Series II | 要旨 | All numerical claims are computed and included as a companion script |
+| Series II | 第7節 | the companion script series2_verification.py, distributed with this PDF, reproduces every number reported |
+| Series II | 謝辞 | the verification script (series2_verification.py) is distributed together with this PDF |
+| Series III | 謝辞 | the verification script (series3_verification.py) is distributed together with this PDF |
 
-**三本とも存在しません。** 配布物は PDF のみで、著者の手元にも残っていません（2026年9月6日、著者に確認）。
+**六箇所とも、指しているファイルは存在しません。** 配布物は PDF のみで、著者の手元にも残っていません
+（2026年9月6日、著者に確認）。
+
+以前この表には謝辞の三箇所しか載せていませんでした。**約束は三度ではなく六度しています。**
+Series I 第2節の「included with this submission」と Series II 要旨の「included as a companion script」は、
+謝辞よりも本文に近い場所にあり、読者がそこで再現を期待する記述です。数え落としていました
+（2026年9月7日、`verification/check_errata.py` を書いて紙面から数え直したときに判明）。
 
 以前この項目は「配布物に含まれていない」と書いていました。それだと「どこかにはあるかもしれない」と
 読めます。**そうではありません。読者が入手できる場所は、どこにもありません。**
@@ -104,6 +114,10 @@ Series I 第2節 Remark 1 は、この数字を「the original Series II numeric
 ## 見つけ方
 
 E1・E2 は三本の参考文献欄を突き合わせて見つけました。E3 は配布ファイルの一覧と、著者への確認です。
+
+**この文書が「印字されている」と述べていることは、[`verification/check_errata.py`](verification/check_errata.py)
+が PDF から文字を取り出して突き合わせています。** 紙面には手を入れないので、動くとすれば正誤表の側です。
+引用が一字でも合わなくなれば、そこで落ちます。E3 の六箇所を数え落としていたことも、これを書いて分かりました。
 N1・N2 は [`verification/independent_check.py`](verification/independent_check.py) が、
 証明を独立に実装した副産物として示したものです。
 
