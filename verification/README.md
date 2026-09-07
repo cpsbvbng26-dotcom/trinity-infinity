@@ -35,7 +35,7 @@ python3 check_errata.py         # 51 項目（pypdf が要ります）
 PDF が差し替わっていないか（SHA-256）、最終更新が本文のどの日付よりも古くないか。
 
 当たる側は [`errata_check.py`](errata_check.py) で、これは
-[errata-check](https://github.com/cpsbvbng26-dotcom/errata-check)（MIT）を写したものです。
+[errata-check](https://github.com/cpsbvbng26-dotcom/errata-check)（MIT、[10.5281/zenodo.22649054](https://doi.org/10.5281/zenodo.22649054)）を写したものです。
 単一ファイルなので、ここに置いて使っています。
 
 ---

@@ -104,7 +104,7 @@ python3 verification/claims_audit.py
 「解決済み」に書き換わっていないかも、同じように当たります。
 
 条件は [`verification/audit.toml`](verification/audit.toml) に宣言してあり、当たるのは
-[errata-check](https://github.com/cpsbvbng26-dotcom/errata-check)（MIT、単一ファイル）が
+[errata-check](https://github.com/cpsbvbng26-dotcom/errata-check)（MIT、単一ファイル、[10.5281/zenodo.22649054](https://doi.org/10.5281/zenodo.22649054)）が
 やります。**判定に推論を使いません。**あるか、無いか、一致するか、しないか。
 PDF そのものの SHA-256 も宣言してあるので、**一次資料が差し替わればそこで落ちます。**
 

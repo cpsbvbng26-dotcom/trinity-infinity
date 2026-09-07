@@ -13,7 +13,7 @@
 やる。**判定に推論を使わない。**あるか、無いか、一致するか、しないか。
 
 道具は単一ファイルで、ここに写して使っている。同じものが
-https://github.com/cpsbvbng26-dotcom/errata-check にある（MIT）。
+https://github.com/cpsbvbng26-dotcom/errata-check にある（MIT、DOI: 10.5281/zenodo.22649054）。
 """
 
 import os
