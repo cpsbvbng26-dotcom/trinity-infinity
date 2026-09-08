@@ -57,6 +57,23 @@ check("配布物は宣言した PDF 三本だけ", declared == actual, ", ".join
 check("正誤表が「もう直せない」側と「直せる」側を分けている",
       "この項目は解決しない" in audit.document_text())
 
+# README の英語欄は、日本語の本文と同じ DOI を、同じ位置づけで述べていなければ
+# ならない。翻訳は二重管理になり、片方だけが古くなる。ここで縛る。
+_en = open(os.path.join(ROOT, "README.md"), encoding="utf-8").read()
+_en = _en[_en.find("<summary><b>In English</b>"):]
+_en = _en[:_en.find("</details>")]
+_want = ["10.5281/zenodo.22058624", "10.5281/zenodo.22058777", "10.5281/zenodo.22058964"]
+_bad = [d for d in _want if d not in _en]
+_old = "10.5281/zenodo.17173703"
+_superseded = "superseded" in _en and _old in _en
+_notauthor = "AI is not an author" in _en
+_notpeer = "not peer-reviewed" in _en
+check("README の英語欄が、三本の DOI と旧版の扱いを述べている",
+      not _bad and _superseded and _notauthor and _notpeer,
+      "欠け: " + ", ".join(_bad) if _bad else
+      ("旧版 superseded %s / AI is not an author %s / not peer-reviewed %s"
+       % (_superseded, _notauthor, _notpeer)))
+
 # 散文に「NN 項目」と書いたら、その NN を機械で確かめる。
 # 実際に一度ずれている —— 51 と書いたまま中身が 60 になっていた。
 # この検査自身も一件として数えるので、+1 する。
