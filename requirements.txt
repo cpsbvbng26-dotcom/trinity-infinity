@@ -1,0 +1,13 @@
+# 検証スクリプトの依存。標準ライブラリ以外はこの二つだけである。
+#
+#     pip install -r requirements.txt
+#
+# 下限は、この二つで実際に通した版である。上限は置いていない。
+# 上限を置くと、将来の Python で入らなくなる側の危険のほうが大きい。
+# 版を上げて数値が動いた場合は ERRATA.md に記録する。
+#
+# independent_check.py と claims_audit.py は numpy だけで動く。
+# check_errata.py は pypdf を使う。check_route.py と check_text.py は標準ライブラリのみ。
+
+numpy>=1.24
+pypdf>=4.0
