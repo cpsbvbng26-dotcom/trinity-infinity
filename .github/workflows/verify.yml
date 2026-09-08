@@ -8,7 +8,7 @@ on:
 
 jobs:
   verify:
-    name: 定理 13 項目 / 印字された数値 31 項目 / 正誤表の監査 51 項目
+    name: 定理 13 項目 / 印字された数値 31 項目 / 正誤表の監査 51 項目 / 経路 18 項目
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,3 +24,5 @@ jobs:
         run: python3 verification/claims_audit.py
       - name: 正誤表の引用が紙面と一致するか
         run: python3 verification/check_errata.py
+      - name: 経路の表が筋を保っているか
+        run: python3 verification/check_route.py
