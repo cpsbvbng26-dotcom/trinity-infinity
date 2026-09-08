@@ -170,6 +170,59 @@ extract = "(\\d+) 項目 —— MATCH"
 pattern = "隣に計算し直した値を並べる \\| (\\d+) \\|"
 in = ["README.md"]
 
+[[number]]
+label = "check_route.py の件数"
+command = "python3 verification/check_route.py"
+extract = "(\\d+) 件すべて通りました"
+pattern = "食い違わないか。\\*\\* \\| (\\d+) \\|"
+in = ["README.md", "verification/README.md"]
+
+# verification/README.md の実行例。ここも一度ずれている。
+
+[[number]]
+label = "independent_check.py の件数（実行例）"
+command = "python3 verification/independent_check.py"
+extract = "(\\d+) checks"
+pattern = "python3 independent_check\\.py\\s+# (\\d+) 項目"
+in = ["verification/README.md"]
+
+[[number]]
+label = "claims_audit.py の件数（実行例）"
+command = "python3 verification/claims_audit.py"
+extract = "(\\d+) 項目 —— MATCH"
+pattern = "python3 claims_audit\\.py\\s+# (\\d+) 項目"
+in = ["verification/README.md"]
+
+[[number]]
+label = "check_route.py の件数（実行例）"
+command = "python3 verification/check_route.py"
+extract = "(\\d+) 件すべて通りました"
+pattern = "python3 check_route\\.py\\s+# (\\d+) 項目"
+in = ["verification/README.md"]
+
+# CI の job 名にも件数を書いている。ここも手で書いた数である。
+
+[[number]]
+label = "定理の件数（CI の job 名）"
+command = "python3 verification/independent_check.py"
+extract = "(\\d+) checks"
+pattern = "定理 (\\d+) 項目"
+in = [".github/workflows/verify.yml"]
+
+[[number]]
+label = "印字された数値の件数（CI の job 名）"
+command = "python3 verification/claims_audit.py"
+extract = "(\\d+) 項目 —— MATCH"
+pattern = "印字された数値 (\\d+) 項目"
+in = [".github/workflows/verify.yml"]
+
+[[number]]
+label = "経路の件数（CI の job 名）"
+command = "python3 verification/check_route.py"
+extract = "(\\d+) 件すべて通りました"
+pattern = "経路 (\\d+) 項目"
+in = [".github/workflows/verify.yml"]
+
 # ------------------------------------------------------------ 未解決のまま残す
 
 [[open_item]]

@@ -17,6 +17,7 @@ https://github.com/cpsbvbng26-dotcom/errata-check にある（MIT、v0.1.0、DOI
 """
 
 import os
+import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -55,6 +56,31 @@ actual = sorted(os.listdir(os.path.join(ROOT, "pdf")))
 check("配布物は宣言した PDF 三本だけ", declared == actual, ", ".join(actual))
 check("正誤表が「もう直せない」側と「直せる」側を分けている",
       "この項目は解決しない" in audit.document_text())
+
+# 散文に「NN 項目」と書いたら、その NN を機械で確かめる。
+# 実際に一度ずれている —— 51 と書いたまま中身が 60 になっていた。
+# この検査自身も一件として数えるので、+1 する。
+TOTAL = len(results) + len(extra) + 1
+CLAIMS = [
+    ("README.md", r"PDF から文字を取り出して突き合わせる \| (\d+) \|"),
+    ("README.md", r"突き合わせる（(\d+) 項目）"),
+    ("verification/README.md", r"`check_errata\.py` \|[^|]*\| (\d+) \|"),
+    ("verification/README.md", r"python3 check_errata\.py\s+# (\d+) 項目"),
+    ("verification/README.md", r"突き合わせる（(\d+) 項目）"),
+    (".github/workflows/verify.yml", r"正誤表の監査 (\d+) 項目"),
+]
+claimed = []
+missing = []
+for rel, pat in CLAIMS:
+    text = open(os.path.join(ROOT, rel), encoding="utf-8").read()
+    found = re.findall(pat, text)
+    if not found:
+        missing.append(rel + " の「" + pat + "」")
+    claimed += [(rel, int(v)) for v in found]
+wrong = [r + " が " + str(v) for r, v in claimed if v != TOTAL]
+check("散文が名乗る件数が、実際に走った件数と一致する",
+      not wrong and not missing,
+      "実際 %d 件 / %s" % (TOTAL, ", ".join(wrong + missing) or "宣言 %d 箇所すべて一致" % len(claimed)))
 
 passed = sum(r.ok for r in results) + sum(1 for _, ok, _ in extra if ok)
 failed = [r.label for r in results if not r.ok] + \
