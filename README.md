@@ -257,7 +257,7 @@ Series II は最後の項目について、**主張を成立させるために�
 | --- | --- | --- |
 | [`verification/independent_check.py`](verification/independent_check.py) | **定理は正しいか。** 証明の記述から独立に実装して、同じ結論に達するか | 13 |
 | [`verification/claims_audit.py`](verification/claims_audit.py) | **紙面に印字されている数字は、その通りに出るか。** 論文から数値を書き写し、隣に計算し直した値を並べる | 31 |
-| [`verification/check_errata.py`](verification/check_errata.py) | **正誤表が紙面について述べていることは、紙面と合うか。** PDF から文字を取り出して突き合わせる | 77 |
+| [`verification/check_errata.py`](verification/check_errata.py) | **正誤表が紙面について述べていることは、紙面と合うか。** PDF から文字を取り出して突き合わせる | 78 |
 | [`verification/check_route.py`](verification/check_route.py) | **[ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。** | 18 |
 
 ```
@@ -281,7 +281,7 @@ python3 verification/check_route.py
 **元のスクリプトが何を計算していたかは、もう分からない。**
 
 その 6 箇所が本当に紙面に印字されているかは、`check_errata.py` が PDF から文字を取り出して
-突き合わせる（77 項目）。E1・E2 の引用も、名乗る件数も、未解決の項目が
+突き合わせる（78 項目）。E1・E2 の引用も、名乗る件数も、未解決の項目が
 「解決済み」に書き換わっていないかも、同じように当たる。
 
 条件は [`verification/audit.toml`](verification/audit.toml) に宣言してあり、当たるのは

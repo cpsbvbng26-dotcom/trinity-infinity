@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | `independent_check.py` | **定理は正しいか。** 証明の記述から独立に実装して、同じ結論に達するか | 13 |
 | `claims_audit.py` | **紙面に印字されている数字は、その通りに出るか。** | 31 |
-| `check_errata.py` | **正誤表が紙面について述べていることは、紙面と合うか。** | 77 |
+| `check_errata.py` | **正誤表が紙面について述べていることは、紙面と合うか。** | 78 |
 | `check_route.py` | **[ROUTE.md](../ROUTE.md) の九段階は、他の文書と食い違わないか。** | 18 |
 
 定理が正しくても、論文に印字された数字が別の設定で計算されたものだったり、
@@ -17,7 +17,7 @@
 ```
 python3 independent_check.py    # 13 項目
 python3 claims_audit.py         # 31 項目
-python3 check_errata.py         # 77 項目（pypdf が要る）
+python3 check_errata.py         # 78 項目（pypdf が要る）
 python3 check_route.py          # 18 項目
 python3 check_text.py           # 誤変換・使わないと決めた語
 ```
@@ -31,7 +31,7 @@ python3 check_text.py           # 誤変換・使わないと決めた語
 別に書いたものである。
 
 `check_errata.py` は、その 6 箇所が本当に紙面に印字されているかを PDF から取り出して
-突き合わせる（77 項目）。正誤表の引用が紙面と食い違ったら、そこで落ちる。
+突き合わせる（78 項目）。正誤表の引用が紙面と食い違ったら、そこで落ちる。
 
 見る内容は [`audit.toml`](audit.toml) に宣言してある。引用が一字一句あるか、
 「印字されていない」と述べたものが本当に無いか、宣言した件数だけ挙がっているか、

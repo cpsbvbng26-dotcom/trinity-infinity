@@ -57,6 +57,24 @@ check("配布物は宣言した PDF 三本だけ", declared == actual, ", ".join
 check("正誤表が「もう直せない」側と「直せる」側を分けている",
       "この項目は解決しない" in audit.document_text())
 
+# E6 —— バナッハが本文で使われ、参考文献欄に無いこと。
+# 数え上げるだけなので機械で当たれる。参考文献欄は最後の References 以降とする。
+_ref_heads = ("References", "参考文献")
+_e6 = []
+for _sid in ("I", "II", "III"):
+    _text = audit._source_text(_sid)
+    _i = max(_text.rfind(_h) for _h in _ref_heads)
+    if _i < 0:
+        _e6.append(_sid + " の参考文献欄が見つからない")
+        continue
+    _body, _refs = _text[:_i], _text[_i:]
+    if "Banach" not in _body:
+        _e6.append(_sid + " の本文が Banach を名指ししていない")
+    if "Banach" in _refs:
+        _e6.append(_sid + " の参考文献欄に Banach がある")
+check("E6 —— 三本とも本文で Banach を使い、参考文献欄には無い",
+      not _e6, "、".join(_e6) if _e6 else "3 本とも")
+
 # README の英語欄は、日本語の本文と同じ DOI を、同じ位置づけで述べていなければ
 # ならない。翻訳は二重管理になり、片方だけが古くなる。ここで縛る。
 _en = open(os.path.join(ROOT, "README.md"), encoding="utf-8").read()
