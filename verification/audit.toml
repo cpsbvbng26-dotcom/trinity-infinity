@@ -176,8 +176,8 @@ in = ["README.md"]
 id = "E3"
 heading_pattern = "^## E3 —"
 must_say = [
-  "この項目は解決しません",
-  "果たされなかった約束として残します",
+  "この項目は解決しない",
+  "果たされなかった約束として残す",
   "六箇所",
 ]
 must_not_say = ["解決済み", "E3 は解消"]
@@ -213,7 +213,7 @@ present = false
 [[open_item]]
 id = "E4"
 heading_pattern = "^## E4 —"
-must_say = ["この項目は解決しません", "欠落です", "違反していません"]
+must_say = ["この項目は解決しない", "欠落である", "違反していない"]
 
 [[open_item]]
 id = "E1"

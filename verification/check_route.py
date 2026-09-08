@@ -135,7 +135,7 @@ said = KANJI.get(m.group(1)) if m else None
 check("再構成の件数が実際と合う", said == n_recon,
       "名乗り %s / 実際 %d" % (said, n_recon))
 
-m2 = re.search(r"\*\*(.+?)段階を経ています", ROUTE)
+m2 = re.search(r"\*\*(.+?)段階を経て", ROUTE)
 said2 = KANJI.get(m2.group(1)) if m2 else None
 check("段階の数が実際と合う", said2 == len(rows),
       "名乗り %s / 実際 %d" % (said2, len(rows)))
