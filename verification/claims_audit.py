@@ -414,6 +414,33 @@ record("III", "§3.1 Table 1",
        "n=2 のみ Yes",
        "Yes は n = %s" % [r[0] for r in table3 if r[3]],
        [r[0] for r in table3 if r[3]] == [2])
+# 紙面は「maximum deviation 1.1×10−16 ... for every n ≥ 4; exact for n=2,3」と
+# 書き分けている。上の表（乱数種を固定してある）では n=2,3 がちょうど 0 になり、
+# 紙面どおりに再現する。**だがこれは丸めがそう落ちただけである。**
+#
+# 基準点を別に引くと 0 でなくなる。それを見るために、**上の種は動かさずに**
+# 別の種でもう一度だけ引く。既存の期待値も種も変えていない。
+# 等長写像の誤差 0 のほうは、置換行列の成分が 0 と 1 だけなので本当に厳密である。
+# ERRATA の N6 —— この検査が落ちるときは、N6 を書き直す番である。
+_probe = {}
+for _n in (2, 3):
+    _Pn = cyclic_matrix(_n)
+    _rng = np.random.default_rng(RNG_SEED + 900 + _n)
+    _anchor = _rng.random(_n)
+    _Tn = np.linalg.solve(np.eye(_n) - 0.6 * _Pn, 0.4 * _anchor)
+    _d = 0.0
+    for _ in range(5):
+        _x = _rng.random(_n)
+        for _ in range(400):
+            _x = 0.6 * (_Pn @ _x) + 0.4 * _anchor
+        _d = max(_d, float(np.abs(_x - _Tn).max()))
+    _probe[_n] = _d
+record("III", "§3.1 Table 1",
+       "「exact for n=2,3」は算術の性質ではなく、基準点の引き方に依る",
+       "exact（紙面。上の表の種では再現する）",
+       "別の基準点では n=2: %.3e / n=3: %.3e" % (_probe[2], _probe[3]),
+       any(v != 0.0 for v in _probe.values()))
+
 record("III", "§3.2",
        "n = 3 は巡回置換がそれ自身の逆写像にならない最小の n",
        "3",

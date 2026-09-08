@@ -256,7 +256,7 @@ Series II は最後の項目について、**主張を成立させるために�
 | | 問い | 項目 |
 | --- | --- | --- |
 | [`verification/independent_check.py`](verification/independent_check.py) | **定理は正しいか。** 証明の記述から独立に実装して、同じ結論に達するか | 13 |
-| [`verification/claims_audit.py`](verification/claims_audit.py) | **紙面に印字されている数字は、その通りに出るか。** 論文から数値を書き写し、隣に計算し直した値を並べる | 31 |
+| [`verification/claims_audit.py`](verification/claims_audit.py) | **紙面に印字されている数字は、その通りに出るか。** 論文から数値を書き写し、隣に計算し直した値を並べる | 32 |
 | [`verification/check_errata.py`](verification/check_errata.py) | **正誤表が紙面について述べていることは、紙面と合うか。** PDF から文字を取り出して突き合わせる | 78 |
 | [`verification/check_route.py`](verification/check_route.py) | **[ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。** | 18 |
 
@@ -267,7 +267,7 @@ python3 verification/check_errata.py    # pypdf が要る
 python3 verification/check_route.py
 ```
 
-上の二本は NumPy のみを必要とし、乱数種を固定している。44 項目すべてが通る。
+上の二本は NumPy のみを必要とし、乱数種を固定している。45 項目すべてが通る。
 **GitHub Actions が push ごとに四本すべてを実行している** —— 上のバッジが、いま通っているかどうかである。
 詳細は [verification/README.md](verification/README.md) を参照すること。
 

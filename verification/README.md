@@ -5,7 +5,7 @@
 | | 問い | 項目 |
 | --- | --- | --- |
 | `independent_check.py` | **定理は正しいか。** 証明の記述から独立に実装して、同じ結論に達するか | 13 |
-| `claims_audit.py` | **紙面に印字されている数字は、その通りに出るか。** | 31 |
+| `claims_audit.py` | **紙面に印字されている数字は、その通りに出るか。** | 32 |
 | `check_errata.py` | **正誤表が紙面について述べていることは、紙面と合うか。** | 78 |
 | `check_route.py` | **[ROUTE.md](../ROUTE.md) の九段階は、他の文書と食い違わないか。** | 18 |
 
@@ -16,7 +16,7 @@
 
 ```
 python3 independent_check.py    # 13 項目
-python3 claims_audit.py         # 31 項目
+python3 claims_audit.py         # 32 項目
 python3 check_errata.py         # 78 項目（pypdf が要る）
 python3 check_route.py          # 18 項目
 python3 check_text.py           # 誤変換・使わないと決めた語
@@ -87,7 +87,7 @@ Series I が別実装で報告した値は 平均 0.4995、範囲 [0.0403, 0.958
 | `CONSISTENT` | 乱数を使う主張なので一致は求められない。分布の理論値と整合する |
 | `MISMATCH` | 一致しない |
 
-31 項目のうち 27 が `MATCH`、4 が `CONSISTENT`、`MISMATCH` は 0 である。
+32 項目のうち 28 が `MATCH`、4 が `CONSISTENT`、`MISMATCH` は 0 である。
 
 ## Series I（13 項目）
 
