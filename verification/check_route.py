@@ -25,7 +25,7 @@ ROUTE = io.open(os.path.join(ROOT, "ROUTE.md"), encoding="utf-8").read()
 README = io.open(os.path.join(ROOT, "README.md"), encoding="utf-8").read()
 
 # 種別はこの六つだけ。増やすときはここに書く。
-KINDS = {"着想", "再発見", "利用", "再導出", "発見の否定", "撤回", "既知との衝突", "同定"}
+KINDS = {"生成", "着想", "再発見", "利用", "再導出", "発見の否定", "撤回", "既知との衝突", "同定"}
 BASIS = {"同時", "再構成"}
 
 # 撤回された初版。正しい版として使ってはならない。

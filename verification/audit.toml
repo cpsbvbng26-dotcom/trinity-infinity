@@ -182,6 +182,39 @@ must_say = [
 ]
 must_not_say = ["解決済み", "E3 は解消"]
 
+# ---------------------------- E4 —— 開示文が述べているのは「改訂」だけである
+#
+# 初稿の出所はどこにも書かれていない。開示文の側を紙面から取って固定する。
+
+[[quote]]
+source = "I"
+group = "ai_disclosure"
+where = "Series I の開示"
+text = "This revision was prepared with drafting and mathematical-formalization assistance from Claude (Anthropic)"
+
+[[quote]]
+source = "I"
+where = "Series I"
+text = "OpenAI"
+present = false
+
+[[quote]]
+source = "II"
+where = "Series II"
+text = "OpenAI"
+present = false
+
+[[quote]]
+source = "III"
+where = "Series III"
+text = "OpenAI"
+present = false
+
+[[open_item]]
+id = "E4"
+heading_pattern = "^## E4 —"
+must_say = ["この項目は解決しません", "欠落です", "違反していません"]
+
 [[open_item]]
 id = "E1"
 heading_pattern = "^## E1 —"
