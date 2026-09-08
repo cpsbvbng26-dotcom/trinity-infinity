@@ -168,6 +168,42 @@ def main():
                               % (norm, a_vec.max(), emp)))
 
     print()
+    print("C'. The stated rate is an upper bound, not the asymptotic rate\n")
+    # Series II は縮小率を maxᵢ(aᵢ) と書く。作用素ノルムとしては正しい（N2）。
+    # だが n 巡回では (DP)ⁿ = (Πaᵢ)·I が厳密に成り立つので、漸近率は
+    # ρ(DP) = (Πaᵢ)^(1/n)（幾何平均）であり、maxᵢ(aᵢ) より真に小さい。
+    # ERRATA の N9。外部の査読が独立に導出した事実である。
+    for n, a_vec in ((3, [0.5, 0.7, 0.3]), (5, [0.2, 0.9, 0.4, 0.85, 0.1])):
+        a_vec = np.array(a_vec)
+        q = cyclic_shift(n)
+        d = np.diag(a_vec)
+        A = d @ q
+        prod = float(a_vec.prod())
+        power = np.linalg.matrix_power(A, n)
+        exact = float(np.abs(power - prod * np.eye(n)).max())
+        rho = float(max(abs(np.linalg.eigvals(A))))
+        geo = prod ** (1.0 / n)
+        # 実際の減衰を測る。n の倍数ごとにちょうど Πaᵢ 倍になる。
+        p_anchor = RNG.random(n)
+        offset = (np.eye(n) - d) @ p_anchor
+        star = np.linalg.solve(np.eye(n) - A, offset)
+        x = RNG.random(n)
+        e0 = np.linalg.norm(x - star)
+        for _ in range(3 * n):
+            x = A @ x + offset
+        measured = np.linalg.norm(x - star) / e0
+        ok = (exact < 1e-15
+              and abs(rho - geo) < 1e-12
+              and geo < a_vec.max() - 1e-9
+              and abs(measured - prod ** 3) < 1e-12)
+        results.append(report(
+            'n = %d: (DQ)^n = (prod a)*I exactly, so rho = geometric mean' % n, ok,
+            'rho %.12f = geo mean %.12f < max a %.3f  |  ||A||2 / rho = %.4f  |  '
+            '%d steps: measured %.6e vs (prod a)^3 %.6e  |  (DQ)^n dev %.1e'
+            % (rho, geo, a_vec.max(), np.linalg.norm(A, 2) / rho,
+               3 * n, measured, prod ** 3, exact)))
+
+    print()
     print('D. The claim that did not survive\n')
     results.append(check_self_referential())
 
