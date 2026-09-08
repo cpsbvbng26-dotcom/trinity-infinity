@@ -161,6 +161,81 @@ Series I 第2節の「included with this submission」と Series II 要旨の「
 
 ---
 
+## E5 — Series I 第3節が、grim trigger の閾値を Fudenberg & Maskin に帰している
+
+**重大度: 中（借りた先が違う）**
+
+| | |
+| --- | --- |
+| 該当 | Series I 第3節、および参考文献 |
+| 印字 | `This is a direct, closed-form application of the folk theorem for repeated games [Fudenberg & Maskin, 1986].` |
+| 正 | Friedman, J. (1971). A Non-cooperative Equilibrium for Supergames. *Review of Economic Studies*, 38(1), 1–12 |
+
+第3節がやっているのは、grim trigger を固定して**一回逸脱の誘因制約が binding になる
+`δ` を閉形式で出す**ことである。ナッシュ復帰型スーパーゲームの標準論法であり、
+Friedman (1971) が出所である。
+
+Fudenberg & Maskin (1986) が示したのは別のことである。割引つきで、次元条件のもとに
+**実現可能かつ個人合理的な利得集合の全体**が `δ → 1` で支持される、という
+特徴づけである。**特定の戦略に対する閾値を定義していない。**
+
+したがって、印字されている「computing **its** threshold」の `its` が指すものが、
+Fudenberg & Maskin には存在しない。
+
+**Series II 第4節での引用は正しい。**そちらは利得集合の特徴づけそのものを使っており、
+Fudenberg & Maskin が出所である。**同じ文献が、一方では正しく、一方では誤って
+引かれている。**
+
+---
+
+## E6 — バナッハの不動点定理が、三本のどの参考文献欄にも無い
+
+**重大度: 中（いちばん重く借りたものが、いちばん引かれていない）**
+
+| | |
+| --- | --- |
+| 該当 | Series I・II・III の参考文献欄 |
+| 印字 | 本文: `the Banach fixed-point theorem gives existence, uniqueness, and the stated convergence rate`（Series I 定理1の証明）ほか |
+| 正 | Banach, S. (1922). Sur les opérations dans les ensembles abstraits et leur application aux équations intégrales. *Fundamenta Mathematicae*, 3, 133–181 |
+
+三本すべてが、定理の証明の中でバナッハの不動点定理を名指しで使っている。
+**三本すべての参考文献欄に、その項目が無い。**
+
+| 論文 | 参考文献の件数 | 本文が名指しする定理・成果 | バナッハ |
+| --- | --- | --- | --- |
+| Series I | 2 | Banach、Löwenheim–Skolem、Henkin、Basel（Euler 1735）、Neumann 級数 | **無い** |
+| Series II | 6 | Banach、folk theorem、Neumann 級数、グラフラプラシアン | **無い** |
+| Series III | 2 | Banach | **無い** |
+
+Series I は Euler 1735 も本文にのみ年号を置き、参考文献欄に項目が無い。
+
+**この系列の方法は「証明したものと借りたものを区別する」である。**その借りたほうの
+主軸が、三本とも欄に現れていない。README の出典 11 件はこの穴を後から埋めているが、
+**紙面は埋まっていない。**
+
+---
+
+## E7 — Series II 第4節の例が、その二文前の条件を満たしていない
+
+**重大度: 低（同じ節の中で条件と例が食い違う）**
+
+| | |
+| --- | --- |
+| 該当 | Series II 第4節 |
+| 印字（条件） | `every payoff profile in this hull with all three coordinates strictly above 2 is sustainable` |
+| 印字（例） | `profiles such as (2,4,2) and their convex combinations with other individually-rational points are also eventually sustainable` |
+
+`(2,4,2)` は第1座標と第3座標が **2 に等しい**。**「strictly above 2」を満たしていない。**
+自分が二文前に置いた条件の外にある点を、その条件が保証する例として挙げている。
+
+ミニマックス利得が 2 であることは同じ節が正しく導いている（`πD(0) = 2`）。
+条件のほうも、例のほうも、単独では正しい。**組み合わせが成り立っていない。**
+
+主張の中身は動かない。八点の凸包・体積 4.00・すべてが端点であることは
+[`claims_audit.py`](verification/claims_audit.py) で確認済みである。
+
+---
+
 ## 正誤ではないが、記録しておくこと
 
 ### N1 — Series I 定理1の不等号は、実際には等号
@@ -184,11 +259,46 @@ Series I 第2節 Remark 1 は、この数字を「the original Series II numeric
 帰している。Series III 第4節は、同じ数字を初期草稿群の主張として一般的に挙げている。
 どちらも撤回された同じ主張を指しているが、**出所の書き方が二本のあいだで揃っていない。**
 
+### N4 — Series III の「三が特別な唯一の点」は、写像ではなく置換についての事実
+
+Series III 第3.2節は、`n = 3` が構造的に区別される点を一つだけ挙げる。
+**巡回置換が自己逆にならない最小の `n` である。**これは正しい。
+
+続けてこう書いている。
+
+> n=3 is the smallest n at which repeatedly permuting the roles is **not simply an
+> oscillation between two states**
+
+**これは置換 `σ` についての事実であって、反復 `f` についての事実ではない。**
+`n = 2` でも `f` は振動しない。同じ論文の定理1が、`n = 2` を含む任意の `n ≥ 2` で
+一意不動点へ幾何収束すると証明している。**力学系としては `n = 2` に退化は無い。**
+
+したがって「the minimal interesting case **for this specific recursive structure**」は、
+言い過ぎである。最小なのは**置換にとって**であり、**反復はそこに無関心**である。
+
+誤りではない。読み方によっては通る。ただし**この論文の唯一の構造的主張**であり、
+この系列は他の箇所ではこの種の区別に厳密である。ここだけ緩んでいる。
+
+### N5 — 抽出した文字列に、確認できない箇所がある
+
+Series III 第3.2節を PDF から取り出すと `Pn ≠ Pn−1` と出る。文脈からは
+`Pₙ ≠ Pₙ⁻¹`（自己逆でない）を意味しているはずで、`Pₙ ≠ Pₙ₋₁`（n 次と n−1 次の
+比較）では意味を成さない。
+
+**これが紙面の誤植なのか、抽出の崩れなのかは確かめていない。**この作業環境には
+PDF を画像に起こす道具が無く、**組版された頁を見ていない。**上付き・下付きが
+抽出時に落ちることは、この系列で既に起きている（README に記載）。
+
+**確かめてから、どちらかに振り分ける。**それまでは、ここに置いておく。
+
 ---
 
 ## 見つけ方
 
 E1・E2 は三本の参考文献欄を突き合わせて見つけた。E3 は配布ファイルの一覧と、著者への確認である。
+**E5・E6・E7 と N4・N5 は、三本を通しで読み直して見つけた**（2026年9月8日）。
+E6 は数え上げるだけなので、機械が当たっている —— 本文がバナッハを名指ししていること、
+そして三本の参考文献欄にその項目が無いことを、PDF から取り出して確かめる。
 
 **この文書が「印字されている」と述べていることは、[`verification/check_errata.py`](verification/check_errata.py)
 が PDF から文字を取り出して突き合わせている。** 紙面には手を入れないので、動くとすれば正誤表の側である。
