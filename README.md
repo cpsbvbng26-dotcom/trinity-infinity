@@ -78,7 +78,7 @@ Series III はこの事実を特定したうえで、それが「三」の文化
 - ラマヌジャンは孤立した環境で既知の解析の相当部分に独立到達しており、Hardy は
   それを重複と認めた上で評価を変えていない（Hardy 1937, 1940）
 - 逆の例が Tai (1994) である。台形公式を新しい「モデル」として発表し、同じ雑誌に
-  「これは台形公式である」という指摘が載りた（Monaco & Anderson 1994）。
+  「これは台形公式である」という指摘が載った（Monaco & Anderson 1994）。
   問題は中身ではなく、**既知だと書かなかったこと**である
 
 **この系列は、最初 Tai (1994) の側にいて、2026年8月の改訂で自分をもう一方の棚に
@@ -203,20 +203,24 @@ Series II は最後の項目について、**主張を成立させるために�
 
 ## 検証
 
-二本のスクリプトが入っている。**問いが違う。**
+四本のスクリプトが入っている。**問いが違う。**
 
 | | 問い | 項目 |
 | --- | --- | --- |
 | [`verification/independent_check.py`](verification/independent_check.py) | **定理は正しいか。** 証明の記述から独立に実装して、同じ結論に達するか | 13 |
 | [`verification/claims_audit.py`](verification/claims_audit.py) | **紙面に印字されている数字は、その通りに出るか。** 論文から数値を書き写し、隣に計算し直した値を並べる | 31 |
+| [`verification/check_errata.py`](verification/check_errata.py) | **正誤表が紙面について述べていることは、紙面と合うか。** PDF から文字を取り出して突き合わせる | 76 |
+| [`verification/check_route.py`](verification/check_route.py) | **[ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。** | 18 |
 
 ```
 python3 verification/independent_check.py
 python3 verification/claims_audit.py
+python3 verification/check_errata.py    # pypdf が要る
+python3 verification/check_route.py
 ```
 
-どちらも NumPy のみを必要とし、乱数種を固定している。44 項目すべてが通る。
-**GitHub Actions が push ごとに両方を実行している** —— 上のバッジが、いま通っているかどうかである。
+上の二本は NumPy のみを必要とし、乱数種を固定している。44 項目すべてが通る。
+**GitHub Actions が push ごとに四本すべてを実行している** —— 上のバッジが、いま通っているかどうかである。
 詳細は [verification/README.md](verification/README.md) を参照すること。
 
 `claims_audit.py` が確かめるのは、たとえば次のようなものである —— Series I の不動点
@@ -225,16 +229,16 @@ python3 verification/claims_audit.py
 
 なお、各論文は検証スクリプトを同梱していると謳っているが、**そのスクリプトは存在しない**。
 配布物にも著者の手元にも残っていない（[ERRATA.md](ERRATA.md) の E3）。謳っているのは謝辞だけでは
-なく、三本で合計 **6 箇所**である。上の二本は、その代用ではなく別に書いたものである。
+なく、三本で合計 **6 箇所**である。ここにある四本は、その代用ではなく別に書いたものである。
 **元のスクリプトが何を計算していたかは、もう分からない。**
 
 その 6 箇所が本当に紙面に印字されているかは、`check_errata.py` が PDF から文字を取り出して
-突き合わせる（51 項目）。E1・E2 の引用も、名乗る件数も、未解決の項目が
+突き合わせる（76 項目）。E1・E2 の引用も、名乗る件数も、未解決の項目が
 「解決済み」に書き換わっていないかも、同じように当たる。
 
 条件は [`verification/audit.toml`](verification/audit.toml) に宣言してあり、当たるのは
 [errata-check](https://github.com/cpsbvbng26-dotcom/errata-check)（MIT、単一ファイル、v0.1.0、[10.5281/zenodo.22649054](https://doi.org/10.5281/zenodo.22649054)）が
-やる。**判定に推論を使いない。**あるか、無いか、一致するか、しないか。
+やる。**判定に推論を使わない。**あるか、無いか、一致するか、しないか。
 PDF そのものの SHA-256 も宣言してあるので、**一次資料が差し替わればそこで落ちる。**
 
 ## ライセンス
@@ -292,7 +296,7 @@ II と III が「これを一般化する」と述べている定理の、**撤�
 ない。
 
 **このリポジトリについて。** README の構成と本文、`ERRATA.md`、`CITATION.cff`、および
-`verification/` の二本のスクリプトは、Claude Code（Anthropic）を用いて作成し、実行した。**論文の PDF には手を入れていない** ——
+`verification/` のスクリプトは、Claude Code（Anthropic）を用いて作成し、実行した。**論文の PDF には手を入れていない** ——
 `pdf/` にあるのは配布されたファイルそのものである。README に書いた「確立されたこと」「撤回されたこと」は、
 各論文自身の改訂註と回顧の章にもとづく要約であり、こちらで新たに評価を加えたものではない。
 
