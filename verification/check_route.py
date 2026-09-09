@@ -140,6 +140,24 @@ said2 = KANJI.get(m2.group(1)) if m2 else None
 check("段階の数が実際と合う", said2 == len(rows),
       "名乗り %s / 実際 %d" % (said2, len(rows)))
 
+print("\n6. 水準についての節が、経路と同じ数を言っているか")
+
+README = io.open(os.path.join(ROOT, "README.md"), encoding="utf-8").read() \
+    if "io" in dir() else open(os.path.join(ROOT, "README.md"), encoding="utf-8").read()
+
+check("README に水準についての節がある", "## どの水準の数学か" in README)
+check("結局どうなったかが書いてある", "### 結局、何をしてどう終わったか" in README)
+
+# 反例の数値は経路の表にもある。**二箇所に書いた以上、同じでなければならない。**
+for 値 in ("[[1,40],[0,1]]", "20.01", "11.8"):
+    check("反例の %s が経路と README の両方にある" % 値,
+          値 in ROUTE and 値 in README)
+
+# 残った事実。記号のうち残った側と消えた側を、両方書いてあること。
+check("記号のどちら側が消えたかを書いてある",
+      "その側が、意味を持たないと証明された" in README)
+check("枠組みが残らなかったと書いてある", "枠組みは残らなかった" in README)
+
 print("\n" + "-" * 58)
 if failures:
     print("%d 件が通り、%d 件が通りませんでした。" % (passed, len(failures)))
