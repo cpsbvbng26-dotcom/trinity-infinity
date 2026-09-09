@@ -322,6 +322,46 @@ check("承認を査読と読み替えないと書いてある",
       and "内容が認められたこととして書かない" in SUBMIT)
 check("手順のコメント欄が、区分の代わりでないと書いてある",
       "**区分ではなくここで述べる**" in SUBMIT)
+check("段階 1 が済んだことを、符号を書かずに記録してある",
+      "**この段階は済んでいる。**2026年9月9日、`math.NA` の符号を受け取った。" in SUBMIT
+      and "**この文書に書いてよいのは、受け取った日と分類までである。**" in SUBMIT
+      and "**符号そのものは、この記録のどこにも書かない**" in ARXIV)
+
+# **符号は秘密である。**検査に符号そのものを書けば、検査が漏らすことになる。
+# だから値ではなく、値が置かれる形のほうを禁じる。
+leaked = []
+for name in sorted(os.listdir(ROOT)):
+    if not name.endswith(".md"):
+        continue
+    text = io.open(os.path.join(ROOT, name), encoding="utf-8").read()
+    if re.search(r"endorse\?x=[A-Za-z0-9]", text) or re.search(r"[Ee]ndorsement [Cc]ode:\s*[A-Za-z0-9]", text):
+        leaked.append(name)
+check("散文のどこにも推薦の符号が置かれていない", not leaked, "漏れ %s" % (leaked or "無し"))
+
+check("規約の点検が三つに分かれている",
+      "### 差し支えないもの" in ARXIV
+      and "### 投稿のときに自分で述べるもの（紙面は直せない）" in ARXIV
+      and "### してはならないこと" in ARXIV)
+check("紙面自身が新規性を否定していることを根拠にしている",
+      "not as a new mathematical theory" in ARXIV
+      and "虚偽の表示にならない" in ARXIV)
+check("符号の転送が想定された使い方だと書いてある",
+      "**転送は想定された使い方である**" in ARXIV)
+check("同梱を謳うスクリプトが無いことを、いちばん近い問題として挙げてある",
+      "**規約にいちばん近い問題である。**" in ARXIV
+      and "series1_verification.py" in ARXIV)
+check("帰属の誤りが捏造ではないと切り分けてある",
+      "**実在する文献の誤用であって、捏造ではない。**" in ARXIV
+      and "制裁の対象には当たらない" in ARXIV)
+check("所属欄に肩書きを打たないと決めてある",
+      "**メタデータの所属欄に肩書きを打たない**（決めごと 6）" in ARXIV
+      and "**肩書きを打たない**（決めごと 6）" in SUBMIT)
+check("三つの正誤が、コメント欄と依頼の文面の両方に入っている",
+      all(w in SUBMIT for w in ("（E3）", "（E4）", "（E5）", "(E3)", "(E4)", "(E5)")))
+check("雛形が述べる点の数と、箇条の数が合っている",
+      "先に三点お伝えいたします。" in SUBMIT
+      and "Three things I should state up front." in SUBMIT)
+
 check("止まった段階も記録すると書いてある",
       "**どの段階で止まっても消さない。**" in SUBMIT)
 check("決定の文書が手順を指している",
