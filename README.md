@@ -43,8 +43,8 @@ by the model. The frozen PDFs do not say this; see `E4` in [ERRATA.md](ERRATA.md
 2026 revision and this repository were written with Claude Code (Anthropic). **The papers
 were not independently derived by a human.**
 
-**Verification.** `python3 verification/independent_check.py` (13 checks),
-`claims_audit.py` (32), `check_errata.py` (78, needs pypdf), `check_route.py` (25).
+**Verification.** `python3 verification/independent_check.py` (15 checks),
+`claims_audit.py` (32), `check_errata.py` (78, needs pypdf), `check_route.py` (30).
 Dependencies are in `requirements.txt`. All four run in CI on every push.
 
 **Where the record lives.** Route of the rediscovery: [ROUTE.md](ROUTE.md). Errata:
@@ -54,6 +54,32 @@ canonical when several exist:
 [canonical-sources](https://github.com/cpsbvbng26-dotcom/cpsbvbng26-dotcom/blob/main/docs/canonical-sources.md).
 
 </details>
+
+---
+
+## 結論
+
+**枠組みは残らなかった。**
+
+残ったのは、一つの作用素についての一つの事実である。`Q` が n 巡回置換で `D` が対角の
+とき、`(DQ)ⁿ = (∏ᵢ aᵢ)·I` がちょうど成り立つ。だから収束を決めているのは係数の
+相乗平均であって、最大値でも作用素ノルムでもない。
+
+**この事実は正しく、機械で確かめられ、そして学部の演習問題の水準である。**
+
+記号 `Ⅲ∞` のうち、数学的な内容がある側は `Ⅲ`（＝ 三）だった。**その側が、意味を
+持たないと証明された。**残ったのは `∞`（反復して極限をとる）で、これは対象の型を
+言っているだけで、定理を含まない。
+
+**この系列の価値は、枠組みにではなく、枠組みが縮んでいく過程が消さずに残っている
+ことのほうにある。**そこも自分では測れない
+（[登録簿の `ST-002`](https://github.com/cpsbvbng26-dotcom/self-correction)）。
+
+経緯は [どの水準の数学か](#どの水準の数学か)と
+[結局、何をしてどう終わったか](#結局何をしてどう終わったか)に、
+順序は [ROUTE.md](ROUTE.md) にある。
+
+---
 
 三本の系列である。枠組みを提示した系列ではない。枠組みが自分を検証にかけて縮んでいく系列である。
 
@@ -309,7 +335,7 @@ Series II は最後の項目について、**主張を成立させるために�
 | [`verification/independent_check.py`](verification/independent_check.py) | **定理は正しいか。** 証明の記述から独立に実装して、同じ結論に達するか | 15 |
 | [`verification/claims_audit.py`](verification/claims_audit.py) | **紙面に印字されている数字は、その通りに出るか。** 論文から数値を書き写し、隣に計算し直した値を並べる | 32 |
 | [`verification/check_errata.py`](verification/check_errata.py) | **正誤表が紙面について述べていることは、紙面と合うか。** PDF から文字を取り出して突き合わせる | 78 |
-| [`verification/check_route.py`](verification/check_route.py) | **[ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。** | 25 |
+| [`verification/check_route.py`](verification/check_route.py) | **[ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。** | 30 |
 
 ```
 python3 verification/independent_check.py
