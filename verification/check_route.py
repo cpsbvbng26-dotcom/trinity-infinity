@@ -230,6 +230,39 @@ check("結論が ARXIV.md を指している", "[ARXIV.md](ARXIV.md)" in README)
 check("結論が、決定で判定が変わらないことを保っている",
       "**新しい結果が無いという上の一行は、その決定によって変わらない。**" in README)
 
+# **どれを出すかと、どこへ出すか。**選び方の基準は「その紙面が既知の誤りを運ぶか」である。
+# 基準が消えると、選択の理由が「都合のよいほう」に置き換わる。
+check("三篇のうち一篇を出すと決めてある",
+      "**採るのは B である。**" in ARXIV and "C（新しい短報を書く）は採らない" in ARXIV)
+check("選んだのが改訂版 Series I であると書いてある",
+      "### 三篇のうちどれか —— 改訂版 Series I" in ARXIV)
+check("選ぶ基準が書いてある",
+      "**選ぶ基準は、その紙面が既知の誤りを運ぶかどうかである。**" in ARXIV
+      and "既知の誤った参照を載せた紙面を、\n新しい場へ持ち込まない" in ARXIV)
+check("一般形が Series III にあることを隠していない",
+      "いちばん一般の形（任意の n ≥ 2）は Series III にある" in ARXIV
+      and "**一般性のために、誤りを運ぶ紙面を選ばない。**" in ARXIV)
+check("E1 をコメント欄に自分で書くと決めてある",
+      "**E1 のことは、投稿のコメント欄に自分で書く。**" in ARXIV)
+
+# 比較表が名指しした不備は、実在しなければならない。
+ERRATA = io.open(os.path.join(ROOT, "ERRATA.md"), encoding="utf-8").read()
+table = ARXIV[ARXIV.find("### 三篇のうちどれか"):ARXIV.find("## 分類")]
+ids = sorted(set(re.findall(r"\b([EN]\d+)\b", table)))
+missing = [i for i in ids if not re.search(r"^#{2,3} %s —" % i, ERRATA, re.M)]
+check("比較表が名指しした不備が、すべて正誤表にある",
+      len(ids) >= 10 and not missing,
+      "%d 件 / 欠け %s" % (len(ids), missing or "無し"))
+
+check("第一希望と第二希望を決めてある",
+      "**第一希望は `math.HO`、第二希望は `math.NA` とする。**" in ARXIV)
+check("第一希望の理由が、記録の判定と結びついている",
+      "新しい結果が無いと書いてある紙面を、新しい結果を集める区分の第一希望にしない" in ARXIV)
+check("分類を変えられる余地を書いてある",
+      "econ.TH" in ARXIV and "希望と実際の両方を書く" in ARXIV)
+check("推薦の範囲が未確認だと書いてある",
+      "同じ domain かどうかは確かめていない" in ARXIV)
+
 print("\n8. 出す手順が、書かないと決めたものを書かせていないか")
 
 # 手順書は、書く内容を人に指示する文書である。**指示のほうに漏れがあると、
