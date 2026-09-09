@@ -44,7 +44,7 @@ by the model. The frozen PDFs do not say this; see `E4` in [ERRATA.md](ERRATA.md
 were not independently derived by a human.**
 
 **Verification.** `python3 verification/independent_check.py` (15 checks),
-`claims_audit.py` (32), `check_errata.py` (78, needs pypdf), `check_route.py` (43).
+`claims_audit.py` (32), `check_errata.py` (78, needs pypdf), `check_route.py` (59).
 Dependencies are in `requirements.txt`. All four run in CI on every push.
 
 **Where the record lives.** Route of the rediscovery: [ROUTE.md](ROUTE.md). Errata:
@@ -84,6 +84,10 @@ canonical when several exist:
 経緯は [どの水準の数学か](#どの水準の数学か)と
 [結局、何をしてどう終わったか](#結局何をしてどう終わったか)に、
 順序は [ROUTE.md](ROUTE.md) にある。
+
+**この判定を保ったまま、arXiv へ出すことを著者が決めた（2026年9月9日）。**
+出す形と、却下される見込みを先に書いたものを [ARXIV.md](ARXIV.md) に置いてある。
+**新しい結果が無いという上の一行は、その決定によって変わらない。**
 
 ---
 
@@ -430,7 +434,7 @@ Zenodo に生きたまま残っている。だから何を撤回したかを第�
 | [`verification/independent_check.py`](verification/independent_check.py) | **定理は正しいか。** 証明の記述から独立に実装して、同じ結論に達するか | 15 |
 | [`verification/claims_audit.py`](verification/claims_audit.py) | **紙面に印字されている数字は、その通りに出るか。** 論文から数値を書き写し、隣に計算し直した値を並べる | 32 |
 | [`verification/check_errata.py`](verification/check_errata.py) | **正誤表が紙面について述べていることは、紙面と合うか。** PDF から文字を取り出して突き合わせる | 78 |
-| [`verification/check_route.py`](verification/check_route.py) | **[ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。** | 43 |
+| [`verification/check_route.py`](verification/check_route.py) | **[ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。** | 59 |
 
 ```
 python3 verification/independent_check.py
