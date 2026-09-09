@@ -44,7 +44,7 @@ by the model. The frozen PDFs do not say this; see `E4` in [ERRATA.md](ERRATA.md
 were not independently derived by a human.**
 
 **Verification.** `python3 verification/independent_check.py` (15 checks),
-`claims_audit.py` (32), `check_errata.py` (78, needs pypdf), `check_route.py` (30).
+`claims_audit.py` (32), `check_errata.py` (78, needs pypdf), `check_route.py` (38).
 Dependencies are in `requirements.txt`. All four run in CI on every push.
 
 **Where the record lives.** Route of the rediscovery: [ROUTE.md](ROUTE.md). Errata:
@@ -65,7 +65,8 @@ canonical when several exist:
 とき、`(DQ)ⁿ = (∏ᵢ aᵢ)·I` がちょうど成り立つ。だから収束を決めているのは係数の
 相乗平均であって、最大値でも作用素ノルムでもない。
 
-**この事実は正しく、機械で確かめられ、そして学部の演習問題の水準である。**
+**この事実は正しく、機械で確かめられ、そして学部 2〜3 年の演習問題の水準である。**
+壊れた証明を直すのに使った道具だけが、その一段上にある（[どの水準の数学か](#どの水準の数学か)）。
 
 記号 `Ⅲ∞` のうち、数学的な内容がある側は `Ⅲ`（＝ 三）だった。**その側が、意味を
 持たないと証明された。**残ったのは `∞`（反復して極限をとる）で、これは対象の型を
@@ -210,7 +211,18 @@ Series III はこの事実を特定したうえで、それが「三」の文化
 
 ## どの水準の数学か
 
-**残った事実は、学部の一年か二年で扱う範囲である。**多くは演習問題として出る形をしている。
+**一段ではない。三つに割れる。**
+
+| | 水準 |
+| --- | --- |
+| 残った事実（`(DQ)ⁿ = (∏ᵢ aᵢ)·I`、`ρ` が相乗平均） | 学部 2〜3 年の演習問題 |
+| 犯した誤り（ノルムと `ρ` の取り違え） | 同じ講義が試験で問うところ |
+| 直しに使った道具（リアプノフ方程式で縮小になるノルムを構成） | 学部の上級選択から大学院の入り口 |
+
+三つめだけが上にはみ出している。**それで全体の水準が上がるわけではない。**
+直した道具が上でも、直された中身は演習問題のままである。壊れたものを直すのに、
+それより上の道具が要ったというだけである。
+
 使った道具と、それが普通どこで出てくるかを並べる。
 
 | 使ったもの | 普通どこで出てくるか |
@@ -227,6 +239,41 @@ Series III はこの事実を特定したうえで、それが「三」の文化
 ノルムが 1 未満なら収束する。これは正しい。逆は言えない。`ρ(A) ≤ ‖A‖` の不等号が
 どちら向きかを取り違えると、十分条件を必要十分条件だと思い込む。教科書がこの不等式を
 先に置くのは、その取り違えを防ぐためである。**そこで転んだ。**
+
+### どの学科で扱うか
+
+**一つの学科に収まらない。**同じ対象が、四つの場所で別の名前で扱われている。
+
+| 学部・学科 | 科目 | 何として出るか |
+| --- | --- | --- |
+| 理学部 数学科 | 数値解析・応用数学 | `ρ(A) ≤ ‖A‖`、`ρ(A) < 1 ⟺ Aᵏ → 0` |
+| 情報工学科 | 数値計算法 | 定常反復法 |
+| 電気電子・機械・システム制御 | 線形システム論・現代制御 | 離散時間系のシュール安定 |
+| 経済学部 | ゲーム理論入門 | グリム・トリガーの `δ ≥ 1/2` |
+
+**いちばん近いのは三つめである。**この作用素が扱っているのは、三つの要素が反復して
+一つに収束する系であり、離散時間の線形システムの漸近安定性そのものである。壊れた証明を
+直すのに使った離散リアプノフ方程式 `X − AᵀXA = Q` も、そこの標準道具である。
+**論文は数値解析の言葉で書かれていたが、対象は制御の対象だった。**
+
+**世界大学ランキングは、この件の軸にならない。**上の内容は、数値解析や線形システム論を
+開講している大学なら順位に関係なく出てくる。順位で変わるのは進度と周囲の科目であって、
+`ρ(A) ≤ ‖A‖` が出るかどうかではない。**「順位 N 位の大学の演習に相当する」は、確かめようも
+覆しようもない。**だから書かない。
+
+#### 参照した講義（未確認）
+
+> **この一覧は検索結果から取ったものである。**作業環境から開いて読んではいない
+> （外に出られるのは GitHub だけ）。科目番号も同じである。
+> **確かめずに「確認済み」とは書かない。**
+
+- MIT 18.086, Mathematical Methods for Engineers II, §6.2 Iterative Methods
+- University of Waterloo CS475, Lecture 21: Convergence of Iterative Methods
+- North Carolina State University (Tsynkov), Ch.6 Iterative Methods for Solving Linear Systems
+- University of Minnesota (Olver), Numerical Analysis Lecture Notes
+- Worcester Polytechnic Institute ECE504, Lecture 8
+- University of California San Diego MAE280B, Lecture 7: Stability
+- Arizona State University MAE598, Lecture 4: LMI Methods in Optimal and Robust Control
 
 ### 結局、何をしてどう終わったか
 
@@ -335,7 +382,7 @@ Series II は最後の項目について、**主張を成立させるために�
 | [`verification/independent_check.py`](verification/independent_check.py) | **定理は正しいか。** 証明の記述から独立に実装して、同じ結論に達するか | 15 |
 | [`verification/claims_audit.py`](verification/claims_audit.py) | **紙面に印字されている数字は、その通りに出るか。** 論文から数値を書き写し、隣に計算し直した値を並べる | 32 |
 | [`verification/check_errata.py`](verification/check_errata.py) | **正誤表が紙面について述べていることは、紙面と合うか。** PDF から文字を取り出して突き合わせる | 78 |
-| [`verification/check_route.py`](verification/check_route.py) | **[ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。** | 30 |
+| [`verification/check_route.py`](verification/check_route.py) | **[ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。** | 38 |
 
 ```
 python3 verification/independent_check.py

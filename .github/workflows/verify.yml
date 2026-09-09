@@ -8,7 +8,7 @@ on:
 
 jobs:
   verify:
-    name: 定理 15 項目 / 印字された数値 32 項目 / 正誤表の監査 78 項目 / 経路 30 項目
+    name: 定理 15 項目 / 印字された数値 32 項目 / 正誤表の監査 78 項目 / 経路 38 項目
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
