@@ -190,6 +190,46 @@ check("参照した講義に未確認の札がある",
       "#### 参照した講義（未確認）" in README
       and "確かめずに「確認済み」とは書かない" in README)
 
+print("\n7. arXiv へ出すという決定が、判定を取り下げていないか")
+
+# **決定と判定は別である。**出すと決めたことが、新規性が無いという判定を
+# 打ち消していないことを保つ。ここが緩むと、記録が決定に合わせて過去を書き換える。
+ARXIV_PATH = os.path.join(ROOT, "ARXIV.md")
+check("ARXIV.md がある", os.path.exists(ARXIV_PATH))
+ARXIV = io.open(ARXIV_PATH, encoding="utf-8").read() if os.path.exists(ARXIV_PATH) else ""
+
+check("結果が出ていないと書いてある", "**結果はまだ出ていない。**" in ARXIV)
+check("新規性が無いという理由は決定で変わらないと書いてある",
+      "**変わらない**" in ARXIV
+      and "出すと決めたことと、新しい結果があることは別である" in ARXIV)
+check("判定を取り下げるためではないと書いてある",
+      "その判定を取り下げるために書いたものではない" in ARXIV)
+check("残った事実の水準が、結論と同じ語で書いてある",
+      "学部 2〜3 年の演習問題" in ARXIV and "学部 2〜3 年の演習問題" in README)
+check("凍結された PDF を組み直さないと書いてある", "arXiv 用に組み直さない" in ARXIV)
+check("推薦者に内容を大きく見せないと書いてある",
+      "推薦を求める相手に、内容を大きく見せない" in ARXIV)
+check("推薦の文面に新規性と AI の関与を書くと決めてある",
+      "**新規の結果ではないこと。**" in ARXIV
+      and "**初稿が言語モデルの生成物であること。**" in ARXIV)
+check("却下の見込みを先に書いてある", "**却下されると見ている。**" in ARXIV)
+check("先に書いたことを日付で確かめられると書いてある",
+      "**この行は結果が出る前に書いた。**" in ARXIV
+      and "コミットの日付で確かめられる" in ARXIV)
+check("通っても新規性の証明にならないと書いてある",
+      "通ったことは新規性の証明にならない" in ARXIV and "arXiv は査読ではない" in ARXIV)
+check("結果を消さないと書いてある", "**どの結果でも消さない。**" in ARXIV)
+check("覆し方がある", "## 覆し方" in ARXIV)
+
+# **未確認は未確認のまま置く。**arXiv の規則は作業環境から開けない。
+check("arXiv の規則に未確認の札がある",
+      ARXIV.count("未確認") >= 6 and "いずれも未確認である" in ARXIV)
+
+# 決定を README の結論からも辿れること。片方だけ直すと食い違う。
+check("結論が ARXIV.md を指している", "[ARXIV.md](ARXIV.md)" in README)
+check("結論が、決定で判定が変わらないことを保っている",
+      "**新しい結果が無いという上の一行は、その決定によって変わらない。**" in README)
+
 print("\n" + "-" * 58)
 if failures:
     print("%d 件が通り、%d 件が通りませんでした。" % (passed, len(failures)))
