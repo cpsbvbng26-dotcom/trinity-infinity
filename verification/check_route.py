@@ -330,7 +330,7 @@ check("相手の氏名と連絡先を記録に書かないと書いてある",
       "依頼した相手の氏名とメールアドレス" in SUBMIT
       and "何通送ったか、いつ送ったか、返事があったかまでである" in SUBMIT)
 check("雛形が相手の氏名を埋め込みにしていない",
-      "〈相手の氏名〉" in SUBMIT and "〈name〉" in SUBMIT)
+      "〈氏名〉" in SUBMIT and "〈name〉" in SUBMIT)
 
 # 送り方の作法。ここを外すと、相手ではなく arXiv の側に迷惑が出る。
 check("一度に一人へ送ると書いてある",
@@ -375,11 +375,11 @@ check("帰属の誤りが捏造ではないと切り分けてある",
 check("所属欄に肩書きを打たないと決めてある",
       "**メタデータの所属欄に肩書きを打たない**（決めごと 6）" in ARXIV
       and "**肩書きを打たない**（決めごと 6）" in SUBMIT)
-check("三つの正誤が、コメント欄と依頼の文面の両方に入っている",
-      all(w in SUBMIT for w in ("（E3）", "（E4）", "（E5）", "(E3)", "(E4)", "(E5)")))
+check("三つの正誤が、コメント欄の指示に残っている",
+      all(w in SUBMIT for w in ("（E3）", "（E4）", "（E5）")))
 check("雛形が述べる点の数と、箇条の数が合っている",
-      "先に三点お伝えいたします。" in SUBMIT
-      and "Three things I should state up front." in SUBMIT)
+      "先に二点お伝えいたします。" in SUBMIT
+      and "Two things I should state up front." in SUBMIT)
 
 check("止まった段階も記録すると書いてある",
       "**どの段階で止まっても消さない。**" in SUBMIT)
