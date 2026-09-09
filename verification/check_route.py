@@ -197,6 +197,8 @@ print("\n7. arXiv へ出すという決定が、判定を取り下げていな�
 ARXIV_PATH = os.path.join(ROOT, "ARXIV.md")
 check("ARXIV.md がある", os.path.exists(ARXIV_PATH))
 ARXIV = io.open(ARXIV_PATH, encoding="utf-8").read() if os.path.exists(ARXIV_PATH) else ""
+SUBMIT_PATH = os.path.join(ROOT, "ARXIV-SUBMIT.md")
+SUBMIT = io.open(SUBMIT_PATH, encoding="utf-8").read() if os.path.exists(SUBMIT_PATH) else ""
 
 check("結果が出ていないと書いてある", "**結果はまだ出ていない。**" in ARXIV)
 check("新規性が無いという理由は決定で変わらないと書いてある",
@@ -272,13 +274,30 @@ check("分類を変えられる余地を書いてある",
 check("推薦の範囲が未確認だと書いてある",
       "同じ domain かどうかは確かめていない" in ARXIV)
 
+# **外側の規則は、確かめた範囲までしか書かない。**検索結果は原文ではない。
+check("数学の自動推薦の日付を、全区分の改定と分けてある",
+      "**2025年12月10日から、数学の区分では機関のメールだけでは下りない。**" in ARXIV
+      and "2026年1月21日に、同じ趣旨の改定が全区分へ広げられた" in ARXIV
+      and "**数学の側の日付は 2026年1月ではなく 2025年12月である。**" in ARXIV)
+check("推薦者の資格の範囲を書いてある",
+      "3 か月前から 5 年前までの間に出されたもの" in ARXIV
+      and "**出したばかりの著者は推薦できない。**" in SUBMIT)
+check("同梱のしくみが PDF 投稿で使えないと書いてある",
+      "PDF だけの投稿では働かない" in ARXIV and "PDF だけの投稿では働かない" in SUBMIT)
+check("停止の中身を、及ぶ範囲ごと書いてある",
+      "**1 年の投稿停止**" in ARXIV
+      and "次の投稿はまず査読のある場を通す必要がある" in ARXIV
+      and "**数学の区分にどう及ぶかは確かめていない。**" in ARXIV)
+check("出典の節があり、原文を開いていないと断ってある",
+      "## 出典（検索結果から取ったもの。原文の頁は開いていない）" in ARXIV)
+check("裏の取れなかった一件を名指ししてある",
+      "**`math.HO` の対象についての記述だけは、検索でも裏が取れなかった。**" in ARXIV)
+
 print("\n8. 出す手順が、書かないと決めたものを書かせていないか")
 
 # 手順書は、書く内容を人に指示する文書である。**指示のほうに漏れがあると、
 # 決めごと 6 と 9 が手順の側から破られる。**破れない形になっていることを保つ。
-SUBMIT_PATH = os.path.join(ROOT, "ARXIV-SUBMIT.md")
 check("ARXIV-SUBMIT.md がある", os.path.exists(SUBMIT_PATH))
-SUBMIT = io.open(SUBMIT_PATH, encoding="utf-8").read() if os.path.exists(SUBMIT_PATH) else ""
 
 check("手順が六つの段階に分かれている",
       all(("## %d. " % i) in SUBMIT for i in range(7)))
