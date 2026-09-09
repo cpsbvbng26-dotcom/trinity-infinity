@@ -145,6 +145,19 @@ print("\n6. 水準についての節が、経路と同じ数を言っている�
 README = io.open(os.path.join(ROOT, "README.md"), encoding="utf-8").read() \
     if "io" in dir() else open(os.path.join(ROOT, "README.md"), encoding="utf-8").read()
 
+# **結論は根幹に置く。**下のほうに置けば、読み手が辿り着く前に別の話が挟まる。
+# 三本の紹介より前にあること。
+i_concl = README.find("## 結論")
+i_three = README.find("## 三本")
+check("README の先頭に結論の節がある", i_concl >= 0)
+check("結論が三本の紹介より前にある", 0 <= i_concl < i_three,
+      "結論 %d / 三本 %d" % (i_concl, i_three))
+for 語 in ("**枠組みは残らなかった。**",
+           "学部の演習問題の水準である",
+           "その側が、意味を\n持たないと証明された"):
+    check("結論が「%s」を保っている" % 語.replace("\n", "")[:26],
+          語 in README[i_concl:i_three] if i_concl >= 0 else False)
+
 check("README に水準についての節がある", "## どの水準の数学か" in README)
 check("結局どうなったかが書いてある", "### 結局、何をしてどう終わったか" in README)
 
