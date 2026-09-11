@@ -51,6 +51,10 @@ references:
     year: 2026
     month: 8
     doi: 10.5281/zenodo.22058777
+    identifiers:
+      - type: doi
+        value: 10.2139/ssrn.7446961
+        description: SSRN に登録された同一の本文
     notes: >-
       Preprint. Not peer-reviewed. 参考文献欄が改訂版 Series I を初版の DOI
       10.5281/zenodo.17173703 で引用している（ERRATA.md の E1）。

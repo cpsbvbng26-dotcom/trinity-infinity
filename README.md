@@ -22,6 +22,8 @@ repository records what survived.
 `10.5281/zenodo.17173703` is the **superseded 2025 first edition** — do not cite it as
 current. Series II and III print that number in their bibliographies where they mean the
 revision; that is a defect of the frozen PDFs, recorded as E1 in [ERRATA.md](ERRATA.md).
+Series II is also deposited on SSRN as `10.2139/ssrn.7446961`; the text is identical and the
+Zenodo DOI remains canonical. SSRN screening checks scope and format, not correctness.
 
 **Status.** Preprints, not peer-reviewed. A DOI does not imply peer review. Claims listed
 under "撤回されたこと" were **withdrawn in revision**; this is not a formal retraction, and
@@ -110,6 +112,10 @@ canonical when several exist:
 | [Series I](pdf/trinity-infinity-series-i-revised.pdf) | 巡回置換つきアフィン反復と、その収束定理。ゲーム理論・論理学・工学への例示 | 改訂版 — 2026年8月 | [**10.5281/zenodo.22058624**](https://doi.org/10.5281/zenodo.22058624)<br>← II・III の参考文献欄はここを誤っている |
 | [Series II](pdf/trinity-infinity-series-ii-revised.pdf) | 座標ごとに異なる混合率への一般化。均衡利得集合と、ばね系の完全な計算例 | 改訂版 — 2026年8月 | [10.5281/zenodo.22058777](https://doi.org/10.5281/zenodo.22058777) |
 | [Series III](pdf/trinity-infinity-series-iii.pdf) | 「三である必要はあるのか」への回答と、系列全体の回顧 | 2026年8月 | [10.5281/zenodo.22058964](https://doi.org/10.5281/zenodo.22058964) |
+
+Series II は SSRN にも登録されている —— [**10.2139/ssrn.7446961**](https://doi.org/10.2139/ssrn.7446961)。
+同一の本文である。正は Zenodo の [10.5281/zenodo.22058777](https://doi.org/10.5281/zenodo.22058777) である。
+SSRN の選別は主題と体裁を見るものであり、査読ではない。
 
 本文は PDF のままである。Markdown への書き起こしはしていない。数式の下付き文字が抽出時に
 別行へ分解されるため、起こすには数式を組み直す必要があり、それは論文を変えることになる。
