@@ -251,6 +251,51 @@ Series I は Euler 1735 も本文にのみ年号を置き、参考文献欄に�
 
 ---
 
+## E8 — Series I が名指しした分野の文献が、三本のどこにも無い
+
+**重大度: 中（名指しした分野を一つも引いていない。照合が付けば上がる）**
+
+| | |
+| --- | --- |
+| 該当 | Series I 第1節、および三本の参考文献欄 |
+| 印字 | `recurs across several fields: consensus dynamics in distributed systems, iterated play among multiple parties in game theory, and self-similar structure in modular engineering design` |
+| 実際 | 三本のどの参考文献欄にも、合意形成動学（consensus / opinion dynamics）の項目が無い |
+
+Series I は、着想が繰り返し現れる分野として、**合意形成動学を最初に挙げている。**
+そのうえで、三本のどの欄にも、その分野の文献が無い。
+
+| 論文 | 参考文献に並んでいるもの | 合意形成動学から |
+| --- | --- | --- |
+| Series I | Fudenberg & Maskin、自著（初版） | **無い** |
+| Series II | 自著（初版）、Fudenberg & Maskin、Peirce、Mandelbrot、Holland、Arthur | **無い** |
+| Series III | 自著（初版）、自著（Series II） | **無い** |
+
+**`E6` と同じ型である。**あちらは借りた定理が欄に無く、こちらは名指しした分野が欄に無い。
+
+### 照合すべき先 —— 未確認
+
+**この作用素の形は、合意形成動学の名前のついたモデルと重なる可能性がある。**
+
+```
+Friedkin–Johnsen (1990, 1999):  x(t+1) = ΛW x(t) + (I − Λ) u
+この作用素:                      x     ← D Q x   + (I − D) p
+```
+
+`Λ`（影響の受けやすさの対角行列）と `D`、`W`（行確率的な影響行列）と `Q`
+（置換行列は二重確率的）、`u`（錨）と `p` が対応する。**重なるなら、Series III の
+Theorem 1 は `W` を巡回置換に限った既知の収束結果である。**Series I 第2節の
+Remark 1 が置く閉形式 `T* = (1−α)(I−αP)⁻¹p` も、そのモデルの平衡解と同じ形をしている。
+
+**これは未確認である。**作業環境から文献に届かない。**確かめるまで、断定はしない。**
+確かめて重なれば、この項目の重大度は上がり、README の「すでにある名前」も
+書き直すことになる。
+
+**紙面から確かめられるのは、ここまでである** —— 分野を名指ししたこと、
+その分野の文献がどの欄にも無いこと。この二つは
+[`check_errata.py`](verification/check_errata.py) が三本の PDF に当たっている。
+
+---
+
 ## 正誤ではないが、記録しておくこと
 
 ### N1 — Series I 定理1の不等号は、実際には等号

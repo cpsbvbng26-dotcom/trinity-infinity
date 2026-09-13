@@ -75,6 +75,39 @@ for _sid in ("I", "II", "III"):
 check("E6 —— 三本とも本文で Banach を使い、参考文献欄には無い",
       not _e6, "、".join(_e6) if _e6 else "3 本とも")
 
+# E8 —— Series I が分野を名指しし、三本のどの欄にもその分野の文献が無いこと。
+# **名指しは本文に、引用は欄に。**どちらか片方では、この項目の前提が立たない。
+_野 = "consensus dynamics in distributed systems"
+_合意 = ("DeGroot", "Friedkin", "Johnsen", "Abelson", "Hegselmann", "Krause",
+       "Proskurnikov", "consensus", "opinion dynamic")
+_e8 = []
+if _野 not in audit._source_text("I"):
+    _e8.append("Series I が分野を名指ししていない")
+for _sid in ("I", "II", "III"):
+    _text = audit._source_text(_sid)
+    _i = max(_text.rfind(_h) for _h in _ref_heads)
+    _refs = _text[_i:] if _i >= 0 else ""
+    _hit = [n for n in _合意 if n.lower() in _refs.lower()]
+    if _hit:
+        _e8.append(_sid + " の参考文献欄に " + "、".join(_hit))
+check("E8 —— Series I が分野を名指しし、三本とも欄にその分野が無い",
+      not _e8, "、".join(_e8) if _e8 else "3 本とも")
+
+# **照合はまだ付いていない。**付いていないことを、付いたかのように書かない。
+_doc = audit.document_text()
+check("E8 —— 照合が未確認だと書いてある",
+      "## E8 — " in _doc
+      and "Friedkin–Johnsen" in _doc
+      and "**これは未確認である。**" in _doc
+      and "確かめるまで、断定はしない" in _doc)
+
+# 未確認の照合は、正誤表の奥だけでなく、種別の表と経路にも札が立っていること。
+_rd = open(os.path.join(ROOT, "README.md"), encoding="utf-8").read()
+_rt = open(os.path.join(ROOT, "ROUTE.md"), encoding="utf-8").read()
+check("E8 —— 種別の表と経路が、未確認の照合を指している",
+      "Friedkin–Johnsen" in _rd and "`E8`" in _rd
+      and "照合は**未確認**" in _rt and "ERRATA E8" in _rt)
+
 # README の英語欄は、日本語の本文と同じ DOI を、同じ位置づけで述べていなければ
 # ならない。翻訳は二重管理になり、片方だけが古くなる。ここで縛る。
 _en = open(os.path.join(ROOT, "README.md"), encoding="utf-8").read()
