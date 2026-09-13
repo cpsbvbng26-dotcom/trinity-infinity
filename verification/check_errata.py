@@ -102,6 +102,20 @@ check("E8 —— 照合が付いたことと、その書誌が書いてある",
       and "10.1080/0022250X.1990.9990069" in _doc
       and "`W` を巡回置換に限った既知の収束結果である" in _doc)
 
+# **参考文献欄の抜けより重いのは、文献上の位置を述べる節の抜けである。**
+# Series II 第1.1節は「どの文献の上にいるか」に答えるために置かれている。
+_ii = audit._source_text("II")
+_i11 = _ii.find("Position in the Literature")
+_節 = _ii[_i11:_i11 + 700] if _i11 >= 0 else ""
+_中 = [n for n in _合意 if n.lower() in _節.lower()]
+check("E8 —— Series II の文献の節に、合意形成動学が無い",
+      _i11 >= 0 and not _中,
+      "節が見つからない" if _i11 < 0 else ("節に " + "、".join(_中) if _中 else "無い"))
+check("E8 —— その節のことを正誤表が書いている",
+      "Series II 第1.1節の題は `Position in the Literature` である" in _doc
+      and "文献上の位置を述べる節そのものから" in _doc
+      and "参考文献欄の抜けより重い" in _doc)
+
 # **確かめた範囲を、確かめていない範囲より広く書かない。**
 # 式と書誌は検索で取れた。原典の本文は見ていない。そこを混ぜない。
 check("E8 —— 原典に当たっていないと書いてある",

@@ -272,6 +272,19 @@ Series I は、着想が繰り返し現れる分野として、**合意形成動
 
 **`E6` と同じ型である。**あちらは借りた定理が欄に無く、こちらは名指しした分野が欄に無い。
 
+### Series II には「文献上の位置」の節がある
+
+**Series II 第1.1節の題は `Position in the Literature` である。**
+節の仕事はまさにこの問いに答えることで、そこに並んでいるのは四つである。
+
+> The framework draws on established work in **infinitely repeated games** [2],
+> **triadic relations in semiotics** [3], **fractal geometry and self-similar structures** [4],
+> and **complex adaptive systems** [5, 6].
+
+**合意形成動学は無い。**作用素がその特殊例である分野が、**文献上の位置を述べる節そのものから
+抜けている。**参考文献欄の抜けより重い —— 欄は並べ忘れが起こりうるが、
+この節は「どの文献の上にいるか」に答えるために置かれている。
+
 ### 照合 —— 重なった
 
 **この作用素は、合意形成動学の Friedkin–Johnsen モデルの特殊例である。**
