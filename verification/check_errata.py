@@ -145,6 +145,41 @@ check("E8 —— その節のことを正誤表が書いている",
       and "文献上の位置を述べる節そのものから" in _doc
       and "参考文献欄の抜けより重い" in _doc)
 
+# **評決と E8 が、同じ紙面について逆を言わないこと。**
+# 三篇は「新しい数学理論」を主張していないが、**貢献は主張している。**
+# E8 が高で立つあいだ、その四文は帰属の側で立たない。
+# **紙面から四文を取り、README の評決が条件つきであることを確かめる。**
+_rd = open(os.path.join(ROOT, "README.md"), encoding="utf-8").read()
+_rt = open(os.path.join(ROOT, "ROUTE.md"), encoding="utf-8").read()
+_貢献文 = [("I", "one substantive claim is Theorem 1"),
+           ("II", "contribution is Theorem 1"),
+           ("III", "contribution is Theorem 1"),
+           ("III", "established one non-trivial, general mathematical fact")]
+_無 = [sid + ": " + w for sid, w in _貢献文 if w not in audit._source_text(sid)]
+check("E8 —— 貢献を主張する四文が、紙面にある", not _無,
+      "、".join(_無) if _無 else "%d 文" % len(_貢献文))
+
+_高 = "**重大度: 高（名指しした分野の、名前のついたモデルの特殊例である）**" in _doc
+_条件 = all(x in _rd for x in (
+    "**論文としての価値は、真であることに尽きる。ただし、いまは条件つきである。**",
+    "**だが、貢献は主張している。**",
+    "`E8` が重大度・高で立っているあいだ、この四文は帰属の側で立たない",
+    "帰属の修正が入ったあとに、その用途を全部果たす",
+    "下限と上限が一致しているとは、現在形では書けない"))
+check("E8 —— 高で立つあいだ、結論の評決が条件つきになっている",
+      (not _高) or _条件,
+      "E8 は高ではない" if not _高 else ("条件つき" if _条件 else "評決が無条件のまま"))
+
+# 一次文献の内部で頁が割れている。片方に寄せない。
+check("E8 —— 頁の割れを、出所つきで並べてある",
+      "**頁の割れは、一次文献の内部にある。**" in _doc
+      and "自己申告 193–205、実延長 193–206 として並べておく" in _doc)
+
+# 狭さは代金と引き換えに無条件性を買っている。向き付けに目盛りを足す。
+check("E8 —— 開区間の狭さが何を買っているかを書いてある",
+      "**開区間の狭さは、代金と引き換えに何かを買っている。**" in _doc
+      and "狭さは、無条件性の購入である" in _doc)
+
 # **覆し方の無い判定は、判定ではなく宣告である。**E8 は系列全体についての
 # 判定なので、覆る条件を書く。残余三つが、なぜその条件を満たさないかも。
 check("E8 —— 覆し方と、残余三つが書いてある",
@@ -173,8 +208,6 @@ check("E8 —— 原典に当たっていないと書いてある",
       and "外れるのは、本文をこちらで読んだときである" in _doc)
 
 # 照合は正誤表の奥だけでなく、種別の表と経路にも出ていること。
-_rd = open(os.path.join(ROOT, "README.md"), encoding="utf-8").read()
-_rt = open(os.path.join(ROOT, "ROUTE.md"), encoding="utf-8").read()
 check("E8 —— 種別の表と経路が、照合先と原典未読を指している",
       all(x in _rd for x in ("Friedkin–Johnsen", "`E8`", "**原典未読**"))
       and all(x in _rt for x in ("Friedkin–Johnsen", "ERRATA E8", "**原典未読**")))

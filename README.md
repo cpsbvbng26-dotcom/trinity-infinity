@@ -46,7 +46,7 @@ by the model. The frozen PDFs do not say this; see `E4` in [ERRATA.md](ERRATA.md
 were not independently derived by a human.**
 
 **Verification.** `python3 verification/independent_check.py` (15 checks),
-`claims_audit.py` (32), `check_errata.py` (96, needs pypdf), `check_route.py` (112).
+`claims_audit.py` (32), `check_errata.py` (100, needs pypdf), `check_route.py` (113).
 Dependencies are in `requirements.txt`. All four run in CI on every push.
 
 **Where the record lives.** Route of the rediscovery: [ROUTE.md](ROUTE.md). Errata:
@@ -79,13 +79,25 @@ canonical when several exist:
 持たないと証明された。**残ったのは `∞`（反復して極限をとる）で、これは対象の型を
 言っているだけで、定理を含まない。
 
-**論文としての価値は、真であることに尽きる。**三篇は新しい数学を主張していない
+**論文としての価値は、真であることに尽きる。ただし、いまは条件つきである。**
+
+三篇は新しい数学理論を主張していない
 （Series I の要旨 —— `not as a new mathematical theory, but as a conceptual lens`）。
-**主張していないものが新規でなかったことは、紙面の何も偽にしない。**
-残るのは、書いてあることが全部正しいかどうかだけである。そこには検査が当たっている。
+**だが、貢献は主張している。**紙面に四文ある。
+
+> `This paper's one substantive claim is Theorem 1`（Series I 第6節）
+> `This paper's contribution is Theorem 1`（Series II 第9節・Series III 第5節）
+> `established one non-trivial, general mathematical fact`（Series III 第4節）
+
+**[`ERRATA.md`](ERRATA.md) の `E8` が重大度・高で立っているあいだ、この四文は帰属の側で立たない。**
+既知のモデル（Friedkin–Johnsen）の特殊例を、自分の貢献として述べていることになる。
+**枠組みについては何も偽にしていない。貢献については、空白ではない。**
+
+**だから「真であることに尽きる」は、帰属の修正が入ったあとに、その用途を全部果たす。**
+修正が入るまで、**下限と上限が一致しているとは、現在形では書けない。**
 
 **真であることは、論文の下限であって上限ではない。**どの論文もそこは満たしている
-はずのものである。**この三篇については、下限と上限が一致している。**
+はずのものである。
 
 **この系列の価値は、枠組みにではなく、枠組みが縮んでいく過程が消さずに残っている
 ことのほうにある。**そこも自分では測れない
@@ -447,8 +459,8 @@ Zenodo に生きたまま残っている。だから何を撤回したかを第�
 | --- | --- | --- |
 | [`verification/independent_check.py`](verification/independent_check.py) | **定理は正しいか。** 証明の記述から独立に実装して、同じ結論に達するか | 15 |
 | [`verification/claims_audit.py`](verification/claims_audit.py) | **紙面に印字されている数字は、その通りに出るか。** 論文から数値を書き写し、隣に計算し直した値を並べる | 32 |
-| [`verification/check_errata.py`](verification/check_errata.py) | **正誤表が紙面について述べていることは、紙面と合うか。** PDF から文字を取り出して突き合わせる | 96 |
-| [`verification/check_route.py`](verification/check_route.py) | **[ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。** | 112 |
+| [`verification/check_errata.py`](verification/check_errata.py) | **正誤表が紙面について述べていることは、紙面と合うか。** PDF から文字を取り出して突き合わせる | 100 |
+| [`verification/check_route.py`](verification/check_route.py) | **[ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。** | 113 |
 
 ```
 python3 verification/independent_check.py
@@ -471,7 +483,7 @@ python3 verification/check_route.py
 **元のスクリプトが何を計算していたかは、もう分からない。**
 
 その 6 箇所が本当に紙面に印字されているかは、`check_errata.py` が PDF から文字を取り出して
-突き合わせる（96 項目）。E1・E2 の引用も、名乗る件数も、未解決の項目が
+突き合わせる（100 項目）。E1・E2 の引用も、名乗る件数も、未解決の項目が
 「解決済み」に書き換わっていないかも、同じように当たる。
 
 条件は [`verification/audit.toml`](verification/audit.toml) に宣言してあり、当たるのは
