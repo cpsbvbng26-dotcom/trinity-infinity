@@ -95,18 +95,25 @@ check("E8 —— Series I が分野を名指しし、三本とも欄にその分
 
 # **照合はまだ付いていない。**付いていないことを、付いたかのように書かない。
 _doc = audit.document_text()
-check("E8 —— 照合が未確認だと書いてある",
+check("E8 —— 照合が付いたことと、その書誌が書いてある",
       "## E8 — " in _doc
-      and "Friedkin–Johnsen" in _doc
-      and "**これは未確認である。**" in _doc
-      and "確かめるまで、断定はしない" in _doc)
+      and "### 照合 —— 重なった" in _doc
+      and "Friedkin, N. E., & Johnsen, E. C. (1990)" in _doc
+      and "10.1080/0022250X.1990.9990069" in _doc
+      and "`W` を巡回置換に限った既知の収束結果である" in _doc)
 
-# 未確認の照合は、正誤表の奥だけでなく、種別の表と経路にも札が立っていること。
+# **確かめた範囲を、確かめていない範囲より広く書かない。**
+# 式と書誌は検索で取れた。原典の本文は見ていない。そこを混ぜない。
+check("E8 —— 原典に当たっていないと書いてある",
+      "**検索で確認した。原典には当たっていない**" in _doc
+      and "収束定理をどの形で述べているかは、本文を見ていない" in _doc)
+
+# 照合は正誤表の奥だけでなく、種別の表と経路にも出ていること。
 _rd = open(os.path.join(ROOT, "README.md"), encoding="utf-8").read()
 _rt = open(os.path.join(ROOT, "ROUTE.md"), encoding="utf-8").read()
-check("E8 —— 種別の表と経路が、未確認の照合を指している",
-      "Friedkin–Johnsen" in _rd and "`E8`" in _rd
-      and "照合は**未確認**" in _rt and "ERRATA E8" in _rt)
+check("E8 —— 種別の表と経路が、照合先と原典未読を指している",
+      all(x in _rd for x in ("Friedkin–Johnsen", "`E8`", "**原典未読**"))
+      and all(x in _rt for x in ("Friedkin–Johnsen", "ERRATA E8", "**原典未読**")))
 
 # README の英語欄は、日本語の本文と同じ DOI を、同じ位置づけで述べていなければ
 # ならない。翻訳は二重管理になり、片方だけが古くなる。ここで縛る。

@@ -46,7 +46,7 @@ by the model. The frozen PDFs do not say this; see `E4` in [ERRATA.md](ERRATA.md
 were not independently derived by a human.**
 
 **Verification.** `python3 verification/independent_check.py` (15 checks),
-`claims_audit.py` (32), `check_errata.py` (86, needs pypdf), `check_route.py` (108).
+`claims_audit.py` (32), `check_errata.py` (87, needs pypdf), `check_route.py` (108).
 Dependencies are in `requirements.txt`. All four run in CI on every push.
 
 **Where the record lives.** Route of the rediscovery: [ROUTE.md](ROUTE.md). Errata:
@@ -178,7 +178,7 @@ Series III はこの事実を特定したうえで、それが「三」の文化
 
 | 内容 | 種別 | すでにある名前 |
 | --- | --- | --- |
-| 作用素 `x ← DQx + (I − D)p` | **再発見** | **アフィン反復**。`x ← Mx + c` の形は**定常反復法**と呼ばれ、Jacobi 法・Gauss–Seidel 法と同じ枠に入る（Varga 2000, Young 1971）。**照合が一つ残っている** —— 合意形成動学の Friedkin–Johnsen モデルと重なる可能性がある（[`ERRATA.md`](ERRATA.md) の `E8`、**未確認**） |
+| 作用素 `x ← DQx + (I − D)p` | **再発見** | **アフィン反復**。`x ← Mx + c` の形は**定常反復法**と呼ばれ、Jacobi 法・Gauss–Seidel 法と同じ枠に入る（Varga 2000, Young 1971）。**さらに近い名前がある** —— 合意形成動学の**Friedkin–Johnsen モデル**（Friedkin & Johnsen 1990）で、この作用素はその `W` を巡回置換に限った特殊例である（[`ERRATA.md`](ERRATA.md) の `E8`、**原典未読**） |
 | 巡回置換が自己逆にならない最小の `n` が 3 | **再発見** | 置換群の初等的な事実 |
 | 縮小定数は `maxᵢ aᵢ` | **再導出** | 対角行列と置換行列の積のノルム。その場の計算 |
 | 縮小写像なので唯一の不動点へ幾何収束する | **利用** | **バナッハの不動点定理**（Banach 1922）。系列は正しく引用しており、再発見ではない |
@@ -439,7 +439,7 @@ Zenodo に生きたまま残っている。だから何を撤回したかを第�
 | --- | --- | --- |
 | [`verification/independent_check.py`](verification/independent_check.py) | **定理は正しいか。** 証明の記述から独立に実装して、同じ結論に達するか | 15 |
 | [`verification/claims_audit.py`](verification/claims_audit.py) | **紙面に印字されている数字は、その通りに出るか。** 論文から数値を書き写し、隣に計算し直した値を並べる | 32 |
-| [`verification/check_errata.py`](verification/check_errata.py) | **正誤表が紙面について述べていることは、紙面と合うか。** PDF から文字を取り出して突き合わせる | 86 |
+| [`verification/check_errata.py`](verification/check_errata.py) | **正誤表が紙面について述べていることは、紙面と合うか。** PDF から文字を取り出して突き合わせる | 87 |
 | [`verification/check_route.py`](verification/check_route.py) | **[ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。** | 108 |
 
 ```
@@ -463,7 +463,7 @@ python3 verification/check_route.py
 **元のスクリプトが何を計算していたかは、もう分からない。**
 
 その 6 箇所が本当に紙面に印字されているかは、`check_errata.py` が PDF から文字を取り出して
-突き合わせる（86 項目）。E1・E2 の引用も、名乗る件数も、未解決の項目が
+突き合わせる（87 項目）。E1・E2 の引用も、名乗る件数も、未解決の項目が
 「解決済み」に書き換わっていないかも、同じように当たる。
 
 条件は [`verification/audit.toml`](verification/audit.toml) に宣言してあり、当たるのは
