@@ -13,6 +13,7 @@
   再構成の件数を、散文が正しく名乗っているか。
 """
 
+import collections
 import io
 import os
 import re
@@ -111,10 +112,37 @@ for kind in ("再発見", "再導出", "利用"):
           any(r["kind"] == kind for r in rows),
           "%d 件" % sum(1 for r in rows if r["kind"] == kind))
 
-# README の五行に割り当てた種別が、経路にも現れること。
-for kind in ("再発見", "再導出", "利用", "発見の否定"):
-    check("README の種別「%s」が経路にもある" % kind,
-          ("**%s**" % kind) in README or kind in README)
+# **README の五行の表と、その下の内訳の一行は、同じ表を数えたものである。**
+# 語が README に現れるかを見るだけでは、行の種別を書き換えても通ってしまう
+# （前はそれを見ていた）。**実際に、表が「発見の否定」なのに内訳が「撤回」と
+# 数えていた。**表そのものを読んで、両向きに突き合わせる。
+i_tbl = README.find("### 五行の種別")
+tbl = README[i_tbl:README.find("###", i_tbl + 3)] if i_tbl >= 0 else ""
+五行 = []
+for line in tbl.split("\n"):
+    if not line.startswith("|"):
+        continue
+    cells = [strip(c) for c in line.strip().strip("|").split("|")]
+    if len(cells) != 3 or cells[0] in ("内容", "") or cells[1] in ("種別", "---"):
+        continue
+    五行.append(cells)
+
+check("README に五行の種別の表がある", len(五行) > 0, "%d 行" % len(五行))
+外 = sorted({c[1] for c in 五行} - KINDS)
+check("表の種別が、決めた語の中にある", not 外, ", ".join(外) or "%d 行" % len(五行))
+未知 = sorted({c[1] for c in 五行} - {r["kind"] for r in rows})
+check("表の種別が、経路にも現れる", not 未知,
+      ", ".join(未知) or "、".join(sorted({c[1] for c in 五行})))
+
+実際 = collections.Counter(c[1] for c in 五行)
+m3 = re.search(r"\*\*((?:[^\s*、。]+ \d+、)*[^\s*、。]+ \d+)。\*\*", tbl)
+名乗り = collections.Counter()
+if m3:
+    for part in m3.group(1).split("、"):
+        k, v = part.rsplit(" ", 1)
+        名乗り[k] = int(v)
+check("内訳の一行が、表そのものと一致する", bool(m3) and 名乗り == 実際,
+      ("名乗り %s / 表 %s" % (dict(名乗り), dict(実際))) if m3 else "内訳の一行が無い")
 
 print("\n4. 撤回した版を、正しい版として使っていないか")
 
