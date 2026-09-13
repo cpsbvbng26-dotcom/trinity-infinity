@@ -46,7 +46,7 @@ by the model. The frozen PDFs do not say this; see `E4` in [ERRATA.md](ERRATA.md
 were not independently derived by a human.**
 
 **Verification.** `python3 verification/independent_check.py` (15 checks),
-`claims_audit.py` (32), `check_errata.py` (108, needs pypdf), `check_route.py` (113).
+`claims_audit.py` (32), `check_errata.py` (108, needs pypdf), `check_route.py` (120).
 Dependencies are in `requirements.txt`. All four run in CI on every push.
 
 **Where the record lives.** Route of the rediscovery: [ROUTE.md](ROUTE.md). Errata:
@@ -106,6 +106,22 @@ canonical when several exist:
 
 **真であることは、論文の下限であって上限ではない。**どの論文もそこは満たしている
 はずのものである。
+
+**題名も、同じ割れ方をしている。**撤回した一般向けの本の題は
+『**グランドセオリーというロマン** —— **トリニティインフィニティフレームワーク**』だった
+（[登録簿](https://github.com/cpsbvbng26-dotcom/self-correction) の `BK-001`）。
+
+| 題名の半分 | 残ったか |
+| --- | --- |
+| **ロマン** | **当たっていた。**理論としては残らなかった |
+| **フレームワーク** | **当たっていなかった。**枠組みは残らなかった |
+
+**ただし、「ロマン」を事前の自己診断として読むのは、回顧的な解釈である。**
+題名に置かれたその語は、普通は賛辞として読まれる。**着地を知ってから題名を読み直している。**
+等級は `紙面` ではなく、**回顧的解釈・検証不能**である。
+
+**そして、題名の一語が当たっていたことは、本を救わない。**本そのものは撤回されており、
+何を主張していたかは確かめられない（`BK-001`）。
 
 **この系列の価値は、枠組みにではなく、枠組みが縮んでいく過程が消さずに残っている
 ことのほうにある。**そこも自分では測れない
@@ -468,7 +484,7 @@ Zenodo に生きたまま残っている。だから何を撤回したかを第�
 | [`verification/independent_check.py`](verification/independent_check.py) | **定理は正しいか。** 証明の記述から独立に実装して、同じ結論に達するか | 15 |
 | [`verification/claims_audit.py`](verification/claims_audit.py) | **紙面に印字されている数字は、その通りに出るか。** 論文から数値を書き写し、隣に計算し直した値を並べる | 32 |
 | [`verification/check_errata.py`](verification/check_errata.py) | **正誤表が紙面について述べていることは、紙面と合うか。** PDF から文字を取り出して突き合わせる | 108 |
-| [`verification/check_route.py`](verification/check_route.py) | **[ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。** | 113 |
+| [`verification/check_route.py`](verification/check_route.py) | **[ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。** | 120 |
 
 ```
 python3 verification/independent_check.py
