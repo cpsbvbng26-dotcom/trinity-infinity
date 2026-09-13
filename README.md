@@ -46,7 +46,7 @@ by the model. The frozen PDFs do not say this; see `E4` in [ERRATA.md](ERRATA.md
 were not independently derived by a human.**
 
 **Verification.** `python3 verification/independent_check.py` (15 checks),
-`claims_audit.py` (32), `check_errata.py` (89, needs pypdf), `check_route.py` (108).
+`claims_audit.py` (32), `check_errata.py` (90, needs pypdf), `check_route.py` (112).
 Dependencies are in `requirements.txt`. All four run in CI on every push.
 
 **Where the record lives.** Route of the rediscovery: [ROUTE.md](ROUTE.md). Errata:
@@ -78,6 +78,14 @@ canonical when several exist:
 記号 `Ⅲ∞` のうち、数学的な内容がある側は `Ⅲ`（＝ 三）だった。**その側が、意味を
 持たないと証明された。**残ったのは `∞`（反復して極限をとる）で、これは対象の型を
 言っているだけで、定理を含まない。
+
+**論文としての価値は、真であることに尽きる。**三篇は新しい数学を主張していない
+（Series I の要旨 —— `not as a new mathematical theory, but as a conceptual lens`）。
+**主張していないものが新規でなかったことは、紙面の何も偽にしない。**
+残るのは、書いてあることが全部正しいかどうかだけである。そこには検査が当たっている。
+
+**真であることは、論文の下限であって上限ではない。**どの論文もそこは満たしている
+はずのものである。**この三篇については、下限と上限が一致している。**
 
 **この系列の価値は、枠組みにではなく、枠組みが縮んでいく過程が消さずに残っている
 ことのほうにある。**そこも自分では測れない
@@ -439,8 +447,8 @@ Zenodo に生きたまま残っている。だから何を撤回したかを第�
 | --- | --- | --- |
 | [`verification/independent_check.py`](verification/independent_check.py) | **定理は正しいか。** 証明の記述から独立に実装して、同じ結論に達するか | 15 |
 | [`verification/claims_audit.py`](verification/claims_audit.py) | **紙面に印字されている数字は、その通りに出るか。** 論文から数値を書き写し、隣に計算し直した値を並べる | 32 |
-| [`verification/check_errata.py`](verification/check_errata.py) | **正誤表が紙面について述べていることは、紙面と合うか。** PDF から文字を取り出して突き合わせる | 89 |
-| [`verification/check_route.py`](verification/check_route.py) | **[ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。** | 108 |
+| [`verification/check_errata.py`](verification/check_errata.py) | **正誤表が紙面について述べていることは、紙面と合うか。** PDF から文字を取り出して突き合わせる | 90 |
+| [`verification/check_route.py`](verification/check_route.py) | **[ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。** | 112 |
 
 ```
 python3 verification/independent_check.py
@@ -463,7 +471,7 @@ python3 verification/check_route.py
 **元のスクリプトが何を計算していたかは、もう分からない。**
 
 その 6 箇所が本当に紙面に印字されているかは、`check_errata.py` が PDF から文字を取り出して
-突き合わせる（89 項目）。E1・E2 の引用も、名乗る件数も、未解決の項目が
+突き合わせる（90 項目）。E1・E2 の引用も、名乗る件数も、未解決の項目が
 「解決済み」に書き換わっていないかも、同じように当たる。
 
 条件は [`verification/audit.toml`](verification/audit.toml) に宣言してあり、当たるのは
