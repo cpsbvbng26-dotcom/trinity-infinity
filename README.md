@@ -46,7 +46,7 @@ by the model. The frozen PDFs do not say this; see `E4` in [ERRATA.md](ERRATA.md
 were not independently derived by a human.**
 
 **Verification.** `python3 verification/independent_check.py` (15 checks),
-`claims_audit.py` (32), `check_errata.py` (103, needs pypdf), `check_route.py` (113).
+`claims_audit.py` (32), `check_errata.py` (108, needs pypdf), `check_route.py` (113).
 Dependencies are in `requirements.txt`. All four run in CI on every push.
 
 **Where the record lives.** Route of the rediscovery: [ROUTE.md](ROUTE.md). Errata:
@@ -78,6 +78,14 @@ canonical when several exist:
 記号 `Ⅲ∞` のうち、数学的な内容がある側は `Ⅲ`（＝ 三）だった。**その側が、意味を
 持たないと証明された。**残ったのは `∞`（反復して極限をとる）で、これは対象の型を
 言っているだけで、定理を含まない。
+
+**この作用素が何かは、一行で書ける。**
+
+> **Friedkin–Johnsen 意見動学の、影響行列を巡回置換に限った特殊例**（先入見ベクトルは外生）。
+> 属でいえば、重み付き巡回シフトを線形部に持つ定常アフィン反復である。
+
+英文の定義と、そこに入れる四つの条項は [`ERRATA.md`](ERRATA.md) の `E8` にある。
+**`Trinity-Infinity` は、記録と論文列の題名としてだけ残す。模型の名としては使わない。**
 
 **論文としての価値は、真であることに尽きる。ただし、いまは条件つきである。**
 
@@ -459,7 +467,7 @@ Zenodo に生きたまま残っている。だから何を撤回したかを第�
 | --- | --- | --- |
 | [`verification/independent_check.py`](verification/independent_check.py) | **定理は正しいか。** 証明の記述から独立に実装して、同じ結論に達するか | 15 |
 | [`verification/claims_audit.py`](verification/claims_audit.py) | **紙面に印字されている数字は、その通りに出るか。** 論文から数値を書き写し、隣に計算し直した値を並べる | 32 |
-| [`verification/check_errata.py`](verification/check_errata.py) | **正誤表が紙面について述べていることは、紙面と合うか。** PDF から文字を取り出して突き合わせる | 103 |
+| [`verification/check_errata.py`](verification/check_errata.py) | **正誤表が紙面について述べていることは、紙面と合うか。** PDF から文字を取り出して突き合わせる | 108 |
 | [`verification/check_route.py`](verification/check_route.py) | **[ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。** | 113 |
 
 ```
@@ -483,7 +491,7 @@ python3 verification/check_route.py
 **元のスクリプトが何を計算していたかは、もう分からない。**
 
 その 6 箇所が本当に紙面に印字されているかは、`check_errata.py` が PDF から文字を取り出して
-突き合わせる（103 項目）。E1・E2 の引用も、名乗る件数も、未解決の項目が
+突き合わせる（108 項目）。E1・E2 の引用も、名乗る件数も、未解決の項目が
 「解決済み」に書き換わっていないかも、同じように当たる。
 
 条件は [`verification/audit.toml`](verification/audit.toml) に宣言してあり、当たるのは

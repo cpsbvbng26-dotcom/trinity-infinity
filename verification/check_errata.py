@@ -198,6 +198,33 @@ check("E8 —— 何を落とした特殊例かを書いてある",
       and "FJ を社会学たらしめている当のもの" in _doc
       and "社会学を抜いた数学的な躯体と、要の一項である" in _doc)
 
+# **一行の定義は、E8 の内容の圧縮形である。**両者がずれたら、どちらかが古い。
+check("E8 —— 一行の定義と、英文と、四つの条項がある",
+      "### 定義 —— 一行で書ける" in _doc
+      and "**Friedkin–Johnsen 意見動学の、影響行列を巡回置換に限った特殊例**" in _doc
+      and "We consider the Friedkin–Johnsen opinion dynamics" in _doc
+      and "a directed n-cycle with unit weights and no self-influence" in _doc
+      and "`β = 1−α` 制約下" in _doc)
+check("E8 —— 定義が、結論にも一行で出ている",
+      "**Friedkin–Johnsen 意見動学の、影響行列を巡回置換に限った特殊例**" in _rd
+      and "重み付き巡回シフトを線形部に持つ定常アフィン反復" in _rd)
+
+# **棚を間違えない。**錨は合意を壊す装置で、住所は opinion dynamics のほうである。
+check("E8 —— 棚が opinion dynamics だと書いてある",
+      "### 棚は opinion dynamics であって consensus dynamics ではない" in _doc
+      and "**錨の項は、合意を壊すための装置である。**" in _doc
+      and "`p` が定数ベクトルのときだけである" in _doc
+      and "半分だけ正しい住所である" in _doc)
+
+# **模型の名を新しく立てない。**名前の帳簿に何も足していない側が取るものではない。
+check("E8 —— 新しい模型名を立てないと書いてある",
+      "### 定義の中に、新しい模型名を立てない" in _doc
+      and "模型の名としては使わない" in _doc
+      and "模型の名としては使わない" in _rd)
+check("E8 —— 輪位相上の後続研究が未照合だと書いてある",
+      "輪位相上の FJ を個別に扱った後続研究が既にあるかは**未照合**である" in _doc
+      and "どちらに転んでも一般定理が覆っているので、定義文は変わらない" in _doc)
+
 # **覆し方の無い判定は、判定ではなく宣告である。**E8 は系列全体についての
 # 判定なので、覆る条件を書く。残余三つが、なぜその条件を満たさないかも。
 check("E8 —— 覆し方と、残余三つが書いてある",
