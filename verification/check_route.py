@@ -298,6 +298,72 @@ check("一般形が Series III にあることを隠していない",
 check("E1 をコメント欄に自分で書くと決めてある",
       "**E1 のことは、投稿のコメント欄に自分で書く。**" in ARXIV)
 
+# **原典を読んだのなら、読んだと分かる形で置く。**
+# 検索結果から取った記述と、原文から取った記述を混ぜない。
+# arxiv.org は塞がっているが、arXiv が GitHub に置いた docs には届く。
+check("原典を読んだ節がある",
+      "### 原典で確かめた —— 2026-09-18" in ARXIV
+      and "arXiv/arxiv-docs" in ARXIV
+      and "source/help/endorsement.md" in ARXIV)
+
+# **推薦の文面に書くことの数を、箇条の数と突き合わせる（決めごと 5）。**
+# 一つ足して見出しを直し忘れると、伏せた項目があることに気づけない。
+_kan = {"一": 1, "二": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7}
+_m = re.search(r"推薦を求める文面に書くこと。\*\*(.)つある。\*\*", ARXIV)
+_blk = ARXIV.split("推薦を求める文面に書くこと。")[1].split("\n\n**推薦を求める相手に")[0] \
+    if "推薦を求める文面に書くこと。" in ARXIV else ""
+_n = len(re.findall(r"^\d+\. ", _blk, re.M))
+check("推薦の文面に書くことの数が、名乗りと合う",
+      _m is not None and _kan.get(_m.group(1)) == _n,
+      "実際 %d / 名乗り %s" % (_n, _m.group(1) if _m else "取れない"))
+
+# **E8 は、推薦者の責務に直に当たる。**伏せれば推薦者が責務を果たせない。
+check("E8 を推薦の文面にも書くと決めてある",
+      "**既知の模型の特殊例であること（E8）。**" in ARXIV
+      and "伏せたまま推薦を求めれば、推薦者は自分の責務を" in ARXIV)
+check("E8 が、投稿のときに自分で述べるものに入っている",
+      "| **E8** |" in ARXIV and "推薦を求める文面と投稿のコメント欄の両方に書く" in ARXIV)
+
+# **記録のほうが原典より厳しかったところを、厳しいまま残さない。**
+# 誤った厳しさは、正しさではなく不正確さである。
+check("送り方の決めが、原典の文言に合わせてある",
+      "大人数へ一斉に送らない。同じ相手へ繰り返し送らない。" in ARXIV
+      and "別の相手へ次を送ることは禁じていない" in ARXIV)
+
+# **推薦の可否は非公開である。**返事が無いことから何も読み取れない。
+check("推薦の可否が非公開だと書いてある",
+      "返事が無いことから何も読み取れない" in ARXIV)
+
+# **endorsement domain が一つであることは、確かめられた。**
+# ここが未確認のままだと、math.LO で頼んだことの意味が決まらない。
+check("数学の endorsement domain が一つだと確かめてある",
+      "**確かめられた。**数学は高位の主題領域である" in ARXIV
+      and "`math.LO` で下りれば `math.NA` へ出せる" in ARXIV)
+
+# **依頼の記録は、通数と日付と経路まで。**相手は書かない（決めごと 9）。
+check("二人目への依頼を、相手を書かずに記録してある",
+      "**2026-09-18、二人目に一通を送った。**" in ARXIV
+      and "**送り先は書かない**（決めごと 9）" in ARXIV
+      and "計 3 通、相手は 2 人になった" in ARXIV)
+check("送った一通に足りないものを、足りないと書いてある",
+      "**四つめから六つめが抜けている。**" in ARXIV
+      and "補う一通が要る" in ARXIV)
+
+# 原典の表の行数と、散文が名乗る内訳を突き合わせる。
+_tbl = ARXIV.split("### 原典で確かめた —— 2026-09-18")[1] if "### 原典で確かめた —— 2026-09-18" in ARXIV else ""
+_rows = 0
+_started = False
+for _l in _tbl.split("\n"):
+    if _l.startswith("|"):
+        _started = True
+        _rows += 1
+        continue
+    if _started:
+        break
+check("原典と突き合わせた表に 5 行ある", _rows - 2 == 5, "実際 %d 行" % (_rows - 2))
+check("突き合わせの内訳を散文が名乗っている",
+      "**四つが片付き、一つで記録のほうが間違っていた。**" in ARXIV)
+
 # 比較表が名指しした不備は、実在しなければならない。
 ERRATA = io.open(os.path.join(ROOT, "ERRATA.md"), encoding="utf-8").read()
 table = ARXIV[ARXIV.find("### 三篇のうちどれか"):ARXIV.find("## 分類")]
@@ -429,8 +495,14 @@ check("所属欄に肩書きを打たないと決めてある",
 check("三つの正誤が、コメント欄の指示に残っている",
       all(w in SUBMIT for w in ("（E3）", "（E4）", "（E5）")))
 check("雛形が述べる点の数と、箇条の数が合っている",
-      "先に二点お伝えいたします。" in SUBMIT
-      and "Two things I should state up front." in SUBMIT)
+      "先に三点お伝えいたします。" in SUBMIT
+      and "Three things I should state up front." in SUBMIT
+      and "**必ず書く三つ。**" in SUBMIT)
+
+# **E8 は雛形の両方に入っていること。**片言語だけ直すと、送る先で内容が変わる。
+check("雛形の両方に E8 が入っている",
+      "Friedkin-Johnsen モデルの特殊な場合です" in SUBMIT
+      and "special case of the Friedkin-Johnsen model" in SUBMIT)
 
 check("止まった段階も記録すると書いてある",
       "**どの段階で止まっても消さない。**" in SUBMIT)
