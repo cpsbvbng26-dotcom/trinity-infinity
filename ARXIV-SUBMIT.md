@@ -59,12 +59,18 @@
 - 自己紹介と、原稿の内容。
 - **なぜその人に頼むのか。**
 
-**必ず書く二つ。**
+**必ず書く三つ。**
 
 1. **新規の結果ではないこと。**
 2. **初稿が言語モデルの生成物であること。**改訂に課した二つの条件も書く。
+3. **既知の模型の特殊例であること（E8）。**作用素は Friedkin–Johnsen の特殊な場合であり、
+   紙面はその文献を引いていない。**2026-09-18 に足した。**
 
-この二つを省けば承認は下りやすくなる。それは相手を欺くことである。
+この三つを省けば承認は下りやすくなる。それは相手を欺くことである。
+
+**三つめを足したのは、原典を読んだからである。**推薦者の責務として arXiv が挙げているのは
+「その分野の基本的な事実を知らない者」「いまの研究と全く切れている仕事」を推さないことである。
+**`E8` は、その判断に直に関わる。**
 
 **肩書きを名乗らない**（決めごと 6）。所属を書く場合は、在学中の学校名をそのまま書く。
 
@@ -95,13 +101,16 @@ arXiv の math.NA へ初めて投稿するため、endorsement をお願いで�
 縮小写像であることを示し、バナッハの不動点定理から一意の不動点への幾何的収束を
 導いています。
 
-先に二点お伝えいたします。
+先に三点お伝えいたします。
 
 ・新規の結果ではありません。論文自身、要旨で "not as a new mathematical theory"
   と述べています。
 ・初稿は言語モデルによる生成物です。改訂で全定理を証明し直し、数値はコードで
   出し直しました。既知の誤りは正誤表として公開しています。
   https://github.com/cpsbvbng26-dotcom/trinity-infinity
+・この作用素は Friedkin-Johnsen モデルの特殊な場合です。論文はその文献を
+  引いていません。正誤表の E8 に、寸法を測った結果を載せています。一般の像は
+  n(n-1) 次元、巡回の像は n 次元で、比は 1/(n-1) です。
 
 〈氏名〉先生にお願いいたしましたのは、〈理由〉のためです。
 
@@ -130,7 +139,7 @@ x <- DQx + (I - D)p, with Q a cyclic permutation and D diagonal. It shows the
 operator is a contraction and derives geometric convergence to the unique
 fixed point from the Banach fixed-point theorem.
 
-Two things I should state up front.
+Three things I should state up front.
 
   - It contains no new result. The abstract itself offers the paper "not as a
     new mathematical theory".
@@ -138,6 +147,10 @@ Two things I should state up front.
     every theorem and recomputes every number from code. Known defects are
     published as an errata file.
     https://github.com/cpsbvbng26-dotcom/trinity-infinity
+  - The operator is a special case of the Friedkin-Johnsen model, which the
+    paper does not cite. Erratum E8 records the measurement: the general
+    image is n(n-1)-dimensional, the cyclic image n-dimensional, a ratio of
+    1/(n-1).
 
 I am writing to you in particular because 〈reason〉.
 
