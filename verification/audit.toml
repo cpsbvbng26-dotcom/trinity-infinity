@@ -174,7 +174,7 @@ in = ["README.md"]
 label = "check_route.py の件数"
 command = "python3 verification/check_route.py"
 extract = "(\\d+) 件すべて通りました"
-pattern = "食い違わないか。\\*\\* \\| (\\d+) \\|"
+pattern = "食い違わないか。\\*{0,2} \\| (\\d+) \\|"
 in = ["README.md", "verification/README.md"]
 
 # verification/README.md の実行例。ここも一度ずれている。
