@@ -83,7 +83,11 @@ II と III は DOI で参照する。**E1 のことは、投稿のコメント�
 
 ## 推薦
 
-**記述はすべて検索結果から取ったものである。原文の頁を開いてはいない。**出典は末尾にある。
+**2026-09-18 に原典を読んだ。**それまでの記述は検索結果から取ったものだった。
+読んだのは arXiv 自身が公開している docs のリポジトリで、`arXiv/arxiv-docs` の
+`source/help/endorsement.md` である。**arxiv.org は egress proxy が塞いでいるが、
+arXiv が GitHub に置いた原文には届く。**確かめた結果は下の「原典で確かめた」にある。
+出典は末尾にある。
 
 | | |
 | --- | --- |
@@ -96,16 +100,23 @@ II と III は DOI で参照する。**E1 のことは、投稿のコメント�
 **数学の側の日付は 2026年1月ではなく 2025年12月である。**割愛の頁には全区分の改定（2026年1月21日）を書いていた。
 数学に出すこの件では、先に効いているのは 2025年12月10日のほうである。
 
-推薦を求める文面に書くこと。
+推薦を求める文面に書くこと。**六つある。**
 
 1. 誰であるか。ORCID を添える。
 2. 何を出すか。表題と要旨。
 3. なぜその分野か。
 4. **新規の結果ではないこと。**解説であると先に書く。
 5. **初稿が言語モデルの生成物であること。**改訂版に課した二つの条件も書く。
+6. **既知の模型の特殊例であること（E8）。**作用素は Friedkin–Johnsen の特殊な場合であり、
+   紙面はその文献を引いていない。**2026-09-18 に足した。**
 
-**推薦を求める相手に、内容を大きく見せない。**四つめと五つめを省けば推薦は下りやすくなる。
+**推薦を求める相手に、内容を大きく見せない。**四つめから六つめを省けば推薦は下りやすくなる。
 それは推薦者を欺くことである。
+
+**六つめを足した理由は、原典の側にある。**推薦者の責務として arXiv が挙げているのは
+「その分野の基本的な事実を知らない者」「いまの研究と全く切れている仕事」を推さないことである。
+**`E6` と `E8` は、その判断に直に関わる。**伏せたまま推薦を求めれば、推薦者は自分の責務を
+果たせない状態で押すことになる。
 
 **2026年9月9日、推薦の符号を受け取った。**段階 1 は済んでいる。
 **同じ日に、`math.LO` の符号で一通を送った。****そのあと、記載を訂正する一通を送っている。**
@@ -122,6 +133,41 @@ II と III は DOI で参照する。**E1 のことは、投稿のコメント�
 そうであれば、`math.LO` で頼んだことは `math.NA` へ出す妨げにならない。確かめていない。
 
 **符号そのものは、この記録のどこにも書かない**（決めごと 9）。書けるのは、受け取った日と分類までである。
+
+**2026-09-18、二人目に一通を送った。**Instagram の私信である。**送り先は書かない**（決めごと 9）。
+書けるのは、通数と日付と経路までである。**これで依頼は計 3 通、相手は 2 人になった。**
+一人目からの返事はまだ無い。
+
+**この一通は、上の六つのうち 1 から 3 までしか書いていない。**「arXiv の口座があれば推薦を
+頼めないか」という形で出した。**四つめから六つめが抜けている。**押される前に、同じ経路で
+補う一通が要る。**抜けたまま推薦が下りれば、推薦者を欺いたことになる。**
+
+### 原典で確かめた —— 2026-09-18
+
+**読んだのは `arXiv/arxiv-docs` の `source/help/endorsement.md` である**（GitHub 経由）。
+下は原典と記録を突き合わせた結果である。**四つが片付き、一つで記録のほうが間違っていた。**
+
+| 記録の記述 | 原典 | 結果 |
+| --- | --- | --- |
+| 推薦者は、その endorsement domain で一定数を出しており、3 か月前から 5 年前までの間のものであること | `we only count papers that have been submitted between three months and five years ago` | **合っていた** |
+| 数学は endorsement domain が一つ「らしい」（未確認） | `most high-level subject areas … are currently endorsement domains, with the notable exception of physics` | **確かめられた。**数学は高位の主題領域である。**`math.LO` で下りれば `math.NA` へ出せる** |
+| （記録に無かった） | `you must also have an active positive endorsement to that area yourself before you may endorse` | **足りていなかった。**推薦者自身もその領域の推薦を持っている必要がある |
+| （記録に無かった） | `The fact that you have personally endorsed or not endorsed a person … is private` | **足りていなかった。返事が無いことから何も読み取れない。**断られたのか、まだ見ていないのかは、こちらから分からない |
+| 「一斉に送らない。**一度に一人へ送る**」 | `it is inappropriate to email large numbers of potential endorsers at once, or to repeatedly email the same endorser` | **記録のほうが原典より厳しかった。**禁じられているのは大人数への一斉送信と、同じ相手への反復である。**別の相手へ二人目として送ることは禁じていない** |
+
+**推薦者の資格の条件を、依頼の前に確かめられる。**「arXiv の口座があるか」ではない。
+**「arXiv の数学に、3 か月前から 5 年前までの間に出した論文があり、その著者として登録してあるか」**である。
+口座の有無は条件ではない。**分野が数学でなければ、口座があっても数学の推薦はできない。**
+
+**相手を知っていることは、原典が認めた根拠である** —— `You should know the person that you
+endorse **or** you should see the paper that the person intends to submit`。二つは「または」で
+繋がっている。**紙面を読ませずに、知人であることだけで推している者が居るという意味ではない。**
+原典は同じ節で、基本的な事実を知らない者を推すなと書いている。
+
+**断りたいときの作法も原典にある** —— `If you feel uncomfortable about endorsing an author for
+any reason, do not do it – ask the person to find another endorser`。**断ることは想定されている。**
+依頼の文面に、これを書いておく。
+
 
 探し方と、断られたときにどこへ書くかは [ARXIV-SUBMIT.md](ARXIV-SUBMIT.md) にある。
 **過去に arXiv 掲載論文の共著者であれば、所有権の主張（Claim Ownership）のほうが早い。**
@@ -148,11 +194,13 @@ II と III は DOI で参照する。**E1 のことは、投稿のコメント�
 | **E3** | Series I は、検証スクリプト `series1_verification.py` が「この投稿に同梱されている」と二箇所で述べている。**そのファイルは存在しない** | **規約にいちばん近い問題である。**再現性の主張が果たされていない。**同梱のしくみ（ancillary files）は使えない —— TeX の原稿を出す投稿だけの機能で、PDF だけの投稿では働かない。**したがってコメント欄に、同梱物が無いことと、いまの検証コードの在り処を書くほかない |
 | **E4** | 開示は「改訂に Claude の支援を得た」だけである。**初稿が言語モデルの生成物であることは、三本のどこにも印字されていない** | コメント欄と、推薦を求めるメールに自分で書く |
 | **E5** | grim trigger の閾値を Fudenberg & Maskin に帰している。正しくは Friedman (1971) | **実在する文献の誤用であって、捏造ではない。**幻覚した参考文献に対する制裁の対象には当たらない。正誤表の在り処をコメント欄に書く |
+| **E8** | 三篇は `This paper's contribution is Theorem 1` と述べている。**その作用素は Friedkin–Johnsen の特殊な場合であり、紙面はその文献を引いていない** | **いちばん重い。**推薦者の責務は「いまの研究と切れていないか」を見ることである。**推薦を求める文面と投稿のコメント欄の両方に書く。**寸法は正誤表の E8 にある —— 一般の像は `n(n−1)` 次元、巡回は `n` 次元、比は `1/(n−1)` |
 
 ### してはならないこと
 
 - **符号を公開の場に置かない。**リポジトリ、SNS、掲示板のいずれにも。
-- **一斉に送らない。**一度に一人へ送る。
+- **大人数へ一斉に送らない。同じ相手へ繰り返し送らない。**原典が不適切としているのはこの二つである。
+  **別の相手へ次を送ることは禁じていない**（[原典で確かめた](#原典で確かめた--2026-09-18)）。
 - **arXiv の管理者に頼まない。**管理者は承認しない。
 - **謝礼や取引を申し出ない。**
 - **メタデータの所属欄に肩書きを打たない**（決めごと 6）。凍結された紙面の著者欄には自称の肩書きが印字されており、それはそのままである。**いま自分で打ち込む欄は、それとは別である。**
@@ -205,6 +253,9 @@ arXiv は、**幻覚した参考文献**、あるいは**生成物を確かめ�
   <https://blog.arxiv.org/2025/12/10/updated-endorsement-policy-for-arxiv-mathematics/>
 - arXiv blog, "Attention Authors: updated endorsement policy"（2026年1月21日）
   <https://blog.arxiv.org/2026/01/21/attention-authors-updated-endorsement-policy/>
+- **arXiv, `source/help/endorsement.md`**（`arXiv/arxiv-docs` リポジトリ、GitHub 経由で 2026-09-18 に読んだ）
+  <https://github.com/arXiv/arxiv-docs/blob/develop/source/help/endorsement.md>
+  **この一件だけは原典である。**ほかは検索結果から取った。
 - arXiv User Support, "How do I become an endorser?"
   <https://arxiv-org.atlassian.net/wiki/spaces/AUS/pages/56033281>
 - arXiv, "Ancillary files" <https://info.arxiv.org/help/ancillary_files.html>
