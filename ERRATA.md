@@ -59,7 +59,7 @@ Series I 自身の冒頭は「原型（Nemoto, 2025; DOI: 10.5281/zenodo.1717370
 | Series II | 謝辞 | the verification script (series2_verification.py) is distributed together with this PDF |
 | Series III | 謝辞 | the verification script (series3_verification.py) is distributed together with this PDF |
 
-六箇所とも、指しているファイルは存在しません。 配布物は PDF のみで、著者の手元にも残っていない
+六箇所とも、指しているファイルは存在しません。 配布物は PDF のみで、著者の手元にも残っていません
 （2026年9月6日、著者に確認）。
 
 以前この表には謝辞の三箇所しか載せていませんでした。約束は三度ではなく六度しています。
@@ -74,7 +74,7 @@ Series I 第2節の「included with this submission」と Series II 要旨の「
 できません。
 
 このリポジトリでの扱い。 書き直したものを「これがそれである」と称して置くことはしません。
-代わりに四本を**別に**書いました。
+代わりに四本を**別に**書きました。
 
 | | 何を当たるか |
 | --- | --- |
@@ -89,7 +89,7 @@ Series I 第2節の「included with this submission」と Series II 要旨の「
 二つの半分を、離して読まないこと。
 
 - 論文が同梱を謳ったスクリプトは、存在しません。六箇所すべて、指すファイルが無い
-- いま走る四本は、存在します。ただしそれは同梱スクリプトの代わりではない
+- いま走る四本は、存在します。ただしそれは同梱スクリプトの代わりではありません
 
 この二つは別の話です。前者だけを読むと「検証の手段が無い」になり、後者だけを読むと
 「約束は果たされた」になります。どちらも違います。約束は果たされておらず、別の手段が用意されています。
