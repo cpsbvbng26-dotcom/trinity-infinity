@@ -229,8 +229,8 @@ in = [".github/workflows/verify.yml"]
 id = "E3"
 heading_pattern = "^## E3 —"
 must_say = [
-  "この項目は解決しない",
-  "果たされなかった約束として残す",
+  "この項目は解決しません",
+  "果たされなかった約束として残します",
   "六箇所",
 ]
 must_not_say = ["解決済み", "E3 は解消"]
@@ -266,7 +266,7 @@ present = false
 [[open_item]]
 id = "E4"
 heading_pattern = "^## E4 —"
-must_say = ["この項目は解決しない", "欠落である", "違反していない"]
+must_say = ["この項目は解決しません", "欠落です", "違反していない"]
 
 [[open_item]]
 id = "E1"
