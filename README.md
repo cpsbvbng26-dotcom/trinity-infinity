@@ -49,6 +49,12 @@ were not independently derived by a human.**
 `claims_audit.py` (32), `check_errata.py` (108, needs pypdf), `check_route.py` (143).
 Dependencies are in `requirements.txt`. All four run in CI on every push.
 
+**Closed.** On 2026-09-29 the series was closed as a theory. There will be no Series IV.
+The three papers stay as a learning record. What follows them is a teaching module in
+[trinity-operator](https://github.com/cpsbvbng26-dotcom/trinity-operator), written in the
+notation of the Friedkin–Johnsen literature. The errata and the route record stay open for
+corrections.
+
 **Where the record lives.** Route of the rediscovery: [ROUTE.md](ROUTE.md). Errata:
 [ERRATA.md](ERRATA.md). Cross-repository correction register:
 [self-correction](https://github.com/cpsbvbng26-dotcom/self-correction). Which source is
@@ -433,6 +439,18 @@ Series III はこの事実を特定したうえで、それが「三」の文化
 - Young, D. M. (1971). *Iterative Solution of Large Linear Systems*. Academic Press.
 
 内容を引き写してはいません。「既知である」ことの出典として挙げています。
+
+## この系列は閉じた
+
+2026-09-29 に、この系列を理論として伸ばすことをやめました。Series IV は出しません。
+三篇は、既知の模型の特殊例に独学で行き着いた学習の記録として、このまま残します。
+
+続きは理論の形を取りません。[trinity-operator](https://github.com/cpsbvbng26-dotcom/trinity-operator)
+の教材が引き継ぎます。題は *The Friedkin–Johnsen model with a cyclic influence matrix* です。
+新しい枠組みとしてではなく、文献の模型の記号で、三篇がどこを取り違えたかを一回ずつ扱います。
+
+閉じたのは、新しいものを足すことです。正誤表と経路の記録は、見つかった誤りを書き足す場として
+続けます。凍結された三篇の PDF は、これまでどおり直しません。
 
 ## 撤回されたこと
 
