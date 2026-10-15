@@ -266,12 +266,12 @@ _want = ["10.5281/zenodo.22058624", "10.5281/zenodo.22058777", "10.5281/zenodo.2
 _bad = [d for d in _want if d not in _en]
 _old = "10.5281/zenodo.17173703"
 _superseded = "superseded" in _en and _old in _en
-_notauthor = "AI is not an author" in _en
+_notauthor = "No language model is an author" in _en
 _notpeer = "not peer-reviewed" in _en
 check("README の英語欄が、三本の DOI と旧版の扱いを述べている",
       not _bad and _superseded and _notauthor and _notpeer,
       "欠け: " + ", ".join(_bad) if _bad else
-      ("旧版 superseded %s / AI is not an author %s / not peer-reviewed %s"
+      ("旧版 superseded %s / No language model is an author %s / not peer-reviewed %s"
        % (_superseded, _notauthor, _notpeer)))
 
 # 散文に「NN 項目」と書いたら、その NN を機械で確かめる。
