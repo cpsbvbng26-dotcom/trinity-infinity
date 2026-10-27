@@ -621,5 +621,5 @@ II と III が「これを一般化する」と述べている定理の、**撤�
 ## 著者
 
 根本卓哉（Takuya Nemoto）
-[プロフィール](https://cpsbvbng26-dotcom.github.io/cpsbvbng26-dotcom/) ｜
+[プロフィール](https://cpsbvbng26-dotcom.vercel.app/) ｜
 [ORCID](https://orcid.org/0009-0000-1406-0547)
