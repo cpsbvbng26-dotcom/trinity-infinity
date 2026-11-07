@@ -317,6 +317,14 @@ check("コメント欄の文面が、三つの不備を述べている",
 check("コメント欄の文面が、新しい結果が無いことを述べている",
       "contains no new result" in _comment)
 
+# Zenodo が版を出したときに与えた DOI（DataCite：24033961 が v1.0.0 で、24033960 の版である）。
+_cff = open(os.path.join(ROOT, "CITATION.cff"), encoding="utf-8").read()
+_readme = open(os.path.join(ROOT, "README.md"), encoding="utf-8").read()
+check("CITATION.cff と README が、このリポジトリの版 1.0.0 の DOI とすべての版の DOI を挙げる",
+      all(('value: "%s"' % d) in _cff and ("(https://doi.org/%s)" % d) in _readme
+          for d in ("10.5281/zenodo.24033961", "10.5281/zenodo.24033960"))
+      and 'doi: "10.5281/zenodo.24033960"' in _cff and 'version: "1.0.0"' in _cff)
+
 TOTAL = len(results) + len(extra) + 1
 CLAIMS = [
     ("README.md", r"PDF から文字を取り出して突き合わせる \| (\d+) \|"),

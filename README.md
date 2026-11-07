@@ -46,7 +46,7 @@ by the model. The frozen PDFs do not say this; see `E4` in [ERRATA.md](ERRATA.md
 were not independently derived by a human.**
 
 **Verification.** `python3 verification/independent_check.py` (15 checks),
-`claims_audit.py` (32), `check_errata.py` (108, needs pypdf), `check_route.py` (143).
+`claims_audit.py` (32), `check_errata.py` (109, needs pypdf), `check_route.py` (143).
 Dependencies are in `requirements.txt`. All four run in CI on every push.
 
 **Closed.** On 2026-09-29 the series was closed as a theory. There will be no Series IV.
@@ -504,7 +504,7 @@ Zenodo に生きたまま残っています。だから何を撤回したかを�
 | --- | --- | --- |
 | [`verification/independent_check.py`](verification/independent_check.py) | 定理は正しいか。 証明の記述から独立に実装して、同じ結論に達するか | 15 |
 | [`verification/claims_audit.py`](verification/claims_audit.py) | 紙面に印字されている数字は、その通りに出るか。 論文から数値を書き写し、隣に計算し直した値を並べる | 32 |
-| [`verification/check_errata.py`](verification/check_errata.py) | 正誤表が紙面について述べていることは、紙面と合うか。 PDF から文字を取り出して突き合わせる | 108 |
+| [`verification/check_errata.py`](verification/check_errata.py) | 正誤表が紙面について述べていることは、紙面と合うか。 PDF から文字を取り出して突き合わせる | 109 |
 | [`verification/check_route.py`](verification/check_route.py) | [ROUTE.md](ROUTE.md) の九段階は、他の文書と食い違わないか。 | 143 |
 
 ```
@@ -528,7 +528,7 @@ python3 verification/check_route.py
 元のスクリプトが何を計算していたかは、もう分かりません。
 
 その 6 箇所が本当に紙面に印字されているかは、`check_errata.py` が PDF から文字を取り出して
-突き合わせる（108 項目）。E1・E2 の引用も、名乗る件数も、未解決の項目が
+突き合わせる（109 項目）。E1・E2 の引用も、名乗る件数も、未解決の項目が
 「解決済み」に書き換わっていないかも、同じように当たります。
 
 条件は [`verification/audit.toml`](verification/audit.toml) に宣言してあり、当たるのは
@@ -572,6 +572,11 @@ A Generalization and Retrospective. Zenodo. https://doi.org/10.5281/zenodo.22058
 **改訂前の版**（2025年、この系列が訂正の対象としているもの）は別の DOI をもつ:
 [10.5281/zenodo.17173703](https://doi.org/10.5281/zenodo.17173703)。
 どちらを参照したのかが読者に分かる形で引用すること。
+
+このリポジトリ自体も、版を出すたびに Zenodo に保存しています。
+版 1.0.0 の DOI は [10.5281/zenodo.24033961](https://doi.org/10.5281/zenodo.24033961) です。
+すべての版に共通する DOI は [10.5281/zenodo.24033960](https://doi.org/10.5281/zenodo.24033960) で、いちばん新しい版を指します。
+これは PDF・正誤表・検証をまとめたリポジトリの記録です。論文を引くときは、上の三本の DOI を使います。
 
 ### 正誤
 
