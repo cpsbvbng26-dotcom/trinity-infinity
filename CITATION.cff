@@ -24,7 +24,16 @@ keywords:
   - preprint revision
   - reproducibility
 license: CC-BY-4.0
-date-released: 2026-09-05
+version: "1.0.0"
+date-released: "2026-11-07"
+doi: "10.5281/zenodo.24033960"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24033960"
+    description: このリポジトリのすべての版。いちばん新しい版を指す
+  - type: doi
+    value: "10.5281/zenodo.24033961"
+    description: このリポジトリの版 1.0.0
 references:
   - type: article
     title: >-
