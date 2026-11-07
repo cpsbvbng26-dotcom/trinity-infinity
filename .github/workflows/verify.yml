@@ -11,8 +11,8 @@ jobs:
     name: 定理 15 項目 / 印字された数値 32 項目 / 正誤表の監査 109 項目 / 経路 143 項目
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
       - run: pip install -r requirements.txt
