@@ -628,3 +628,5 @@ II と III が「これを一般化する」と述べている定理の、**撤�
 根本卓哉（Takuya Nemoto）
 [プロフィール](https://cpsbvbng26-dotcom.vercel.app/) ｜
 [ORCID](https://orcid.org/0009-0000-1406-0547)
+
+責任の範囲は、[免責事項](https://github.com/cpsbvbng26-dotcom/cpsbvbng26-dotcom/blob/main/DISCLAIMER.md)に定めています。
