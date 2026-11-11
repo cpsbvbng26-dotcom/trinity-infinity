@@ -26,3 +26,13 @@ jobs:
         run: python3 verification/check_errata.py
       - name: 経路の表が筋を保っているか
         run: python3 verification/check_route.py
+      # 前提の一覧と年表は、trinity-operator の文書と突き合わせる。誤変換の検査が
+      # 写しの中まで走らないよう、この checkout は誤変換の検査より後に置く。
+      - uses: actions/checkout@v7
+        with:
+          repository: cpsbvbng26-dotcom/trinity-operator
+          path: _sibling/trinity-operator
+      - name: 札・位置づけ・前提の一覧・年表・関連識別子
+        env:
+          TRINITY_OPERATOR: _sibling/trinity-operator
+        run: python3 verification/check_pages.py
