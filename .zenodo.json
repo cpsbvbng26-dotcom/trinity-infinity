@@ -33,6 +33,11 @@
       "identifier": "10.5281/zenodo.22058964",
       "relation": "isSupplementTo",
       "scheme": "doi"
+    },
+    {
+      "identifier": "10.2139/ssrn.7446961",
+      "relation": "isSupplementTo",
+      "scheme": "doi"
     }
   ],
   "notes": "The repository was written with Claude Code (Anthropic) at the author's request. The author reviewed it and is responsible for it. Claude is not an author. The papers are preprints and have not been peer-reviewed. The texts and the papers are CC BY 4.0; the verification code is MIT (LICENSE-CODE)."
