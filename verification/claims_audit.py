@@ -499,4 +499,23 @@ if mismatches:
     for m in mismatches:
         print("  - " + m)
     sys.exit(1)
+
+# verification/README.md は篇ごとの件数を見出しに書いている。Series III は N6 を
+# 足したときに 5 から 6 になったが、見出しは 5 のまま残っていた。見出しの数を、
+# ここで数えた件数と突き合わせる。突き合わせは行に数えない（32 項目は動かない）。
+import os  # noqa: E402
+import re  # noqa: E402
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "README.md"),
+          encoding="utf-8") as fh:
+    heads = dict(re.findall(r"^## Series (I{1,3})（(\d+) 項目）", fh.read(), re.M))
+wrong = ["Series %s: 見出し %s / 実際 %d" % (p_, heads.get(p_, "無し"),
+                                          sum(1 for r in rows if r[0] == p_))
+         for p_ in ("I", "II", "III")
+         if heads.get(p_) != str(sum(1 for r in rows if r[0] == p_))]
+if wrong:
+    print()
+    print("verification/README.md の見出しが名乗る篇ごとの件数が、実際と合いません:")
+    for w in wrong:
+        print("  - " + w)
+    sys.exit(1)
 print("三本の論文に印字されている数値は、すべて計算し直して確認できました。")

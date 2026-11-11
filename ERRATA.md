@@ -3,7 +3,7 @@
 三本の PDF には手を入れない方針です。本文を書き換える代わりに、見つかった不備をここに記録します。
 どれも定理・証明・数値には影響しません。影響するのは、読者が正しい版に辿り着けるかどうかです。
 
-最終更新: 2026年9月8日
+最終更新: 2026年11月11日
 
 ---
 
@@ -248,6 +248,25 @@ Series I は Euler 1735 も本文にのみ年号を置き、参考文献欄に�
 
 主張の中身は動きません。八点の凸包・体積 4.00・すべてが端点であることは
 [`claims_audit.py`](verification/claims_audit.py) で確認済みです。
+
+### 例の点は支えられない（2026-11-11 に足した）
+
+上の「例のほうも、単独では正しい」は、あとで別のリポジトリが否定しました。
+[trinity-operator](https://github.com/cpsbvbng26-dotcom/trinity-operator) の
+[`games/README.md`](https://github.com/cpsbvbng26-dotcom/trinity-operator/blob/main/games/README.md)
+が、この例を命題 3 として扱っています。結論は次のとおりです。
+
+> **Proposition 3.** For no δ < 1 is `(2,4,2)` an equilibrium payoff of the repeated
+> `G_3`, subgame-perfect or Nash, with or without mixed strategies or public
+> randomization.
+
+同じ頁は、この命題が E7 を正すと書いています。
+
+> This corrects the Series II example. It also corrects `E7` of the Trinity-Infinity
+> errata, which describes the example as correct on its own.
+
+上の段落は、2026年9月8日に書いたまま残します。例の点が `eventually sustainable` だという
+印字は、命題 3 の結論と両立しません。
 
 ---
 
@@ -706,7 +725,7 @@ Series I にこの問題はありません。`a` が一様なら `D = αI` で `
 正しい向きの事実は
 [trinity-operator](https://github.com/cpsbvbng26-dotcom/trinity-operator) が
 実装しており、[作用素のページ](https://cpsbvbng26-dotcom.github.io/cpsbvbng26-dotcom/trinity.html)
-がその場で計算します。紙面に無いのは、そこと繋がっていません。
+がその場で計算します。紙面は、そこと繋がっていません。
 
 外部の査読（Stanford Agentic Reviewer、2026年9月）が、この文書もリポジトリも
 渡されずに `(DP)³ = (a₁a₂a₃)I` を導出しました。機械で当たっている
@@ -728,7 +747,7 @@ Series II 第4節は `The feasible set is the convex hull of the eight stage pay
 E1・E2 は三本の参考文献欄を突き合わせて見つけました。E3 は配布ファイルの一覧と、著者への確認です。
 **E5・E6・E7 と N4・N5 は、三本を通しで読み直して見つけた**（2026年9月8日）。
 N8 は、こちらの読み直しと外部の査読が、互いを知らずに同じ箇所を挙げたものです。
-N9・N10 は外部の査読が出しました。N9 は、この系列でいちばん重い見落としです。
+N6・N7・N9・N10 は外部の査読が出しました。N9 は、この系列でいちばん重い見落としです。
 E6 は数え上げるだけなので、機械が当たっている —— 本文がバナッハを名指ししていること、
 そして三本の参考文献欄にその項目が無いことを、PDF から取り出して確かめる。
 
