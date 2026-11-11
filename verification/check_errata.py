@@ -164,7 +164,7 @@ _条件 = all(x in _rd for x in (
     "論文としての価値は、真であることに尽きる。ただし、いまは条件つきです。",
     "だが、貢献は主張しています。",
     "`E8` が重大度・高で立っているあいだ、この四文は帰属の側で立ちません",
-    "帰属の修正が入ったあとに、その用途を全部果たす",
+    "帰属の修正が入ったあとに、その用途を全部果たします",
     "下限と上限が一致しているとは、現在形では書けません"))
 check("E8 —— 高で立つあいだ、結論の評決が条件つきになっている",
       (not _高) or _条件,
@@ -191,7 +191,7 @@ check("E8 —— 相手の格を書いてある",
 check("E8 —— 格の目盛りの、正直な側も書いてある",
       "目盛りの正直な側も書きます。" in _doc
       and "社会学全域の地標ではありません" in _doc
-      and "**ここは未照合である**（`他者の証言`）" in _doc)
+      and "**ここは未照合です**（`他者の証言`）" in _doc)
 check("E8 —— 何を落とした特殊例かを書いてある",
       "### そして、何を落とした特殊例か" in _doc
       and "各主体がちょうど一人の隣人だけを聴く輪" in _doc
@@ -328,11 +328,11 @@ check("CITATION.cff と README が、このリポジトリの版 1.0.0 の DOI �
 TOTAL = len(results) + len(extra) + 1
 CLAIMS = [
     ("README.md", r"PDF から文字を取り出して突き合わせる \| (\d+) \|"),
-    ("README.md", r"突き合わせる（(\d+) 項目）"),
+    ("README.md", r"突き合わせます（(\d+) 項目）"),
     ("README.md", r"`check_errata\.py` \((\d+), needs pypdf\)"),
     ("verification/README.md", r"`check_errata\.py` \|[^|]*\| (\d+) \|"),
     ("verification/README.md", r"python3 check_errata\.py\s+# (\d+) 項目"),
-    ("verification/README.md", r"突き合わせる（(\d+) 項目）"),
+    ("verification/README.md", r"突き合わせます（(\d+) 項目）"),
     (".github/workflows/verify.yml", r"正誤表の監査 (\d+) 項目"),
 ]
 claimed = []
