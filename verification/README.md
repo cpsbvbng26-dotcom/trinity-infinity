@@ -21,6 +21,8 @@ python3 check_errata.py         # 109 項目（pypdf が要る）
 python3 check_route.py          # 143 項目
 python3 check_text.py           # 誤変換・使わないと決めた語
 python3 check_pages.py          # 冒頭の札、前提の一覧、年表、関連識別子
+python3 check_secrets.py        # 秘密情報と個人の連絡先
+python3 check_meta.py           # 散文が名乗る件数、依存、ワークフロー、様式、要旨、開示の表
 python3 run_all.py              # CI が回すものを全部
 ```
 
