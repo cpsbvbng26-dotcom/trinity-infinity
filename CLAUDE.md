@@ -145,6 +145,8 @@ python3 verification/claims_audit.py       # 印字された数値 32 項目
 python3 verification/check_errata.py       # 正誤表の監査 109 項目
 python3 verification/check_route.py        # 経路
 python3 verification/check_pages.py        # 札・前提の一覧・年表（要: 隣の trinity-operator）
+python3 verification/check_secrets.py      # 秘密情報と個人の連絡先
+python3 verification/check_meta.py         # 散文の件数・依存・ワークフロー・様式・要旨・開示
 python3 verification/run_all.py            # CI の並びを verify.yml から読んで全部回す
 ```
 

@@ -37,6 +37,9 @@ python3 verification/independent_check.py   # 定理
 python3 verification/claims_audit.py        # 印字された数値
 python3 verification/check_errata.py        # 正誤表の監査
 python3 verification/check_route.py         # 経路
+python3 verification/check_meta.py          # 散文の件数・依存・ワークフロー・様式・要旨・開示
+python3 verification/check_secrets.py       # 秘密情報と個人の連絡先
+python3 verification/run_all.py             # CI が回すものを全部（check_pages.py は隣の trinity-operator が要る）
 ```
 
 通ってから出します。乱数を使う検査は種を固定してあります。

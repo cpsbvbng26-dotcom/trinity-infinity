@@ -542,6 +542,9 @@ python3 verification/run_all.py
 CI はこのほかに、`verification/check_pages.py` で冒頭の札と位置づけ、
 [前提の一覧](ASSUMPTIONS.md)、[年表](TIMELINE.md)、保存版の関連識別子を当たります。
 前提の一覧と年表は trinity-operator の文書と突き合わせるので、隣にその写しが要ります。
+`verification/check_secrets.py` は、鍵の形と、許していない連絡先が混ざっていないかを走査します。
+`verification/check_meta.py` は、散文が名乗る検証の件数を四本を回して数え、依存とワークフローの固定、
+安全の窓口と誤りの知らせの様式、保存版の要旨、言語モデルの開示の表を当たります。
 
 上の二本は NumPy のみを必要とし、乱数種を固定しています。47 項目すべてが通ります。
 **GitHub Actions が push ごとに四本すべてを実行している** —— 上のバッジが、いま通っているかどうかです。
@@ -644,6 +647,14 @@ II と III が「これを一般化する」と述べている定理の、**撤�
 記録から確認できること。 このリポジトリのコミットは `Claude` 名義で、
 末尾に作業セッションを示す `Claude-Session:` トレーラが付いています。
 `git log --author=Claude` で辿れます。
+
+使った道具と、確かめた人を表にします。
+
+| 道具 | 使ったところ | 確かめた人 |
+| --- | --- | --- |
+| ChatGPT（OpenAI） | 2025年10月の初版の生成。記号 `Ⅲ∞` に写像・不動点・収束・定理を当てはめた | 人の手で独立に導いてはいない。紙面に記載が無いことは [ERRATA.md](ERRATA.md) の `E4` |
+| Claude（Anthropic） | 三本の起草・数学的定式化・計算による検証の助力 | 著者。各論文の末尾に開示文がある |
+| Claude Code（Anthropic） | README・`ERRATA.md`・`CITATION.cff`・`verification/` のスクリプトの作成と実行 | 著者。数値はすべて実行して得たもの |
 
 ## この記録の外側
 
