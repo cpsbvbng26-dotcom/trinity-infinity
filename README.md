@@ -1,5 +1,13 @@
 # Trinity-Infinity
 
+種類：思考実験・予想　状態：凍結
+
+この系列は思考実験（概念モデル）であり、主張するのは一つの作用素が唯一の不動点へ収束するという縮小写像の事実だけで、新しい数学理論は主張せず、ゲーム理論・論理学・工学の例は例示にとどまります。
+
+三篇は、学部一年次までに独学で進めた成果です。PDF は凍結しており、改変も再生成もしません。
+凍結は三篇の紙面についての決めです。正誤表と検査は、これからも書き足します。
+前提の一覧は [ASSUMPTIONS.md](ASSUMPTIONS.md)、年表は [TIMELINE.md](TIMELINE.md) にあります。
+
 [![検証](https://github.com/cpsbvbng26-dotcom/trinity-infinity/actions/workflows/verify.yml/badge.svg)](https://github.com/cpsbvbng26-dotcom/trinity-infinity/actions/workflows/verify.yml)
 
 > [!IMPORTANT]
@@ -11,6 +19,8 @@
 
 <details>
 <summary><b>In English</b> — what to cite, what is claimed, who wrote what</summary>
+
+Type: Thought experiment and conjecture · Status: Frozen
 
 **What this is.** Three preprints (English, on Zenodo) and an independent audit of them.
 The 2025 first edition claimed a novel framework. The 2026 revision imposed two conditions —
@@ -54,6 +64,15 @@ The three papers stay as a learning record. What follows them is a teaching modu
 [trinity-operator](https://github.com/cpsbvbng26-dotcom/trinity-operator), written in the
 notation of the Friedkin–Johnsen literature. The errata and the route record stay open for
 corrections.
+
+**First-year work, frozen.** The series is self-study completed by the end of the
+author's first undergraduate year. The three PDFs are frozen. Errata and checks may still be
+added.
+
+**Language of the code.** The verification scripts use English identifiers, but their
+comments, docstrings and printed messages are in Japanese. The numbers they print and the
+pass or fail exit code do not depend on the language. The table under "検証" lists what each
+script checks.
 
 **Where the record lives.** Route of the rediscovery: [ROUTE.md](ROUTE.md). Errata:
 [ERRATA.md](ERRATA.md). Cross-repository correction register:
@@ -513,6 +532,16 @@ python3 verification/claims_audit.py
 python3 verification/check_errata.py    # pypdf が要る
 python3 verification/check_route.py
 ```
+
+CI が回すものを手元で一度に回すには、次の一行を使います。並びは CI の設定から読みます。
+
+```
+python3 verification/run_all.py
+```
+
+CI はこのほかに、`verification/check_pages.py` で冒頭の札と位置づけ、
+[前提の一覧](ASSUMPTIONS.md)、[年表](TIMELINE.md)、保存版の関連識別子を当たります。
+前提の一覧と年表は trinity-operator の文書と突き合わせるので、隣にその写しが要ります。
 
 上の二本は NumPy のみを必要とし、乱数種を固定しています。47 項目すべてが通ります。
 **GitHub Actions が push ごとに四本すべてを実行している** —— 上のバッジが、いま通っているかどうかです。

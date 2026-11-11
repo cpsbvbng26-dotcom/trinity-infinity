@@ -143,7 +143,13 @@ python3 verification/check_text.py         # 誤変換
 python3 verification/independent_check.py  # 定理 15 項目
 python3 verification/claims_audit.py       # 印字された数値 32 項目
 python3 verification/check_errata.py       # 正誤表の監査 109 項目
+python3 verification/check_route.py        # 経路
+python3 verification/check_pages.py        # 札・前提の一覧・年表（要: 隣の trinity-operator）
+python3 verification/run_all.py            # CI の並びを verify.yml から読んで全部回す
 ```
+
+`ASSUMPTIONS.md` と `TIMELINE.md` は手で書いたもので、生成物ではない。
+前提と結論は紙面と展望から取る。紙面の文は PDF に一字一句あるものだけを引く。
 
 **`pdf/` の PDF は凍結されている。改変も再生成もしない。**
 誤りは `ERRATA.md` のほうに書く。直せないものは `self-correction` に記録する。
