@@ -140,9 +140,9 @@
 
 ```
 python3 verification/check_text.py         # 誤変換
-python3 verification/independent_check.py  # 定理 13 項目
-python3 verification/claims_audit.py       # 印字された数値 31 項目
-python3 verification/check_errata.py       # 正誤表の監査 51 項目
+python3 verification/independent_check.py  # 定理 15 項目
+python3 verification/claims_audit.py       # 印字された数値 32 項目
+python3 verification/check_errata.py       # 正誤表の監査 109 項目
 ```
 
 **`pdf/` の PDF は凍結されている。改変も再生成もしない。**
