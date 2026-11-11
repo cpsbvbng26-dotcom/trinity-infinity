@@ -249,6 +249,25 @@ Series I は Euler 1735 も本文にのみ年号を置き、参考文献欄に�
 主張の中身は動きません。八点の凸包・体積 4.00・すべてが端点であることは
 [`claims_audit.py`](verification/claims_audit.py) で確認済みです。
 
+### 例の点は支えられない（2026-11-11 に足した）
+
+上の「例のほうも、単独では正しい」は、あとで別のリポジトリが否定しました。
+[trinity-operator](https://github.com/cpsbvbng26-dotcom/trinity-operator) の
+[`games/README.md`](https://github.com/cpsbvbng26-dotcom/trinity-operator/blob/main/games/README.md)
+が、この例を命題 3 として扱っています。結論は次のとおりです。
+
+> **Proposition 3.** For no δ < 1 is `(2,4,2)` an equilibrium payoff of the repeated
+> `G_3`, subgame-perfect or Nash, with or without mixed strategies or public
+> randomization.
+
+同じ頁は、この命題が E7 を正すと書いています。
+
+> This corrects the Series II example. It also corrects `E7` of the Trinity-Infinity
+> errata, which describes the example as correct on its own.
+
+上の段落は、2026年9月8日に書いたまま残します。例の点が `eventually sustainable` だという
+印字は、命題 3 の結論と両立しません。
+
 ---
 
 ## E8 — Series I が名指しした分野の文献が、三本のどこにも無い
