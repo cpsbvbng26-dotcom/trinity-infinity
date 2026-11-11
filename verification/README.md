@@ -20,7 +20,12 @@ python3 claims_audit.py         # 32 項目
 python3 check_errata.py         # 109 項目（pypdf が要る）
 python3 check_route.py          # 143 項目
 python3 check_text.py           # 誤変換・使わないと決めた語
+python3 check_pages.py          # 冒頭の札、前提の一覧、年表、関連識別子
+python3 run_all.py              # CI が回すものを全部
 ```
+
+`check_pages.py` は、前提の一覧と年表を trinity-operator の文書と突き合わせます。
+隣にその写しが要ります。場所は環境変数 `TRINITY_OPERATOR` で渡せます。
 
 上の二本は NumPy のみを必要とします。乱数種は固定してあるので、何度実行しても同じ数値が出ます。
 通れば、それぞれ終了コード 0 を返します。
