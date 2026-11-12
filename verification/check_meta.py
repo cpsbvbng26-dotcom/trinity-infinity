@@ -165,8 +165,12 @@ SECURITY = read("SECURITY.md")
 check("SECURITY.md があり、日本語と英語の欄を持つ",
       SECURITY.startswith("# 安全の問題の知らせ方 / Reporting a security issue\n")
       and "\n## 日本語\n" in SECURITY and "\n## English\n" in SECURITY)
-check("SECURITY.md が、非公開の報告の入口と、PDF を直さず正誤表で直すことを書いている",
-      "Report a vulnerability" in SECURITY and "直すのは正誤表の側です。" in SECURITY)
+# 2026-11-12。GitHub の非公開の報告は有効になっていない。在る窓口（ORCID の記録のメール）だけを書く。
+check("SECURITY.md が、メールの窓口（ORCID の記録）と、GitHub の非公開の報告が無いことと、PDF を直さず正誤表で直すことを書いている",
+      "[ORCID の記録](https://orcid.org/0009-0000-1406-0547)にあるメールアドレス" in SECURITY
+      and "このリポジトリでは有効になっていません" in SECURITY and "is not enabled for this repository" in SECURITY
+      and "Report a vulnerability" not in SECURITY
+      and "直すのは正誤表の側です。" in SECURITY)
 ERR = read(os.path.join(".github", "ISSUE_TEMPLATE", "error-report.yml"))
 check("誤りの知らせの様式があり、erratum のラベルを付ける", "labels: [erratum]" in ERR)
 for field in ("where", "printed", "correct", "basis", "found_by"):
