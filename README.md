@@ -33,7 +33,9 @@ repository records what survived.
 current. Series II and III print that number in their bibliographies where they mean the
 revision; that is a defect of the frozen PDFs, recorded as E1 in [ERRATA.md](ERRATA.md).
 Series II is also deposited on SSRN as `10.2139/ssrn.7446961`; the text is identical and the
-Zenodo DOI remains canonical. SSRN screening checks scope and format, not correctness.
+Zenodo DOI remains canonical. SSRN writes that it must determine if a paper meets the criteria of
+scholarly content, and that it does not peer review preprints; acceptance there is not a finding
+on correctness.
 
 **Status.** Preprints, not peer-reviewed. A DOI does not imply peer review. Claims listed
 under "撤回されたこと" were **withdrawn in revision**; this is not a formal retraction, and
@@ -187,7 +189,8 @@ Series I は出していません。取り消しても、上の一行は変わ�
 
 Series II は SSRN にも登録されています —— [**10.2139/ssrn.7446961**](https://doi.org/10.2139/ssrn.7446961)。
 同一の本文です。正は Zenodo の [10.5281/zenodo.22058777](https://doi.org/10.5281/zenodo.22058777) です。
-SSRN の選別は主題と体裁を見るものであり、査読ではありません。
+SSRN は、論文が学術的な内容の基準を満たすかを決めると書いています（`SSRN must determine if a paper meets the criteria of scholarly content`）。
+SSRN は、プレプリントを査読しないとも書いています（`SSRN does not peer review preprints`）。
 
 本文は PDF のままです。Markdown への書き起こしはしていません。数式の下付き文字が抽出時に
 別行へ分解されるため、起こすには数式を組み直す必要があり、それは論文を変えることになります。
@@ -583,6 +586,8 @@ PDF そのものの SHA-256 も宣言してあるので、一次資料が差し�
 
 **注記:** 三本の PDF 自体にはライセンスの記載がありません。著者の他のプレプリントに合わせて CC BY 4.0 としています。
 掲載先（Zenodo）の設定と異なる場合は、掲載先を正とします。
+
+このリポジトリが引き、または引用を確かめるために置いている他人の文は、CC BY 4.0 でも MIT でも許諾しておらず、それぞれの権利者のものです。
 
 ## 引用
 
