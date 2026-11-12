@@ -77,6 +77,18 @@ Sophaxis の取り寄せの仕事を走らせて e-Gov から取り寄せ、cpsb
 | README「ライセンス」 | 著作権法第21条 | 取り寄せた文は「著作者は、その著作物を複製する権利を専有する。」と定める（cpsbvbng26-dotcom の `verification/statutes.json`、SHA-256 `a85d04f2fd20d7867d5579bee40676b13405c58ea7fd7eb27f1e7a5a03bda100`）。許せるのは、許す者が権利を持つものだけである。ライセンスの文が、他人の文まで許すと読めないこと | README のライセンスの節は、文書の CC BY 4.0 とコードの MIT だけを書き、引いた他人の文の扱いを書いていなかった。Sophaxis は、最初の見落としの節で同じ一文を足していたが、10 のリポジトリと deposit-check には届いていなかった。上の点検の表の「README「ライセンス」、LICENSE、LICENSE-CODE、CITATION.cff、.zenodo.json」の行は問題なしとしていたが、他人の文の扱いを見ていなかった | 漏れ | README のライセンスの節に「このリポジトリが引き、または引用を確かめるために置いている他人の文は、CC BY 4.0 でも MIT でも許諾しておらず、それぞれの権利者のものです。」を足した。`check_ecosystem.js` の 12l が、10 のリポジトリと deposit-check の README（英語の README を含む）にこの一文があることを見る。2026-11-12 に Claude が決めました。Sophaxis の README と同じ範囲を、同じ形で書くためです |
 | CITATION.cff の message と .zenodo.json の notes | 著作権法第21条 | 同上。引用情報の license の欄は、どの部分に掛かるかを書けないので、その範囲を別の欄で書くこと | CITATION.cff と .zenodo.json の license の欄は CC BY 4.0 で、notes は文書と論文が CC BY 4.0、検証のコードが MIT とだけ書いていた。欄が掛かる範囲は書いていなかった。上の点検の表の「README「ライセンス」、LICENSE、LICENSE-CODE、CITATION.cff、.zenodo.json」の行は問題なしとしていたが、欄の掛かる範囲と他人の文を見ていなかった | 表現 | message と notes に、文書と論文が CC BY 4.0、検証のコードが MIT で、license の欄は文書と論文だけに掛かることを書いた。他人の文は許諾していないとも、和英で書いた。`check_ecosystem.js` の 12l が、二つのファイルにこの文があり、置き方が目録の licenceLayout と同じことを見る。2026-11-12 に Claude が決めました。Sophaxis の CITATION.cff が三度目の見落としの節で書いた範囲の文に、10 のリポジトリと deposit-check を揃えるためです |
 
+## 2026-11-12 の続き：六度目の見落とし
+
+読むだけの点検を、六度目に別の手で行いました。
+上の節が見落としていたものが見つかりました。
+直した日は、日本時間で 2026-11-13 です。
+前の行は、そのとき何を確かめたかの記録なので、消していません。
+同じ誤りの点検は、[cpsbvbng26-dotcom の記録](https://github.com/cpsbvbng26-dotcom/cpsbvbng26-dotcom/blob/main/docs/legal-audit-2026-11-12.md)と、researcher-profile の記録の同じ見出しの節にもあります。
+
+| 箇所 | 法令と条 | 要件 | 事実 | 判定 | 対応 |
+| --- | --- | --- | --- | --- | --- |
+| ERRATA.md の E8「どの程度のモデルか」の表の、2011 年の行 | なし（表示の正確さ） | 他人の本の著者を、書誌の記録が言うとおりに書くこと | 行は「Cambridge University Press から単著の理論書 *Social Influence Network Theory: …*」と書いていた。Crossref の記録（https://api.crossref.org/works/10.1017/cbo9780511976735 、2026-11-13 に日本時間で読んだ）は、type を「monograph」、author を Noah E. Friedkin（sequence「first」）と Eugene C. Johnsen（sequence「additional」）の二人、publisher を「Cambridge University Press」、issued を 2011-04-18 と返した。単著は一人で書いた本を指すので、記録と食い違っていた | 誤り | 行を「Cambridge University Press から、Noah E. Friedkin と Eugene C. Johnsen の共著の理論書」に直した。直したのは本の説明だけで、E8 が記録している出来事の記述は変えていない。`check_errata.py` の「E8 —— 相手の格を書いてある」が、共著と書くことを求め、Friedkin・Johnsen の名か本の題と同じ行に単著や single-authored があれば落ちる。件数は 111 項目のままです。直す前の行に戻すと落ち、直した行に「（単著）」を足しても落ちることを確かめた。2026-11-13 に Claude が決めました。Crossref の記録が著者を二人と返すからです |
+
 ## 調べた法令
 
 - 著作権法（第21条、第23条）
