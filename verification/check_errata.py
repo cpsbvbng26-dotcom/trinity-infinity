@@ -180,12 +180,21 @@ check("E8 —— 開区間の狭さが何を買っているかを書いてある
       "開区間の狭さは、代金と引き換えに何かを買っています。" in _doc
       and "狭さは、無条件性の購入です" in _doc)
 
+# 2026-11-13（六度目の見落とし）。2011 年の本を「単著の理論書」と書いていた。Crossref の記録
+# （api.crossref.org/works/10.1017/cbo9780511976735）は type を monograph、著者を Friedkin と Johnsen の
+# 二人と返す。直したのは本の説明だけで、何が起きたかの記述は変えていない。Friedkin・Johnsen の名か
+# 本の題と同じ行に「単著」や single-authored を置けば落とす。
+_単著 = [l for l in _doc.split("\n")
+       if re.search(r"Friedkin|Johnsen|Social Influence Network Theory", l)
+       and re.search(r"単著|single-authored|sole-authored|single author|sole author", l, re.I)]
 # **「既知だった」だけでは、相手の格が分からない。**周縁の骨董と旗艦では、
 # 同じ「特殊例」でも意味が違う。**格を書き、同時に何を落とした特殊例かも書く。**
 check("E8 —— 相手の格を書いてある",
       "### どの程度のモデルか" in _doc
       and "**DeGroot と Friedkin–Johnsen の二つを並べて挙げる**" in _doc
       and "Social Influence Network Theory" in _doc
+      and "Noah E. Friedkin と Eugene C. Johnsen の共著の理論書" in _doc
+      and not _単著
       and "*Science* 354(6310), 321–326" in _doc
       and "最小の追加で最大の差分です" in _doc)
 check("E8 —— 格の目盛りの、正直な側も書いてある",
