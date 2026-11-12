@@ -4,6 +4,9 @@ message: >-
   個々の論文を引用する場合は、各 PDF の書誌情報を用いてください。
   なお Series II・III の参考文献欄は改訂版 Series I を初版の DOI で引用しています（ERRATA.md の E1）。
   改訂版 Series I は 10.5281/zenodo.22058624 です。
+  文書と論文は CC BY 4.0（LICENSE）、検証のコードは MIT（LICENSE-CODE）です。
+  license の欄は、文書と論文だけに掛かります。
+  このリポジトリが引き、または引用を確かめるために置いている他人の文は、CC BY 4.0 でも MIT でも許諾しておらず、それぞれの権利者のものです。
 type: dataset
 authors:
   - family-names: Nemoto
