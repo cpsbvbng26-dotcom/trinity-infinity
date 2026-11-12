@@ -367,7 +367,7 @@ FJ 1990 は French (1956)・Harary (1959)・DeGroot (1974) を**自分の極限�
 | | |
 | --- | --- |
 | 1990 / 1999 | 専門誌 *The Journal of Mathematical Sociology* の一論文と、章編の一つ |
-| 2011 | Cambridge University Press から単著の理論書 *Social Influence Network Theory: A Sociological Examination of Small Group Dynamics*（Structural Analysis in the Social Sciences 叢書） |
+| 2011 | Cambridge University Press から、Noah E. Friedkin と Eugene C. Johnsen の共著の理論書 *Social Influence Network Theory: A Sociological Examination of Small Group Dynamics*（Structural Analysis in the Social Sciences 叢書） |
 | 2016 | *Science* 354(6310), 321–326（Friedkin, Proskurnikov, Tempo, Parsegov） |
 | 現在 | 制御理論と計算機科学で使われている。平衡解の推定が標準的な対象になっている |
 
