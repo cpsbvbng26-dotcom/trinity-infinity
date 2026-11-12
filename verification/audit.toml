@@ -223,6 +223,16 @@ extract = "(\\d+) 件すべて通りました"
 pattern = "経路 (\\d+) 項目"
 in = [".github/workflows/verify.yml"]
 
+# ------------------------------- N11 —— 一歩ごとの縮小を、安定に要るものと書いている
+#
+# 2026-11-12 に足した。十分条件を必要条件の形で印字している。境界の例は
+# independent_check.py の E が当たる。
+
+[[quote]]
+source = "II"
+where = "第3.2節"
+text = "is what stability actually requires"
+
 # ------------------------------------------------------------ 未解決のまま残す
 
 [[open_item]]
