@@ -25,6 +25,12 @@ The script checks four things.
   D. The original operator's non-uniqueness, reproduced independently of
      the Series I script: self-referential integration leaves every
      constant vector fixed, so the limit depends on the starting point.
+
+  E. The open interval of Series II is sufficient, not necessary. At the
+     boundary a = (1, 0.7, 0.3) the one-step constant ||DQ||_2 is 1, yet the
+     iteration still converges to a unique fixed point at the rate of the
+     spectral radius (0.21)^(1/3). Deterministic; uses no random draws, so
+     the draws of A to D are unchanged.
 """
 
 import numpy as np
@@ -134,6 +140,43 @@ def check_self_referential(n=3, trials=1000):
     return ok
 
 
+# ---------------------------------------------------------------- E
+
+def check_boundary():
+    """Series II 第3.2節は、一歩ごとの縮小を what stability actually requires と書く。
+    境界 a = (1, 0.7, 0.3) は (0,1) の外にあり、一歩の定数 ||DQ||_2 は 1 になる。
+    それでも ρ(DQ) = (0.21)^(1/3) < 1 なので、反復は一意の不動点へ収束する（ERRATA の N11）。
+    乱数を使わない。A〜D の乱数の並びは変わらない。"""
+    a_vec = np.array([1.0, 0.7, 0.3])
+    q = cyclic_shift(3)
+    d = np.diag(a_vec)
+    A = d @ q
+    norm = float(np.linalg.norm(A, 2))
+    rho = float(max(abs(np.linalg.eigvals(A))))
+    geo = float(a_vec.prod()) ** (1.0 / 3)
+    # 一歩では縮まない向き：特異値 1 の右特異ベクトル。
+    _, sv, vt = np.linalg.svd(A)
+    v = vt[0]
+    one_step = float(np.linalg.norm(A @ v) / np.linalg.norm(v))
+    # それでも収束する。不動点は一つで、3 歩ごとに誤差がちょうど 0.21 倍になる。
+    p_anchor = np.array([1.0, 0.0, 0.5])
+    offset = (np.eye(3) - d) @ p_anchor
+    star = np.linalg.solve(np.eye(3) - A, offset)
+    x = star + v
+    for _ in range(60):
+        x = A @ x + offset
+    ratio = float(np.linalg.norm(x - star) / np.linalg.norm(v))
+    ok = (abs(norm - 1.0) < 1e-12
+          and abs(one_step - 1.0) < 1e-12
+          and abs(rho - geo) < 1e-12
+          and rho < 1.0
+          and abs(ratio - 0.21 ** 20) < 1e-15)
+    return report('E. boundary a=(1,.7,.3): ||DQ||2 = 1, rho < 1, converges', ok,
+                  '||DQ||2 %.12f | one step on v %.12f | rho %.10f = 0.21^(1/3) | '
+                  '60 steps: %.3e vs 0.21^20 %.3e'
+                  % (norm, one_step, rho, ratio, 0.21 ** 20))
+
+
 def main():
     results = []
     print('A. The residual theorem: an isometry scaled by a, plus a fixed offset\n')
@@ -206,6 +249,10 @@ def main():
     print()
     print('D. The claim that did not survive\n')
     results.append(check_self_referential())
+
+    print()
+    print('E. The open interval is sufficient, not necessary\n')
+    results.append(check_boundary())
 
     print()
     print('%d checks, %d passed' % (len(results), sum(results)))
