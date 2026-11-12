@@ -291,8 +291,12 @@ check("結果を消さないと書いてある", "どの結果でも消しませ
 check("覆し方がある", "## 覆し方" in ARXIV)
 
 # **未確認は未確認のまま置く。**arXiv の規則は作業環境から開けない。
-check("arXiv の規則に未確認の札がある",
-      ARXIV.count("未確認") >= 6 and "いずれも未確認である" in ARXIV)
+# ライセンスの一行だけは、2026-11-12 の法令の点検で取り寄せて確かめた（arXiv の案内）。
+# 確かめた一行は、取り寄せた語（Licenses available の行）を添えて置く。ほかは未確認のまま。
+check("arXiv の規則に未確認の札があり、確かめたのはライセンスの一行だけで、取り寄せた語を添えている",
+      ARXIV.count("未確認") >= 6 and "規約の記述は、ライセンスの一行を除いて未確認である" in ARXIV
+      and "`CC BY 4.0 : Creative Commons Attribution`" in ARXIV
+      and "2026-11-12 に取り寄せて確かめた" in ARXIV)
 
 # 決定を README の結論からも辿れること。片方だけ直すと食い違う。
 check("結論が ARXIV.md を指している", "[ARXIV.md](ARXIV.md)" in README)
