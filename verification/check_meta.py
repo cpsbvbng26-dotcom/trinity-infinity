@@ -99,6 +99,12 @@ if all((th, au, er, ro)):
         got = re.findall(pattern, text, re.M)
         check("%s が実際の %d と合う" % (label, want), got == [str(want)], "名乗り %s" % got)
 
+# verification/README.md の冒頭は、表に挙げたスクリプトの本数を名乗る。表に行を足せばずれる。
+_rows = re.findall(r"^\| `[^`]+\.py` \|", VREADME, re.M)
+_named = re.findall(r"検証のスクリプトが (\d+) 本入っています", VREADME)
+check("verification/README.md が名乗るスクリプトの本数が、表の行の数 %d と合う" % len(_rows),
+      len(_rows) > 0 and _named == [str(len(_rows))], "名乗り %s" % _named)
+
 # ------------------------------------------------------------ 2. 依存
 print("\n2. 依存")
 local, pyfiles = set(), []
