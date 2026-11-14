@@ -1,0 +1,30 @@
+{
+  "from": "2026-12-01",
+  "forms": [
+    {
+      "label": "erratum",
+      "kind": "quote",
+      "where": [
+        "どこか / Where"
+      ],
+      "quote": [
+        "書いてあること / What it says"
+      ]
+    }
+  ],
+  "pages": [],
+  "blob": "https://github.com/cpsbvbng26-dotcom/trinity-infinity",
+  "dois": {
+    "10.5281/zenodo.22058624": [
+      "pdf/trinity-infinity-series-i-revised.pdf"
+    ],
+    "10.5281/zenodo.22058777": [
+      "pdf/trinity-infinity-series-ii-revised.pdf"
+    ],
+    "10.5281/zenodo.22058964": [
+      "pdf/trinity-infinity-series-iii.pdf"
+    ]
+  },
+  "ids": [],
+  "neverClose": []
+}
