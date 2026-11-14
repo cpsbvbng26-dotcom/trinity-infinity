@@ -148,7 +148,7 @@ for f in sorted(os.listdir(WF_DIR)):
     wf = read(os.path.join(".github", "workflows", f))
     top = re.search(r"^permissions:\n((?:  \S[^\n]*\n)+)", wf, re.M)
     perms = dict(re.findall(r"^  ([a-z-]+):\s*(\S+)", top.group(1), re.M)) if top else {}
-    # 2026-11-14：突き合わせの受付（checked-intake.yml）は、誤りの知らせにラベルを付けて閉じるので、issue への書き込みだけを足す。
+    # 2026-11-14：突き合わせの受付（checked-intake.yml）は、誤りの知らせにラベルとコメントを付けるので（2026-11-15 から閉じない）、issue への書き込みだけを足す。
     # 13 のリポジトリで同じファイルで、cpsbvbng26-dotcom の check_ecosystem.js が中身を固めている。ほかのワークフローは読むだけのまま。
     want = {"contents": "read", "issues": "write"} if f == "checked-intake.yml" else {"contents": "read"}
     check("%s の権限が、一番上で %s に絞られている" % (f, "読むだけと issue への書き込み（contents: read、issues: write）" if f == "checked-intake.yml" else "読むだけ（contents: read）"),
