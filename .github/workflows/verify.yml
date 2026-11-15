@@ -14,9 +14,12 @@ jobs:
   verify:
     name: 定理 16 項目 / 印字された数値 32 項目 / 正誤表の監査 111 項目 / 経路 143 項目
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       # 外部のアクションは、コミットの値で固定する。版の名前は注釈に残す。
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: '3.12'
@@ -41,6 +44,7 @@ jobs:
         with:
           repository: cpsbvbng26-dotcom/trinity-operator
           path: _sibling/trinity-operator
+          persist-credentials: false
       - name: 札・位置づけ・前提の一覧・年表・関連識別子
         env:
           TRINITY_OPERATOR: _sibling/trinity-operator
