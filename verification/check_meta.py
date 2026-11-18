@@ -14,6 +14,8 @@ pypdf が要る（正誤表の監査を回して、その件数を数えるた�
   4. 安全の窓口（SECURITY.md）と、誤りの知らせの様式。
   5. 保存版の要旨。日本語と英語の段落が、同じ数の文で並んでいる。キーワードが引用情報と同じ。
   6. 言語モデルの開示の表（道具・使ったところ・確かめた人）。
+  7. README のその後の三か所（冒頭・中ほど・末尾）と英語の欄。科学哲学の事例の稿と、黄金比の窓の予想と
+     その証明を、同じ事実で書いているか。壊して確かめる。
 """
 
 import ast
@@ -266,6 +268,74 @@ _broken = [
 ]
 check("壊して確かめる：新しいワークフロー・外したワークフロー・表から外した行・引いた文の一語・節の見出しのどれでも落ちる（%d / %d）"
       % (sum(1 for b in _broken if b), len(_broken)), all(_broken))
+
+# ------------------------------------------------------------ 7. その後の三か所
+print("\n7. README のその後（科学哲学の事例と、黄金比の窓の予想）")
+# 2026-11-18 に足した。三篇が科学哲学の事例として読まれたことと、数学の予想に発展したことを、
+# 冒頭・中ほど・末尾の三か所と英語の欄に書く。aiXiv.science の審査は場の公式審査と呼び、場の説明と、
+# 誰が審査したかを確かめていないことを添える（cpsbvbng26-dotcom の README と同じ。横断の 12u が「査読」を止める）。
+# 予想と証明は三篇の外にあり、文献とは照合していない。三篇の寄与ゼロは動かさない。
+_JA_NEED = ("ケーススタディ「Machine-mediated Rediscovery」",
+            "この稿の所在は、SSRN `10.2139/ssrn.7537983`、aiXiv.science `aixiv.261024.000001` です。",
+            "場の公式審査を経ました。", "場は、その審査を言語モデルの多数決と説明しています。",
+            "この稿を誰が審査したかは、確かめていません。", "trinity-operator の games のノート", "黄金比の窓の予想",
+            "2026-11-18 にノートの命題 8 と 9 で解決しました。", "(a) と (b) の式は、既知の定理の特別な場合です。",
+            "δ についての連続・狭義の増加・両端の極限は、読んだ文献には見つかりませんでした。")
+_EN_NEED = ('The case study "Machine-mediated Rediscovery" reads the rediscovery route of the three papers as a case in the philosophy of science',
+            "The case study is on SSRN as `10.2139/ssrn.7537983` and on aiXiv.science as `aixiv.261024.000001`.",
+            "it passed the platform's official review.",
+            "The platform describes its review as a vote of language models.", "Who reviewed this paper was not checked here.",
+            "posed the golden-window conjecture.", "The conjecture was resolved on 2026-11-18, as Propositions 8 and 9 of the note",
+            "Part (a) and the formula of part (b) are special cases of known theorems.",
+            "Continuity and strict increase in δ and the limits at both ends were not found in the texts read.",
+            "The contribution of the three papers to mathematics stays zero.")
+
+
+def _section(text, head):
+    i = text.find("\n" + head + "\n")
+    if i < 0:
+        return ""
+    j = min([k for k in (text.find("\n## ", i + 1), text.find("\n### ", i + 1)) if k > 0] or [len(text)])
+    return text[i:j]
+
+
+def _afterwards_problems(text):
+    places = {"冒頭": text.split("\n<details>")[0] if "\n<details>" in text else "",
+              "中ほど（歴史的な位置づけ）": _section(text, "### 歴史的な位置づけ"),
+              "末尾（この記録の外側）": _section(text, "## この記録の外側")}
+    bad = []
+    for name, sec in places.items():
+        miss = [w for w in _JA_NEED if w not in sec]
+        if miss:
+            bad.append("%s に無い：%s" % (name, miss[0]))
+    en = text[text.find("<details>"):text.find("</details>")] if "</details>" in text else ""
+    miss = [w for w in _EN_NEED if w not in re.sub(r"\s+", " ", en)]
+    if miss:
+        bad.append("英語の欄に無い：%s" % miss[0][:40])
+    if "寄与ゼロ" not in places["中ほど（歴史的な位置づけ）"] or "三篇の数学への寄与は、ゼロのままです。" not in places["冒頭"]:
+        bad.append("寄与ゼロとの関係を書いていない")
+    if "昇華" in text:
+        bad.append("「昇華」がある")
+    return bad
+
+
+_ap = _afterwards_problems(README)
+check("README の冒頭・中ほど・末尾と英語の欄が、科学哲学の事例の稿と、黄金比の窓の予想とその証明を書いている", not _ap, ", ".join(_ap))
+_ab = [
+    _afterwards_problems(README.replace("この系列には、その後が二つあります。", "").replace(
+        "三篇の再発見の経路を、ケーススタディ「Machine-mediated Rediscovery」が科学哲学の事例として読んでいます", "三篇の経路を読んでいます", 1)),
+    _afterwards_problems(README.replace("経路は、ケーススタディ「Machine-mediated Rediscovery」で、", "経路は、", 1)),
+    _afterwards_problems(README.replace("trinity-operator の games のノートが三篇の作用素から立て、2026-11-18 にノートの命題 8 と 9 で解決しました。",
+                                        "trinity-operator の games のノートが三篇の作用素から立てました。", 1)),
+    _afterwards_problems(README.replace("(a) と (b) の式は、既知の定理の特別な場合です。\nδ についての連続・狭義の増加・両端の極限は、読んだ文献には見つかりませんでした。\nどちらも", "どちらも", 1)),
+    _afterwards_problems(README.replace("Who reviewed this paper was not checked here.", "", 1)),
+    # 壊す先の語は組み立てて置く。そのまま書くと、横断の 12u がこの台本の文を読んで落とす。
+    _afterwards_problems(README.replace("この稿は、aiXiv.science で場の公式審査を経ました。", "この稿は、aiXiv.science で" + "査" + "読を経ました。", 1)),
+    _afterwards_problems(README.replace("三篇の数学への寄与は、ゼロのままです。", "三篇は数学に寄与しました。", 1)),
+    _afterwards_problems(README + "\n昇華\n"),
+]
+check("壊して確かめる：冒頭の稿の名・中ほどの稿の名・末尾の解決・中ほどの既知と見つからない部分・英語の確かめていない一文・審査の呼び名・寄与ゼロ・「昇華」のどれでも落ちる（%d / %d）"
+      % (sum(1 for b in _ab if b), len(_ab)), all(_ab))
 
 print("\n" + "-" * 58)
 if failures:
