@@ -152,9 +152,12 @@ for f in sorted(os.listdir(WF_DIR)):
     perms = dict(re.findall(r"^  ([a-z-]+):\s*(\S+)", top.group(1), re.M)) if top else {}
     # 2026-11-14：突き合わせの受付（checked-intake.yml）は、誤りの知らせにラベルとコメントを付けるので（2026-11-15 から閉じない）、issue への書き込みだけを足す。
     # 13 のリポジトリで同じファイルで、cpsbvbng26-dotcom の check_ecosystem.js が中身を固めている。ほかのワークフローは読むだけのまま。
-    want = {"contents": "read", "issues": "write"} if f == "checked-intake.yml" else {"contents": "read"}
-    check("%s の権限が、一番上で %s に絞られている" % (f, "読むだけと issue への書き込み（contents: read、issues: write）" if f == "checked-intake.yml" else "読むだけ（contents: read）"),
-          perms == want, repr(perms))
+    # 2026-11-18：本文の空の issue に答える仕事（empty-issue.yml）は、ラベルとコメントを付けるだけなので、issue への書き込みだけを持ち、
+    # リポジトリの中身は読まない（チェックアウトしない）。15 のリポジトリで同じファイルで、cpsbvbng26-dotcom の check_ecosystem.js（13f）が中身を固めている。
+    WANT = {"checked-intake.yml": ({"contents": "read", "issues": "write"}, "読むだけと issue への書き込み（contents: read、issues: write）"),
+            "empty-issue.yml": ({"issues": "write"}, "issue への書き込みだけ（issues: write）")}
+    want, said = WANT.get(f, ({"contents": "read"}, "読むだけ（contents: read）"))
+    check("%s の権限が、一番上で %s に絞られている" % (f, said), perms == want, repr(perms))
     check("%s は仕事の単位で権限を広げていない" % f,
           not re.search(r"^    permissions:", wf, re.M) and "write-all" not in wf)
     uses = re.findall(r"uses:\s*(\S+)([^\n]*)", wf)
