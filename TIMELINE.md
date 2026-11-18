@@ -22,6 +22,7 @@ Series I〜III と、作用素の実装と、黄金比の窓の予想を、一�
 | 2026-10-13 | ノートの論文版（Figshare） | ノートの命題 1〜7 と予想 | 英語の論文版を凍結して置いた | [trinity-operator の games/README.md](https://github.com/cpsbvbng26-dotcom/trinity-operator/blob/main/games/README.md) |
 | 2026-11-07 | Zenodo の保存版 1.0.0 | このリポジトリと trinity-operator | 二つのリポジトリをそれぞれ保存した | [CITATION.cff](CITATION.cff) |
 | 2026-11-11 | 正誤表 E7 | ノートの命題 3 | Series II 第4節の例の点が支えられないことを、E7 に書き足した | [ERRATA.md](ERRATA.md) の E7 |
+| 2026-11-18 | ノートの命題 8 と 9 | 黄金比の窓の予想の (a) と (b) | 予想の二つの部分を証明した。2026-11-18 に利用者が求め、Claude が (a) と (b) の証明を書きました。予想は解決済み（(a) と (b) の式は既知の定理の特別な場合。δ についての連続・狭義の増加・両端の極限は、読んだ文献には見つからない） | [trinity-operator の games/README.md](https://github.com/cpsbvbng26-dotcom/trinity-operator/blob/main/games/README.md) |
 
 ## 検査
 
