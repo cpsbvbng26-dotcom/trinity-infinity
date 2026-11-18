@@ -8,6 +8,23 @@
 凍結は三篇の紙面についての決めです。正誤表と検査は、これからも書き足します。
 前提の一覧は [ASSUMPTIONS.md](ASSUMPTIONS.md)、年表は [TIMELINE.md](TIMELINE.md) にあります。
 
+この系列には、その後が二つあります。
+一つは科学哲学です。
+三篇の再発見の経路を、ケーススタディ「Machine-mediated Rediscovery」が科学哲学の事例として読んでいます。
+この稿の所在は、SSRN `10.2139/ssrn.7537983`、aiXiv.science `aixiv.261024.000001` です。
+この稿は、aiXiv.science で場の公式審査を経ました。
+場は、その審査を言語モデルの多数決と説明しています。
+この稿を誰が審査したかは、確かめていません。
+この審査は、査読ではないものとして数えます。
+もう一つは数学の予想です。
+trinity-operator の games のノートが、三篇の作用素を繰り返しゲームに当てて、黄金比の窓の予想を立てました。
+予想は、2026-11-18 にノートの命題 8 と 9 で解決しました。
+著者の求めで、Claude Code（Anthropic）が証明を書きました。
+(a) と (b) の式は、既知の定理の特別な場合です。
+δ についての連続・狭義の増加・両端の極限は、読んだ文献には見つかりませんでした。
+三篇の数学への寄与は、ゼロのままです。
+ノートの結果のうち、命題 8 と命題 9 の式はゼロで、命題 9 の残りはまだ数えていません。
+
 [![検証](https://github.com/cpsbvbng26-dotcom/trinity-infinity/actions/workflows/verify.yml/badge.svg)](https://github.com/cpsbvbng26-dotcom/trinity-infinity/actions/workflows/verify.yml)
 
 > [!IMPORTANT]
@@ -66,6 +83,19 @@ The three papers stay as a learning record. What follows them is a teaching modu
 [trinity-operator](https://github.com/cpsbvbng26-dotcom/trinity-operator), written in the
 notation of the Friedkin–Johnsen literature. The errata and the route record stay open for
 corrections.
+
+**Afterwards.** Two things followed the series. The case study "Machine-mediated
+Rediscovery" reads the rediscovery route of the three papers as a case in the philosophy of
+science. The case study is on SSRN as `10.2139/ssrn.7537983` and on aiXiv.science as
+`aixiv.261024.000001`. On aiXiv.science it passed the platform's official review. The platform describes its review as a vote of
+language models. Who reviewed this paper was not checked here. The games note in
+trinity-operator applied the operator of the three papers to repeated games and posed the
+golden-window conjecture. The conjecture was resolved on 2026-11-18, as Propositions 8 and 9
+of the note, by Claude Code at the author's request. Part (a) and the formula of part (b) are
+special cases of known theorems. Continuity and strict increase in δ and the limits at both
+ends were not found in the texts read. The contribution of the three papers to mathematics
+stays zero. Of the note's results, Proposition 8 and the formula of Proposition 9 are zero, and
+the rest of Proposition 9 is not yet counted.
 
 **First-year work, frozen.** The series is self-study completed by the end of the
 author's first undergraduate year. The three PDFs are frozen. Errata and checks may still be
@@ -298,6 +328,19 @@ Series III はこの事実を特定したうえで、それが「三」の文化
 
 この系列にあるのは、著者自身が、日付つきで、機械検証可能な形で、自分の再発見を
 再発見だと書いた記録です。価値は数学の中身ではなく、材料としての形の側にあります。
+
+その後、この記録は二つの方向に使われました。
+経路は、ケーススタディ「Machine-mediated Rediscovery」で、科学哲学の事例として読まれています。
+この稿の所在は、SSRN `10.2139/ssrn.7537983`、aiXiv.science `aixiv.261024.000001` です。
+aiXiv.science では、この稿は場の公式審査を経ました。
+場は、その審査を言語モデルの多数決と説明しています。
+この稿を誰が審査したかは、確かめていません。
+作用素は、trinity-operator の games のノートで繰り返しゲームに当てられ、黄金比の窓の予想になりました。
+予想は、2026-11-18 にノートの命題 8 と 9 で解決しました。
+(a) と (b) の式は、既知の定理の特別な場合です。
+δ についての連続・狭義の増加・両端の極限は、読んだ文献には見つかりませんでした。
+どちらも、上の「寄与ゼロ」を動かしません。
+予想とその証明は、三篇の外にあります。
 
 ## どの水準の数学か
 
@@ -667,6 +710,18 @@ II と III が「これを一般化する」と述べている定理の、**撤�
 [canonical-sources](https://github.com/cpsbvbng26-dotcom/cpsbvbng26-dotcom/blob/main/docs/canonical-sources.md)
 に固定してあります。訂正の記録そのものは
 [self-correction](https://github.com/cpsbvbng26-dotcom/self-correction) の登録簿にあります。
+
+この系列の外で、二つのものが続いています。
+科学哲学の側には、ケーススタディ「Machine-mediated Rediscovery」があります。
+この稿の所在は、SSRN `10.2139/ssrn.7537983`、aiXiv.science `aixiv.261024.000001` です。
+三篇の再発見の経路を、事例として読んでいます。
+aiXiv.science では、場の公式審査を経ました。
+場は、その審査を言語モデルの多数決と説明しています。
+この稿を誰が審査したかは、確かめていません。
+数学の側には、黄金比の窓の予想があります。
+trinity-operator の games のノートが三篇の作用素から立て、2026-11-18 にノートの命題 8 と 9 で解決しました。
+(a) と (b) の式は、既知の定理の特別な場合です。
+δ についての連続・狭義の増加・両端の極限は、読んだ文献には見つかりませんでした。
 
 ## 著者
 
