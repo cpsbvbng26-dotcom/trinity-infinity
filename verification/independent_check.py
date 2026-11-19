@@ -235,16 +235,31 @@ def main():
         for _ in range(3 * n):
             x = A @ x + offset
         measured = np.linalg.norm(x - star) / e0
+        # 2026-11-19 に足した（ERRATA の N9 の続き。Figshare 10.6084/m9.figshare.35050300 の
+        # Proposition 8.7）。乱数を使わないので、A〜E の引く値は動かない。
+        #   k 歩の係数   ‖(DQ)ᵏ‖₂ = maxᵢ ∏_{j<k} a_{i−j}（巡回して隣り合う k 個の積の最大）
+        #   重み          w₀ = 1、wᵢ = ρ^{−i} ∏_{j=1}^{i} aⱼ で W⁻¹(DQ)W = ρQ
+        k_norms = [float(np.linalg.norm(np.linalg.matrix_power(A, k), 2))
+                   for k in range(1, 2 * n + 1)]
+        k_prods = [max(float(np.prod([a_vec[(i - j) % n] for j in range(k)]))
+                       for i in range(n)) for k in range(1, 2 * n + 1)]
+        k_dev = max(abs(u - v) for u, v in zip(k_norms, k_prods))
+        w = np.array([geo ** (-i) * float(a_vec[1:i + 1].prod()) for i in range(n)])
+        sim = float(np.abs(np.diag(1.0 / w) @ A @ np.diag(w) - geo * q).max())
         ok = (exact < 1e-15
               and abs(rho - geo) < 1e-12
               and geo < a_vec.max() - 1e-9
-              and abs(measured - prod ** 3) < 1e-12)
+              and abs(measured - prod ** 3) < 1e-12
+              and k_dev < 1e-15
+              and sim < 1e-14)
         results.append(report(
             'n = %d: (DQ)^n = (prod a)*I exactly, so rho = geometric mean' % n, ok,
             'rho %.12f = geo mean %.12f < max a %.3f  |  ||A||2 / rho = %.4f  |  '
-            '%d steps: measured %.6e vs (prod a)^3 %.6e  |  (DQ)^n dev %.1e'
+            '%d steps: measured %.6e vs (prod a)^3 %.6e  |  (DQ)^n dev %.1e  |  '
+            '||(DQ)^k||2, k = 1..%d: %s (dev %.1e)  |  W^-1 DQ W - rho Q: %.1e'
             % (rho, geo, a_vec.max(), np.linalg.norm(A, 2) / rho,
-               3 * n, measured, prod ** 3, exact)))
+               3 * n, measured, prod ** 3, exact,
+               2 * n, ', '.join('%.6g' % v for v in k_norms), k_dev, sim)))
 
     print()
     print('D. The claim that did not survive\n')
